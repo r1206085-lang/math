@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高三下（選修數甲 II）｜二次曲線（圓錐曲線）：拋物線、橢圓與雙曲線的標準式與平移伸縮 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">高三下（選修數甲 II）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade12-calculus.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high12-03-limits-functions.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high12-05-calculus.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-rose-900 via-indigo-950 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 17 / 18</span>
+        <span>•</span>
+        <span>高三下 • 二次曲線（拋物線、橢圓、雙曲線）</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">二次曲線（圓錐曲線）：拋物線、橢圓與雙曲線的標準式與平移伸縮</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        從幾何距離定義出發，一次貫通高三下圓錐曲線三大主角：「到焦點距離＝到準線距離」的拋物線、「到兩焦點距離和 $= 2a$」的橢圓，以及「到兩焦點距離差 $= 2a$」的雙曲線與漸近線！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：不含傾斜或退化的二次曲線；不含直線與二次曲線的關係（弦與切線）；不含圓錐曲線的光學性質。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解拋物線的幾何定義（動點到焦點 $F$ 與準線 $L$ 等距），熟練標準式 $x^2 = 4cy$ 與 $y^2 = 4cx$ 的頂點、焦點、準線與正焦弦長 $4|c|$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解橢圓的幾何定義（$\overline{PF_1} + \overline{PF_2} = 2a > 2c$），掌握長軸 $2a$、短軸 $2b$、焦距 $2c$ 的核心關係 $a^2 = b^2 + c^2$ 與標準式。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解雙曲線的幾何定義（$|\overline{PF_1} - \overline{PF_2}| = 2a < 2c$），掌握貫軸 $2a$、共軛軸 $2b$、核心關係 $c^2 = a^2 + b^2$、漸近線與共軛雙曲線。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能透過配方法、平移與伸縮變換將二元二次方程式 $ax^2 + cy^2 + dx + ey + f = 0$ 化為標準式並判讀各幾何要素。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：行星橢圓軌道與雙曲線漸近線的「十字導引框」</h2>
+          <p class="text-sm text-slate-500">橢圓跟雙曲線的 $a, b, c$ 平方關係為什麼一個是 $a^2 = b^2 + c^2$，另一個卻是 $c^2 = a^2 + b^2$？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-rose-50/70 border-rose-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-rose-950 text-lg mb-2">🪐 情境一：誰最長，誰就當畢氏定理的「斜邊」！</h3>
+          <p class="text-sm text-slate-700 mb-3">永遠記住 $a$ 是中心到頂點、$c$ 是中心到焦點：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>橢圓（焦點在肚子裡面）</strong>：$a > c$，半長軸 $a$ 最長！所以 <strong>$a^2 = b^2 + c^2$</strong>，且標準式分母<strong>誰比較大，誰就是 $a^2$（決定長軸方向）</strong>！</li>
+            <li><strong>雙曲線（焦點在開口裡面）</strong>：$c > a$，半焦距 $c$ 最長！所以 <strong>$c^2 = a^2 + b^2$</strong>，且標準式<strong>誰前面是正號，誰就是貫軸 $a^2$（與 $a, b$ 大小無關）</strong>！</li>
+          </ul>
+        </div>
+        <div class="bg-rose-50/70 border-rose-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-rose-950 text-lg mb-2">✖️ 情境二：雙曲線漸近線與共軛雙曲線——只要把「$= 1$」改成「$= 0$」與「$= -1$」！</h3>
+          <p class="text-sm text-slate-700 mb-3">課綱第 68 頁強調雙曲線的漸近線與共軛雙曲線：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>給定雙曲線 $\frac{(x-h)^2}{a^2} - \frac{(y-k)^2}{b^2} = 1$：</li>
+            <li>• 把右邊的 $1$ 改成 <strong>$0$</strong>（再因式分解），立刻得到兩條<strong>漸近線 $\frac{x-h}{a} \pm \frac{y-k}{b} = 0$</strong>！<br/>• 把右邊的 $1$ 改成 <strong>$-1$</strong>，立刻得到共用同一組漸近線的<strong>共軛雙曲線</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">拋物線標準式與要素</td>
+              <td class="py-3.5 px-4">• 上下開口：$(x - h)^2 = 4c(y - k)$（$c>0$ 向上、$c<0$ 向下），焦點 $(h, k+c)$，準線 $y = k - c$<br/>• 左右開口：$(y - k)^2 = 4c(x - h)$（$c>0$ 向右、$c<0$ 向左），焦點 $(h+c, k)$，準線 $x = h - c$</td>
+              <td class="py-3.5 px-4">• 頂點到焦點的距離＝頂點到準線的距離 $= |c|$；<strong>正焦弦長 $= 4|c|$</strong>（即一次項係數的絕對值）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">橢圓標準式與要素</td>
+              <td class="py-3.5 px-4">定義：$\overline{PF_1} + \overline{PF_2} = 2a \quad (a > c > 0, \; \mathbf{a^2 = b^2 + c^2})$<br/>• 橫橢圓：$\frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = 1$，焦點 $(h\pm c, k)$<br/>• 直橢圓：$\frac{(x-h)^2}{b^2} + \frac{(y-k)^2}{a^2} = 1$，焦點 $(h, k\pm c)$</td>
+              <td class="py-3.5 px-4">• 長軸長 $= 2a$，短軸長 $= 2b$，正焦弦長 $= \frac{2b^2}{a}$；將半徑為 $1$ 的單位圓水平伸縮 $a$ 倍、鉛直伸縮 $b$ 倍即得橢圓（面積 $= \pi ab$）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">雙曲線標準式、漸近線與共軛雙曲線</td>
+              <td class="py-3.5 px-4">定義：$|\overline{PF_1} - \overline{PF_2}| = 2a \quad (c > a > 0, \; \mathbf{c^2 = a^2 + b^2})$<br/>• 左右開口：$\frac{(x-h)^2}{a^2} - \frac{(y-k)^2}{b^2} = 1$<br/>• 漸近線：$\frac{x-h}{a} \pm \frac{y-k}{b} = 0$<br/>• 共軛雙曲線：$\frac{(x-h)^2}{a^2} - \frac{(y-k)^2}{b^2} = -1$</td>
+              <td class="py-3.5 px-4">• 貫軸長 $= 2a$，共軛軸長 $= 2b$，正焦弦長 $= \frac{2b^2}{a}$；雙曲線上任一點到兩漸近線之距離乘積為定值 $\frac{a^2b^2}{a^2+b^2} = \frac{a^2b^2}{c^2}$。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade12-calculus.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade12-calculus.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：拋物線直接把一次項係數當成焦距 $c$（忘記除以 4）</p>
+          <p class="text-slate-600">常見誤區：看到 $y^2 = 8x$ 就以為焦點是 $(8, 0)$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：標準式是 $y^2 = \mathbf{4c}x$！故 $4c = 8 \implies c = 2$，焦點為 <strong>$(2, 0)$</strong>、準線為 $x = -2$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：雙曲線用分母大小來判斷 $a^2$ 與 $b^2$</p>
+          <p class="text-slate-600">常見誤區：看到 $\frac{x^2}{9} - \frac{y^2}{16} = 1$，以為 $16 > 9$ 所以 $a = 4, b = 3$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：橢圓才是「誰大誰是 $a^2$」；<strong>雙曲線永遠是「正項分母為 $a^2$、負項分母為 $b^2$」</strong>！故上式中 $a = 3, b = 4, c = \sqrt{9+16} = 5$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：動點到兩定點距離和（或差）等於定點距離 $2c$ 時的退化情形</p>
+          <p class="text-slate-600">常見誤區：若 $\overline{PF_1}+\overline{PF_2}=6$，而 $\overline{F_1F_2}=6$，誤以為圖形是橢圓。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：當 $2a = 2c$ 時，$\overline{PF_1}+\overline{PF_2}=\overline{F_1F_2}$ 退化為<strong>線段 $\overline{F_1F_2}$</strong>；而 $|\overline{PF_1}-\overline{PF_2}|=\overline{F_1F_2}$ 則退化為兩側<strong>射線</strong>！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">拋物線的定義、標準式與焦點準線判讀</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 已知拋物線方程式為 $x^2 - 4x - 8y + 20 = 0$。試透過配方法求此拋物線的頂點坐標、焦點坐標、準線方程式與正焦弦長。
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>將含 $x$ 的項配方移到左邊，其餘移到右邊化為 $(x-h)^2 = 4c(y-k)$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：配方法化為標準式</strong></p>
+<p>$$(x^2 - 4x + 4) = 8y - 20 + 4 \implies (x - 2)^2 = 8(y - 2)$$</p>
+<p><strong>步驟 2：判讀 $c$ 與各要素</strong></p>
+<p>• 對照 $(x-h)^2 = 4c(y-k)$，得頂點 $(h, k) = (2, 2)$，且 $4c = 8 \implies c = 2 > 0$（開口向上）。</p>
+<p>• 焦點為 $(2, 2 + 2) = (2, 4)$；準線為 $y = 2 - 2 = 0$（即 $x$ 軸）；正焦弦長為 $4|c| = 8$。</p>
+<p class="text-emerald-700 font-bold">答：頂點 $(2,2)$，焦點 $(2,4)$，準線 $y=0$，正焦弦長 $8$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">橢圓定義與焦點三角形結合餘弦定理</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 設橢圓方程式為 $\frac{x^2}{25} + \frac{y^2}{9} = 1$，其兩焦點為 $F_1, F_2$。若 $P$ 為橢圓上一點且滿足 $\angle F_1PF_2 = 60^\circ$，試求 $\triangle PF_1F_2$ 的面積。
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>由定義知 $\overline{PF_1} + \overline{PF_2} = 2a = 10$，且 $\overline{F_1F_2} = 2c = 8$；在 $\triangle PF_1F_2$ 中利用餘弦定理與乘法公式求出 $\overline{PF_1}\cdot\overline{PF_2}$ 即可算面積！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：由橢圓標準式求 $a, b, c$</strong></p>
+<p>$a^2 = 25 \implies a = 5$，$b^2 = 9 \implies b = 3$，故 $c = \sqrt{25 - 9} = 4$，焦距 $\overline{F_1F_2} = 2c = 8$。</p>
+<p><strong>步驟 2：設 $\overline{PF_1}=m, \; \overline{PF_2}=n$，結合橢圓定義與餘弦定理</strong></p>
+<p>由定義 $m + n = 2a = 10$。在 $\triangle PF_1F_2$ 中由餘弦定理：</p>
+<p>$$8^2 = m^2 + n^2 - 2mn\cos 60^\circ = (m + n)^2 - 3mn = 100 - 3mn$$</p>
+<p>$$\implies 3mn = 36 \implies mn = 12$$</p>
+<p>$$\triangle PF_1F_2 \text{ 面積} = \frac{1}{2}mn\sin 60^\circ = \frac{1}{2}(12)\left(\frac{\sqrt{3}}{2}\right) = 3\sqrt{3}$$</p>
+<p class="text-emerald-700 font-bold">答：$3\sqrt{3}$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 3</span>
+          <span class="text-xs text-slate-500">雙曲線標準式、漸近線與共軛雙曲線</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 已知雙曲線 $9x^2 - 16y^2 - 18x - 64y - 199 = 0$。試求此雙曲線的：(1) 中心與兩焦點坐標；(2) 兩條漸近線方程式；(3) 共軛雙曲線的標準式。
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>先對 $x, y$ 分別配方化為 $\frac{(x-1)^2}{16} - \frac{(y+2)^2}{9} = 1$，再將右邊的 $1$ 改為 $0$（漸近線）與 $-1$（共軛雙曲線）！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：配方法化為標準式</strong></p>
+<p>$$9(x^2 - 2x + 1) - 16(y^2 + 4y + 4) = 199 + 9 - 64 = 144$$</p>
+<p>兩邊同除以 $144$：</p>
+<p>$$\frac{(x - 1)^2}{16} - \frac{(y + 2)^2}{9} = 1$$</p>
+<p><strong>步驟 2：判讀焦點、漸近線與共軛雙曲線</strong></p>
+<p>• (1) 中心為 $(1, -2)$，$a = 4, \; b = 3 \implies c = \sqrt{16 + 9} = 5$（左右開口），兩焦點為 $(1 \pm 5, -2)$，即 $(6, -2)$ 與 $(-4, -2)$。</p>
+<p>• (2) 令右式為 $0$：$\frac{x-1}{4} \pm \frac{y+2}{3} = 0 \implies 3x - 4y - 11 = 0$ 與 $3x + 4y + 5 = 0$。</p>
+<p>• (3) 共軛雙曲線：$\frac{(x - 1)^2}{16} - \frac{(y + 2)^2}{9} = -1$（即 $\frac{(y+2)^2}{9} - \frac{(x-1)^2}{16} = 1$）。</p>
+<p class="text-emerald-700 font-bold">答：(1) 中心 $(1,-2)$，焦點 $(6,-2), (-4,-2)$；(2) $3x-4y-11=0, \; 3x+4y+5=0$；(3) $\frac{(y+2)^2}{9} - \frac{(x-1)^2}{16} = 1$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

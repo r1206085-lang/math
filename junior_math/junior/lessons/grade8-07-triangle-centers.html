@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>八年級｜幾何證明與三角形的心（外心、內心、重心） — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold">八年級（國二）</span>
+        <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold">幾何與空間 (S-8-7 ~ S-8-8, S-9-8 ~ S-9-11)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade8-06-sequences.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade8-08-quadrilaterals.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：平行與四邊形 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-amber-600 to-orange-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-amber-100 text-sm font-medium mb-2">
+        <span>八年級單元 07</span>
+        <span>•</span>
+        <span>課綱代碼：s-IV-9, s-IV-11, s-IV-12</span>
+        <span>•</span>
+        <span>學習內容：三角形全等性質與幾何證明、外心、內心、重心性質與推論</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">幾何證明與三角形的三心：外心、內心、重心全制霸</h1>
+      <p class="text-amber-50 text-base sm:text-lg mb-6">
+        從「已知 $\to$ 求證 $\to$ 證明」的嚴謹幾何推理（五大三角形全等性質 $SSS, SAS, ASA, AAS, RHS$），一路打通三角形最神奇的三個中心：<strong>外心 $O$、內心 $I$、重心 $G$</strong>！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-amber-50">
+          <li class="flex items-start gap-2"><span class="text-amber-200 font-bold">✓</span><span>熟練三角形五大全等性質（$SSS, SAS, ASA, AAS, RHS$）、中垂線性質與角平分線性質。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-200 font-bold">✓</span><span>理解<strong>外心 $O$</strong>（三邊中垂線交點）：到三頂點等距，且直角三角形外心在斜邊中點（$R = \frac{c}{2}$）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-200 font-bold">✓</span><span>理解<strong>內心 $I$</strong>（三內角平分線交點）：到三邊等距，面積 $\triangle ABC = \frac{1}{2} r s$，直角三角形 $r = \frac{a+b-c}{2}$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-200 font-bold">✓</span><span>理解<strong>重心 $G$</strong>（三中線交點）：重心到頂點與到底邊中點比為 $2 : 1$，三中線將三角形面積六等分。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：三心選址大作戰（基地台、噴水池與平衡手指）</h2>
+          <p class="text-sm text-slate-500">外心、內心、重心到底差在哪裡？用三個生活選址任務一次記住一輩子！</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5 mt-6">
+        <div class="bg-sky-50/70 rounded-xl p-5 border border-sky-200">
+          <h3 class="font-bold text-sky-900 text-base mb-2">📡 外心 $O$：距離三個村莊（頂點）一樣遠的基地台</h3>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            要在 $A, B, C$ 三個村莊蓋一座訊號塔，使<strong>到三頂點距離相等（$\overline{OA}=\overline{OB}=\overline{OC}=R$）</strong>，就要找<strong>三邊中垂線交點（外接圓圓心）</strong>！
+          </p>
+        </div>
+
+        <div class="bg-emerald-50/70 rounded-xl p-5 border border-emerald-200">
+          <h3 class="font-bold text-emerald-900 text-base mb-2">⛲ 內心 $I$：距離三條馬路（三邊）一樣近的圓形噴水池</h3>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            在三條道路圍成的三角公園內蓋最大的圓形噴水池，使<strong>到三邊垂直距離相等（$= r$）</strong>，就要找<strong>三內角平分線交點（內切圓圓心）</strong>！
+          </p>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-base mb-2">☝️ 重心 $G$：一根手指頭頂住三角形厚紙板的平衡點</h3>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            把三角形切塊面積平分的<strong>三條中線交點</strong>就是重量中心！手指頂在 $G$ 點紙板不會掉下來，且每塊小三角形面積完全相等（六等分）！
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">三角形三心黃金總表與易錯提醒</h2>
+          <p class="text-sm text-slate-500">會考幾何必背的定義、距離性質、角度公式與直角三角形特例</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/6">三心名稱</th>
+              <th class="py-3.5 px-4 font-bold w-1/4">作圖交線與等距性質</th>
+              <th class="py-3.5 px-4 font-bold w-1/3">核心公式（角度、面積、比例）</th>
+              <th class="py-3.5 px-4 font-bold w-1/4">直角三角形特例</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-bold text-sky-800">外心 $O$<br/><span class="text-xs font-normal">(外接圓圓心)</span></td>
+              <td class="py-3.5 px-4"><strong>三邊中垂線</strong>交點<br/>到<strong>三頂點</strong>等距離 $= R$</td>
+              <td class="py-3.5 px-4">
+                • 銳角 $\triangle$：$\angle BOC = 2\angle A$<br/>
+                • 鈍角 $\triangle$：$\angle BOC = 360^\circ - 2\angle A$
+              </td>
+              <td class="py-3.5 px-4">外心必在<strong>斜邊中點</strong>！<br/>外接圓半徑 $$R = \frac{\text{斜邊 } c}{2}$$</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-bold text-emerald-800">內心 $I$<br/><span class="text-xs font-normal">(內切圓圓心)</span></td>
+              <td class="py-3.5 px-4"><strong>三內角平分線</strong>交點<br/>到<strong>三邊</strong>等距離 $= r$</td>
+              <td class="py-3.5 px-4">
+                • $\angle BIC = 90^\circ + \frac{1}{2}\angle A$<br/>
+                • $\triangle ABC \text{ 面積} = \frac{1}{2} \times \text{周長} \times r$<br/>
+                • $\triangle AIB : \triangle BIC : \triangle CIA = \overline{AB} : \overline{BC} : \overline{CA}$
+              </td>
+              <td class="py-3.5 px-4">內切圓半徑公式：$$r = \frac{\text{兩股和} - \text{斜邊}}{2} = \frac{a + b - c}{2}$$</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-bold text-amber-800">重心 $G$<br/><span class="text-xs font-normal">(重量中心)</span></td>
+              <td class="py-3.5 px-4"><strong>三中線</strong>交點<br/>永遠在三角形內部</td>
+              <td class="py-3.5 px-4">
+                • 長度比：$\overline{AG} : \overline{GD} = 2 : 1$<br/>
+                • 面積：$\triangle GAB = \triangle GBC = \triangle GCA = \frac{1}{3}\triangle ABC$（三中線分 $6$ 等塊）
+              </td>
+              <td class="py-3.5 px-4">斜邊中點即外心 $O$，故<strong>重心到外心距離</strong>：$$\overline{GO} = \frac{1}{3}R = \frac{1}{6}c$$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「SSA 也是三角形全等性質！」</p>
+            <p class="text-slate-600 mb-2">已知兩邊與一「非夾角」相等，誤以為兩三角形必全等。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：<strong>沒有 SSA 全等，也沒有 AAA 全等</strong>！除非那個非夾角剛好是 $90^\circ$ 直角，才會構成 <strong>$RHS$（斜邊與一股）全等</strong>。</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「外心一定在三角形內部，且 $\angle BOC$ 永遠等於 $2\angle A$」</p>
+            <p class="text-slate-600 mb-2">忽略了鈍角三角形的外心在三角形外部！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：鈍角三角形外心在外部，當 $\angle A > 90^\circ$ 時，$\angle BOC = 360^\circ - 2\angle A$。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">精選直角三角形三心綜合題、內心角度與重心面積比例題</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">內心角度公式與外心角度公式</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 在銳角 $\triangle ABC$ 中，$\angle A = 70^\circ$。若 $O$ 為 $\triangle ABC$ 的外心，$I$ 為 $\triangle ABC$ 的內心，求 $\angle BOC$ 與 $\angle BIC$ 的度數分別為何？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：求外心夾角 $\angle BOC$（銳角三角形）</strong></p>
+            <p>$$\angle BOC = 2\angle A = 2 \times 70^\circ = 140^\circ$$</p>
+            <p><strong>步驟 2：求內心夾角 $\angle BIC$</strong></p>
+            <p>$$\angle BIC = 90^\circ + \frac{1}{2}\angle A = 90^\circ + 35^\circ = 125^\circ$$</p>
+            <p class="text-emerald-700 font-bold">答：$\angle BOC = 140^\circ$，$\angle BIC = 125^\circ$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">直角三角形外接圓半徑、內切圓半徑與三心距離</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 已知直角 $\triangle ABC$ 中，$\angle C = 90^\circ$，兩股長 $\overline{AC} = 6$、$\overline{BC} = 8$。求：(1) 外接圓半徑 $R$；(2) 內切圓半徑 $r$；(3) 重心 $G$ 到外心 $O$ 的距離 $\overline{GO}$。</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：由畢氏定理得斜邊 $\overline{AB} = \sqrt{6^2 + 8^2} = 10$</strong></p>
+            <p><strong>步驟 2：套用直角三角形三心黃金公式</strong></p>
+            <p>• (1) 外接圓半徑 $R = \frac{\text{斜邊}}{2} = \frac{10}{2} = 5$</p>
+            <p>• (2) 內切圓半徑 $r = \frac{6 + 8 - 10}{2} = 2$</p>
+            <p>• (3) 斜邊中線長即 $R = 5$，重心分中線為 $2 : 1$，故 $\overline{GO} = \frac{1}{3} \times 5 = \frac{5}{3}$。</p>
+            <p class="text-emerald-700 font-bold">答：(1) $R = 5$；(2) $r = 2$；(3) $\overline{GO} = \frac{5}{3}$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">重心六等分面積與比例性質</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 在 $\triangle ABC$ 中，三條中線 $\overline{AD}$、$\overline{BE}$、$\overline{CF}$ 相交於重心 $G$。若 $\overline{GD} = 4\text{ cm}$，且四邊形 $BDGF$ 的面積為 $18\text{ cm}^2$，求中線 $\overline{AD}$ 的全長與 $\triangle ABC$ 的總面積。</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用重心長度比 $\overline{AG} : \overline{GD} = 2 : 1$ 求 $\overline{AD}$</strong></p>
+            <p>$\overline{AG} = 2 \times 4 = 8\text{ cm}$，故全長 $\overline{AD} = 8 + 4 = 12\text{ cm}$。</p>
+            <p><strong>步驟 2：利用三條中線將 $\triangle ABC$ 面積平分為 $6$ 塊相等的小三角形</strong></p>
+            <p>四邊形 $BDGF$ 是由 $2$ 塊小三角形（$\triangle BDG$ 與 $\triangle BFG$）組成，佔總面積的 $\frac{2}{6} = \frac{1}{3}$。</p>
+            <p>故 $\triangle ABC$ 總面積 $= 18 \times 3 = 54\text{ cm}^2$。</p>
+            <p class="text-emerald-700 font-bold">答：$\overline{AD} = 12\text{ cm}$，$\triangle ABC$ 面積為 $54\text{ cm}^2$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

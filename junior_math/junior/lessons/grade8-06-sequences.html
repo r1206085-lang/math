@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>八年級｜數列與級數（等差與等比） — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold">八年級（國二）</span>
+        <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">數與量 (N-8-3 ~ N-8-4, N-9-1)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade8-05-quadratic-equations.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade8-07-triangle-centers.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：幾何證明與三角形的心 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-blue-600 to-teal-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-blue-100 text-sm font-medium mb-2">
+        <span>八年級單元 06</span>
+        <span>•</span>
+        <span>課綱代碼：n-IV-7, n-IV-8</span>
+        <span>•</span>
+        <span>學習內容：等差數列、等差中項、等差級數求和、等比數列與等比中項</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">數列與級數：等差階梯、高斯求和與等比倍增</h1>
+      <p class="text-blue-50 text-base sm:text-lg mb-6">
+        探索數字排列背後的規律！理解「每次固定加公差 $d$ 的等差數列」、「頭尾配對的高斯等差級數求和公式」，以及「每次固定乘公比 $r$ 的等比數列」！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-blue-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練等差數列第 $n$ 項公式 $a_n = a_1 + (n-1)d$ 與等差中項 $b = \frac{a+c}{2}$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>掌握等差級數前 $n$ 項和的兩個公式：$S_n = \frac{n(a_1 + a_n)}{2} = \frac{n[2a_1 + (n-1)d]}{2}$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解等比數列公比 $r = \frac{a_2}{a_1}$（$r \ne 0$），並熟練第 $n$ 項公式 $a_n = a_1 \cdot r^{n-1}$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解等比中項性質：$b^2 = a \cdot c \implies b = \pm\sqrt{ac}$（注意正負兩解）。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：爬樓梯跨步數與高斯倒序拼梯形</h2>
+          <p class="text-sm text-slate-500">為什麼第 $10$ 項只加了 $9$ 個公差 $d$？為什麼等差級數公式長得跟梯形面積公式一模一樣？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-blue-50/70 rounded-xl p-5 border border-blue-200">
+          <h3 class="font-bold text-blue-900 text-lg mb-2">🪜 比喻一：從 $1$ 樓走到 $n$ 樓，只需要爬 $(n-1)$ 層樓梯！</h3>
+          <p class="text-sm text-slate-700 mb-3">把首項 $a_1$ 當作 $1$ 樓的高度，每爬一層樓梯上升公差 $d$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>從第 $1$ 項走到第 $10$ 項，中間只有 $10 - 1 = 9$ 個間隔，所以 $a_{10} = a_1 + 9d$！</li>
+            <li>推廣：**任意第 $m$ 項走到第 $n$ 項，剛好相差 $(n - m)$ 個公差**：$$a_n = a_m + (n - m)d$$</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">📐 比喻二：等差級數求和就是「梯形面積公式：（上底＋下底）× 高 ÷ 2」</h3>
+          <p class="text-sm text-slate-700 mb-3">數學王子高斯小時候算 $1 + 2 + 3 + \dots + 100$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>把首項 $a_1$ 當作<strong>上底</strong>、末項 $a_n$ 當作<strong>下底</strong>、總項數 $n$ 當作<strong>高</strong>。</li>
+            <li>頭尾配對之和永遠相等（$1+100 = 2+99 = 101$），總和即為：$$S_n = \frac{(a_1 + a_n) \times n}{2}$$</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">等差數列、等差級數與等比數列公式完整對照</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">標準數學公式</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">重要衍生性質與說明</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">等差數列第 $n$ 項</td>
+              <td class="py-3.5 px-4">$$a_n = a_1 + (n - 1)d$$ $$d = \frac{a_n - a_m}{n - m}$$</td>
+              <td class="py-3.5 px-4">等差中項：若 $a, b, c$ 成等差，則 $b = \frac{a+c}{2}$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">等差級數前 $n$ 項和</td>
+              <td class="py-3.5 px-4">$$S_n = \frac{n(a_1 + a_n)}{2} = \frac{n[2a_1 + (n - 1)d]}{2}$$</td>
+              <td class="py-3.5 px-4">當項數 $n$ 為奇數時，$S_n = n \times a_{\text{正中間項}}$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">等比數列第 $n$ 項</td>
+              <td class="py-3.5 px-4">$$a_n = a_1 \times r^{n - 1} \quad (a_1, r \ne 0)$$</td>
+              <td class="py-3.5 px-4">等比數列中<strong>任何一項與公比 $r$ 皆不可為 $0$</strong>！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">等比中項</td>
+              <td class="py-3.5 px-4">若 $a, b, c$ 成等比，則 $b^2 = ac \implies b = \pm\sqrt{ac}$</td>
+              <td class="py-3.5 px-4">在等比數列中，同隔一項的兩數必<strong>同號</strong>！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「$4$ 與 $9$ 的等比中項只有 $6$」</p>
+            <p class="text-slate-600 mb-2">漏掉了公比 $r$ 可以是負數的情況（$4, -6, 9$ 公比為 $-\frac{3}{2}$）！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：等比中項 $b = \pm\sqrt{4 \times 9} = \pm 6$，有正負兩解！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「在等比數列 $-2, x, -8$ 中，寫 $x = \pm 4$」</p>
+            <p class="text-slate-600 mb-2">這卻是另一個反陷阱：若題目給的是<strong>等比數列連續幾項且有給正負號</strong>，要小心更遠的項有沒有固定符號！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：若只給三項 $-2, x, -8$，則 $x = \pm 4$ 皆可；但若給五項 $-2, a, x, b, -32$，因為 $x = (-2) \cdot r^2$，而實數平方 $r^2 > 0$，此時 $x$ 必定只能是負數 $-8$！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋等差數列、等差級數座位總數與等比數列計算</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">等差數列求公差與指定項</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 一等差數列的第 $4$ 項為 $13$，第 $10$ 項為 $31$，求此數列的首項 $a_1$ 與第 $20$ 項 $a_{20}$。</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：先算公差 $d$</strong>：$d = \frac{a_{10} - a_4}{10 - 4} = \frac{31 - 13}{6} = 3$</p>
+            <p><strong>步驟 2：求首項與第 $20$ 項</strong></p>
+            <p>$a_1 = a_4 - 3d = 13 - 9 = 4$；$a_{20} = a_{10} + 10d = 31 + 30 = 61$。</p>
+            <p class="text-emerald-700 font-bold">答：$a_1 = 4, \; a_{20} = 61$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">等差級數最大值問題</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 一等差級數首項為 $35$，公差為 $-4$，請問加到第幾項時，此等差級數的和 $S_n$ 會有最大值？最大值為多少？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：把所有「正數項」全部加起來，總和就會最大！找出最後一個正數項：</strong></p>
+            <p>$$a_n = 35 + (n - 1)(-4) > 0 \implies 39 - 4n > 0 \implies n < 9.75$$</p>
+            <p>故第 $9$ 項 $a_9 = 35 + 8(-4) = 3$ 是最後一個正數項。</p>
+            <p><strong>步驟 2：計算前 $9$ 項總和 $S_9$</strong></p>
+            <p>$$S_9 = \frac{9 \times (35 + 3)}{2} = 9 \times 19 = 171$$</p>
+            <p class="text-emerald-700 font-bold">答：加到第 $9$ 項時有最大值 $171$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">等比數列細菌倍增應用</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 一等比數列的首項 $a_1 = 3$，第 $4$ 項 $a_4 = -24$，請問此等比數列的公比 $r$ 與第 $7$ 項 $a_7$ 分別為何？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：由 $a_4 = a_1 \cdot r^3$ 求公比 $r$</strong></p>
+            <p>$$-24 = 3 \cdot r^3 \implies r^3 = -8 \implies r = -2$$</p>
+            <p><strong>步驟 2：求第 $7$ 項 $a_7$</strong></p>
+            <p>$$a_7 = a_4 \cdot r^3 = (-24) \times (-8) = 192$$</p>
+            <p class="text-emerald-700 font-bold">答：公比 $r = -2$，第 $7$ 項 $a_7 = 192$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高二下（數學 IV）｜空間中的平面與直線：平面法向量、直線參數式與三元一次方程組 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">高二下（數學 IV）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade11-trig.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high11-04-space-vectors.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high11-06-matrices.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-amber-900 via-slate-900 to-indigo-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 12 / 18</span>
+        <span>•</span>
+        <span>數學 IV • 二、空間中的平面與直線 (1.1 ~ 3.2)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">空間中的平面與直線：平面法向量、直線參數式與三元一次方程組</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        在三維空間中精準定位平面與直線！掌握「平面看唯一法向量 $\vec{n}$、直線看唯一方向向量 $\vec{v}$」的黃金準則，並學會判斷直線與平面關係、點面距與三平面相交的幾何意涵！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：◎2.2 點到直線距離、兩平行線距離、兩歪斜線距離及 ◎3.2 三平面幾何關係代數判定為 B 版增加題材。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能由平面法向量 $\vec{n} = (a,b,c)$ 與一點寫出平面點法式，並求兩平面的夾角與點到平面的距離。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練空間直線的參數式与對稱比例式，並能將直線參數式代入平面方程式判別線面關係（交於一點、平行不相交、直線在平面上）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>（◎ B 版）能計算空間中點到直線距離、兩平行線距離與兩歪斜線公垂線段距離。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練三元一次聯立方程組的消去法（求插值多項式、過三點之圓）與三平面幾何關係判定。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：空間沒有「斜率」，改用法向量與方向向量導航！</h2>
+          <p class="text-sm text-slate-500">為什麼在三維空間裡，$2x + y - z = 3$ 代表的不是一條直線，而是一整片平面？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-amber-50/70 border-amber-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-amber-950 text-lg mb-2">🛸 情境一：平面只有「唯一法向量 $\vec{n}$」，直線只有「唯一方向向量 $\vec{v}$」</h3>
+          <p class="text-sm text-slate-700 mb-3">在三維空間中：垂直於一條直線的方向有無限多個（一整個圓盤），但<strong>垂直於一片平面的方向只有唯一一個（法向量 $\vec{n}$）</strong>！</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>因此<strong>平面方程式用一個一次式</strong> $a(x-x_0)+b(y-y_0)+c(z-z_0)=0$ 就能藉由 $\vec{n}\perp\vec{AP}$ 唯一鎖定！</li>
+            <li>相反地，<strong>空間直線必須用參數式</strong> $(x,y,z) = (x_0+at, y_0+bt, z_0+ct)$（起點＋方向向量 $\vec{v}$ 乘時間 $t$）來描述！</li>
+          </ul>
+        </div>
+        <div class="bg-amber-50/70 border-amber-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-amber-950 text-lg mb-2">🎯 情境二：判別直線與平面關係 ＝ 把參數式 $(x(t), y(t), z(t))$ 直接代進平面！</h3>
+          <p class="text-sm text-slate-700 mb-3">課綱第 66 頁指定範例：如何判別直線 $L$ 與平面 $E$ 的關係？</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>將直線上的動點參數式代入平面 $E$，解關於 $t$ 的一元一次方程式：</li>
+            <li>① 若解出<strong>唯一一個 $t$</strong> $\implies$ 直線與平面<strong>交於唯一一點</strong>；<br/>② 若 $t$ 消掉變成矛盾式（如 $0t = 5$） $\implies$ <strong>平行不相交</strong>；<br/>③ 若變成恆等式 $0t = 0$ $\implies$ <strong>整條直線躺在平面上</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">平面方程式、夾角與點面距</td>
+              <td class="py-3.5 px-4">• 點法式：$a(x-x_0) + b(y-y_0) + c(z-z_0) = 0$，法向量 $\vec{n} = (a,b,c)$<br/>• 兩平面夾角 $\theta$：$\cos\theta = \pm\frac{\vec{n}_1\cdot\vec{n}_2}{|\vec{n}_1||\vec{n}_2|}$<br/>• 點 $P(x_0,y_0,z_0)$ 到平面 $E: ax+by+cz+d=0$ 距離：$$d(P, E) = \frac{|ax_0 + by_0 + cz_0 + d|}{\sqrt{a^2 + b^2 + c^2}}$$</td>
+              <td class="py-3.5 px-4">• 兩平行平面 $ax+by+cz+d_1=0$ 與 $ax+by+cz+d_2=0$ 的距離為 $\frac{|d_1 - d_2|}{\sqrt{a^2+b^2+c^2}}$（須先將 $a,b,c$ 係數化為相同！）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">空間直線參數式與比例式</td>
+              <td class="py-3.5 px-4">過點 $A(x_0,y_0,z_0)$、方向向量 $\vec{v}=(a,b,c)$：<br/>• 參數式：$x = x_0 + at, \; y = y_0 + bt, \; z = z_0 + ct \quad (t \in \mathbb{R})$<br/>• 對稱比例式：$\frac{x-x_0}{a} = \frac{y-y_0}{b} = \frac{z-z_0}{c} \quad (abc \neq 0)$</td>
+              <td class="py-3.5 px-4">• 比例式中分子的 $x, y, z$ 係數必須<strong>全部化為 $+1$</strong>，分母才是真正的方向向量 $(a,b,c)$！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">空間點線距與兩歪斜線距離（◎）</td>
+              <td class="py-3.5 px-4">• 點 $P$ 到直線 $L$：將動點 $Q(t)$ 表為參數式，當 $\vec{PQ} \perp \vec{v} \iff \vec{PQ}\cdot\vec{v}=0$ 時即得投影點 $Q$ 與最短距離。<br/>• 兩歪斜線 $L_1, L_2$ 距離：取公垂向量 $\vec{n} = \vec{v}_1 \times \vec{v}_2$，距離為 $|\vec{P_1P_2}|$ 在 $\vec{n}$ 上的正射影長 $\frac{|\vec{P_1P_2}\cdot\vec{n}|}{|\vec{n}|}$。</td>
+              <td class="py-3.5 px-4">• 判別兩直線是否為歪斜線：① 方向向量不平行 且 ② 聯立參數式無交點。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade11-trig.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade11-trig.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：對稱比例式未將分子 $x,y,z$ 係數化為 $+1$ 就直接讀方向向量</p>
+          <p class="text-slate-600">常見誤區：看到 $\frac{x-1}{2} = \frac{2-y}{3} = \frac{2z+4}{6}$，誤以為方向向量是 $(2, 3, 6)$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：必須先改寫為 $\frac{x-1}{2} = \frac{y-2}{-3} = \frac{z+2}{3}$，故真正的方向向量為 <strong>$(2, -3, 3)$</strong>！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：在空間中求點到「直線」距離時，誤代點到「平面」的絕對值公式</p>
+          <p class="text-slate-600">常見誤區：想用 $\frac{|ax_0+by_0+cz_0+d|}{\sqrt{a^2+b^2+c^2}}$ 算點到直線距離。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：空間中一次式代表的是<strong>平面</strong>而非直線！算空間點到直線距離必須用<strong>「參數式動點 $\vec{PQ}\cdot\vec{v}=0$」</strong>或畢氏定理 $\sqrt{|\vec{AP}|^2 - \text{投影長}^2}$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：兩平行平面距離公式忘記先統一法向量係數</p>
+          <p class="text-slate-600">常見誤區：求 $x + 2y - 2z + 1 = 0$ 與 $2x + 4y - 4z + 8 = 0$ 的距離直接算 $\frac{|1-8|}{3}$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：必須先將第二式同除以 $2$ 化為 $x + 2y - 2z + 4 = 0$，距離才是 $\frac{|1 - 4|}{\sqrt{1^2+2^2+(-2)^2}} = \frac{3}{3} = \mathbf{1}$！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">判別空間直線與平面的相交關係及交點</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 試判別空間直線 $L: \frac{x - 1}{2} = y + 1 = \frac{z}{3}$ 與平面 $E: 2x + y - z = 3$ 的位置關係；若相交，並求出其交點坐標。
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>令對稱比例式 $= t$，寫出參數式 $(x, y, z) = (1+2t, -1+t, 3t)$，代入平面 $E$ 解 $t$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：將直線 $L$ 化為參數式</strong></p>
+<p>令 $\frac{x-1}{2} = \frac{y+1}{1} = \frac{z}{3} = t$，得動點坐標為 $(1 + 2t, \; -1 + t, \; 3t), \; t \in \mathbb{R}$。</p>
+<p><strong>步驟 2：代入平面 $E: 2x + y - z = 3$</strong></p>
+<p>$$2(1 + 2t) + (-1 + t) - 3t = 3 \implies 2t + 1 = 3 \implies t = 1$$</p>
+<p>因為 $t = 1$ 有唯一解，故直線 $L$ 與平面 $E$ <strong>相交於唯一一點</strong>，代回 $t = 1$ 得交點為 $(3, 0, 3)$。</p>
+<p class="text-emerald-700 font-bold">答：直線與平面相交於一點 $(3, 0, 3)$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 2</span>
+          <span class="text-xs text-slate-500">過不共線三點求平面方程式與點到平面距離</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 已知空間中三點 $A(1, 1, 0), \; B(2, 3, 1), \; C(0, 2, 2)$。試求：<br/>(1) 通過 $A, B, C$ 三點的平面 $E$ 方程式。<br/>(2) 點 $P(3, -1, 4)$ 到平面 $E$ 的距離。
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>平面法向量 $\vec{n}$ 同時垂直於 $\vec{AB}$ 與 $\vec{AC}$，故取外積 $\vec{n} = \vec{AB} \times \vec{AC}$ 即可直接寫出平面方程式！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：由外積求平面法向量 $\vec{n}$</strong></p>
+<p>$$\vec{AB} = (1, 2, 1), \quad \vec{AC} = (-1, 1, 2)$$</p>
+<p>$$\vec{n} = \vec{AB} \times \vec{AC} = (3, -3, 3) = 3(1, -1, 1)$$</p>
+<p>取最簡法向量 $(1, -1, 1)$，代入點 $A(1,1,0)$ 得平面 $E: x - y + z = 0$。</p>
+<p><strong>步驟 2：求點 $P(3, -1, 4)$ 到平面 $E$ 的距離</strong></p>
+<p>$$d(P, E) = \frac{|3 - (-1) + 4|}{\sqrt{1^2 + (-1)^2 + 1^2}} = \frac{8}{\sqrt{3}} = \frac{8\sqrt{3}}{3}$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $x - y + z = 0$；(2) $\frac{8\sqrt{3}}{3}$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 3（◎ B 版 p.66）</span>
+          <span class="text-xs text-slate-500">空間中點到直線的最短距離與投影點</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 求空間中點 $P(2, 3, 1)$ 到直線 $L: \frac{x-1}{1} = \frac{y}{2} = \frac{z+1}{2}$ 的最短距離及投影點 $Q$ 的坐標。
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>設投影點為參數式 $Q(1+t, 2t, -1+2t)$，利用 $\vec{PQ} \perp \vec{v}(1,2,2) \implies \vec{PQ}\cdot(1,2,2) = 0$ 解出 $t$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：設投影點 $Q(1+t, 2t, -1+2t)$ 並利用內積為 $0$ 求 $t$</strong></p>
+<p>$$\vec{PQ} = (t - 1, \; 2t - 3, \; 2t - 2)$$</p>
+<p>因 $\vec{PQ} \perp \vec{v}(1, 2, 2)$：</p>
+<p>$$1(t - 1) + 2(2t - 3) + 2(2t - 2) = 0 \implies 9t - 11 = 0 \quad \text{？若改取 } P(2, 4, 1)$$</p>
+<p>對原點 $P(2,3,1)$：$9t = 11 \implies t = \frac{11}{9}$；若點為 $P(3, 2, 1)$，則 $\vec{PQ}=(t-2, 2t-2, 2t-2) \implies (t-2)+4t-4+4t-4=0 \implies 9t=10$。對本題 $P(2,3,1)$，$t = \frac{11}{9}$，故 $Q\left(\frac{20}{9}, \frac{22}{9}, \frac{13}{9}\right)$，$\vec{PQ} = \left(\frac{2}{9}, -\frac{5}{9}, \frac{4}{9}\right)$，距離 $|\vec{PQ}| = \frac{\sqrt{4+25+16}}{9} = \frac{\sqrt{45}}{9} = \frac{\sqrt{5}}{3}$！</p>
+<p class="text-emerald-700 font-bold">答：投影點 $Q\left(\frac{20}{9}, \frac{22}{9}, \frac{13}{9}\right)$，最短距離為 $\frac{\sqrt{5}}{3}$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

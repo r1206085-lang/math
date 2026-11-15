@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>七年級｜整數的運算與指數律 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">七年級（國一）</span>
+        <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">數與量 (N-7-3 ~ N-7-8)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade7-01-integers.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade7-03-fractions.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：分數與科學記號 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-emerald-100 text-sm font-medium mb-2">
+        <span>七年級單元 02</span>
+        <span>•</span>
+        <span>課綱代碼：n-IV-2, n-IV-3</span>
+        <span>•</span>
+        <span>學習內容：整數的加減乘除與四則混合運算、指數律</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">整數的運算：四則混合運算與指數律</h1>
+      <p class="text-emerald-50 text-base sm:text-lg mb-6">
+        理解「負負得正」背後的邏輯，熟練正負整數加減乘除與括號優先順序，並掌握將連乘積化繁為簡的五大指數律！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-emerald-50">
+          <li class="flex items-start gap-2"><span class="text-emerald-300 font-bold">✓</span><span>熟練正負整數的加減法則（減去一個數等於加上它的相反數：$a - b = a + (-b)$）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-300 font-bold">✓</span><span>掌握正負數乘除的符號法則：「同號相乘除得正、異號相乘除得負」。</span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-300 font-bold">✓</span><span>遵循四則混合運算順序：先算指數與括號（小 $\to$ 中 $\to$ 大），再先乘除後加減。</span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-300 font-bold">✓</span><span>理解底數與指數的意義，活用五大指數律處理同底數冪次的乘除運算。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：冷熱魔法石與細胞分裂倍增</h2>
+          <p class="text-sm text-slate-500">為什麼「減去負數」反而變大？指數律為什麼相乘變相加？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🍲 比喻一：魔法湯鍋裡的「火石（$+$）」與「冰塊（$-$）」</h3>
+          <p class="text-sm text-slate-700 mb-3">把湯鍋溫度當作數值，加入為 $+$、撈出為 $-$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>加入冰塊</strong>：$20 + (-5) = 15^\circ\text{C}$（溫度下降 $5$ 度）。</li>
+            <li><strong>撈出冰塊（負負得正）</strong>：$20 - (-5) = 20 + 5 = 25^\circ\text{C}$！把鍋子裡的冰塊拿走，湯鍋溫度當然會<strong>上升</strong>！</li>
+            <li>同樣地，在帳單上「取消（$-$）一筆負債（$-100$ 元）」，就相當於你的財產增加了 $+100$ 元！</li>
+          </ul>
+        </div>
+
+        <div class="bg-emerald-50/70 rounded-xl p-5 border border-emerald-200">
+          <h3 class="font-bold text-emerald-900 text-lg mb-2">🦠 比喻二：細胞分裂倍增器（指數律 $a^m \times a^n = a^{m+n}$）</h3>
+          <p class="text-sm text-slate-700 mb-3">一顆細胞每小時分裂成 $2$ 顆：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>前 $3$ 小時分裂了 $2^3 = 2 \times 2 \times 2 = 8$ 倍。</li>
+            <li>接著再經過 $4$ 小時，又分裂了 $2^4 = 16$ 倍。</li>
+            <li>總共經過 $3 + 4 = 7$ 小時，總倍數就是把乘號串在一起：
+              $$2^3 \times 2^4 = \underbrace{(2\times 2\times 2)}_{3\text{個}} \times \underbrace{(2\times 2\times 2\times 2)}_{4\text{個}} = 2^{3+4} = 2^7$$
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">整數四則運算定律與五大指數律完整對照表</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">公式名稱</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式表達</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">口訣與計算實例</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">整數減法轉加法</td>
+              <td class="py-3.5 px-4">$$a - b = a + (-b)$$ $$a - (-b) = a + b$$</td>
+              <td class="py-3.5 px-4">減去一數 $=$ 加上其相反數。<br/>例：$(-8) - (-15) = -8 + 15 = 7$</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">乘法對加減分配律</td>
+              <td class="py-3.5 px-4">$$a \times (b \pm c) = a \times b \pm a \times c$$</td>
+              <td class="py-3.5 px-4">反向提公因數可秒殺速算：<br/>$(-37)\times 99 + (-37)\times 1 = -37\times(99+1) = -3700$</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">指數律 (1)(2)<br/>同底數相乘與相除</td>
+              <td class="py-3.5 px-4">$$a^m \times a^n = a^{m+n}$$ $$a^m \div a^n = a^{m-n} \quad (a \ne 0)$$</td>
+              <td class="py-3.5 px-4">底數相同：相乘指數相加，相除指數相減。<br/>特別規定：當 $a \ne 0$ 時，<strong>$a^0 = 1$</strong>。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">指數律 (3)(4)(5)<br/>次方再次方與積的次方</td>
+              <td class="py-3.5 px-4">$$(a^m)^n = a^{m \times n}$$ $$(a \times b)^m = a^m \times b^m$$</td>
+              <td class="py-3.5 px-4">括號內外次方相乘；積的次方各自次方。<br/>例：$(2^3)^4 = 2^{12}$；$(-2x)^3 = (-2)^3 x^3 = -8x^3$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒（段考必考陷阱！）</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「$(-3)^4$ 與 $-3^4$ 答案一樣都是 $81$」</p>
+            <p class="text-slate-600 mb-2">忽略了負號有沒有被括號包起來！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：$(-3)^4 = (-3)\times(-3)\times(-3)\times(-3) = +81$（負號連乘 $4$ 次）；但 <strong>$-3^4 = -(3\times 3\times 3\times 3) = -81$</strong>（只有 $3$ 四次方，負號在外面）！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「$2^3 + 2^4 = 2^7$ 或 $2^3 = 6$」</p>
+            <p class="text-slate-600 mb-2">把指數律套用到「加法」，或把次方當成底數乘指數。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：指數律只適用於「乘除」！遇到加減法必須分別算出數值再相加：$2^3 + 2^4 = 8 + 16 = 24 \ne 128$。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">檢驗四則混合運算順序、分配律速算與指數律化簡能力</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">含指數與括號的四則混合運算</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 計算下列算式的值：$$(-2)^4 - (-3^2) \times [5 - (-2)^3 \div 4]$$</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：先處理所有次方項（特別注意括號位置！）</strong></p>
+            <p>$(-2)^4 = 16$，$-3^2 = -9$，$(-2)^3 = -8$</p>
+            <p><strong>步驟 2：代回原式，先算中括號內的除法</strong></p>
+            <p>$$\text{原式} = 16 - (-9) \times [5 - (-8) \div 4]$$</p>
+            <p>$$= 16 - (-9) \times [5 - (-2)] = 16 - (-9) \times 7$$</p>
+            <p><strong>步驟 3：先乘除後加減</strong></p>
+            <p>$$= 16 - (-63) = 16 + 63 = 79$$</p>
+            <p class="text-emerald-700 font-bold">答：$79$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">指數律換底化簡</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 若 $4^5 \times 8^2 \div 2^3 = 2^k$，請問 $k$ 的值為何？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：將底數 $4$ 與 $8$ 全部統一換成以 $2$ 為底數</strong></p>
+            <p>因為 $4 = 2^2$、$8 = 2^3$，所以：</p>
+            <p>$$4^5 = (2^2)^5 = 2^{10}$$</p>
+            <p>$$8^2 = (2^3)^2 = 2^6$$</p>
+            <p><strong>步驟 2：運用同底數乘除指數律（相乘指數相加、相除指數相減）</strong></p>
+            <p>$$2^{10} \times 2^6 \div 2^3 = 2^{10 + 6 - 3} = 2^{13}$$</p>
+            <p class="text-emerald-700 font-bold">答：$k = 13$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">正負得分與倒扣計分問題</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 某次數學競試共有 $25$ 題選擇題，計分規則為：答對一題得 $4$ 分，答錯一題倒扣 $1$ 分（即得 $-1$ 分），未作答得 $0$ 分。若阿哲在這次測驗中答對 $19$ 題、有 $2$ 題未作答，其餘皆答錯，請問阿哲的總得分為幾分？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：先算出答錯的題數</strong></p>
+            <p>$\text{答錯題數} = 25 - 19 - 2 = 4$ 題。</p>
+            <p><strong>步驟 2：列出正負整數四則算式求總分</strong></p>
+            <p>$$\text{總分} = 19 \times 4 + 2 \times 0 + 4 \times (-1) = 76 + 0 - 4 = 72\text{（分）}$$</p>
+            <p class="text-emerald-700 font-bold">答：$72$ 分。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

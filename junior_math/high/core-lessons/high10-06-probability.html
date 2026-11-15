@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高一下（數學 II）｜機率：古典機率、條件機率、獨立事件與貝氏定理 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">高一下（數學 II）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high10-05-combinatorics.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high10-07-data-analysis.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 06 / 18</span>
+        <span>•</span>
+        <span>數學 II • 三、機率 (1.1 ~ 3.1)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">機率：古典機率、條件機率、獨立事件與貝氏定理</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        從拉普拉斯古典機率出發，掌握「縮小樣本空間」的條件機率 $P(B|A)$，並用樹狀圖與分割定理透徹理解課綱兩大經典素養模型——「工廠瑕疵品溯源」與「醫療檢測偽陽性（貝氏定理）」！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：不含幾何機率；藉由生活中的實例說明機率基本性質、條件機率與貝氏定理。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解樣本空間、事件運算（交集、聯集、互斥、餘事件）與古典機率的定義及加法法則 $P(A\cup B)=P(A)+P(B)-P(A\cap B)$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解條件機率 $P(B|A) = \frac{P(A\cap B)}{P(A)}$ 的意義與機率乘法法則 $P(A\cap B) = P(A)P(B|A)$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練貝氏定理（Bayes' Theorem）與樣本空間分割，解決疾病篩檢陽性率與多生產線瑕疵品來源機率問題。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解獨立事件的定義 $P(A\cap B) = P(A)P(B)$，並能分辨「獨立事件」與「互斥事件」的本質差異。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：縮小放大鏡的視野（條件機率）與快篩陽性的真相</h2>
+          <p class="text-sm text-slate-500">為什麼「90% 準確的檢驗」測出陽性時，真正生病的機率竟然不到 16%？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-emerald-950 text-lg mb-2">🔭 情境一：條件機率 $P(B|A)$ ＝ 把宇宙縮小到事件 $A$</h3>
+          <p class="text-sm text-slate-700 mb-3">原本我們在整個樣本空間 $S$ 看事件 $B$ 的比例；一旦得知「事件 $A$ 已經發生」：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>$A$ 以外的世界全部作廢！新的分母變成 $P(A)$，而分子必須是同時落在 $A$ 裡面的 $B$，也就是交集 $P(A \cap B)$！</li>
+            <li>因此 $P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{n(A \cap B)}{n(A)}$。</li>
+          </ul>
+        </div>
+        <div class="bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-emerald-950 text-lg mb-2">🏥 情境二：貝氏定理 ＝ 順向樹狀圖的「逆向溯源」（課綱核心觀念）</h3>
+          <p class="text-sm text-slate-700 mb-3">全國只有 $2\%$ 的人患病，健康者佔 $98\%$。即使試劑對患病者有 $90\%$ 驗出陽性，對健康者也有 $10\%$ 誤判為偽陽性：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>抓 $1000$ 人來測：$20$ 個病人中驗出 $18$ 個真陽性；但 $980$ 個健康人中卻會誤判出 $98$ 個偽陽性！</li>
+            <li>所以全部 $18 + 98 = 116$ 個陽性者中，真正患病的只有 $\frac{18}{116} \approx 15.5\%$！這就是貝氏定理教我們的理性思辨。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">古典機率與餘事件性質</td>
+              <td class="py-3.5 px-4">$$P(A) = \frac{n(A)}{n(S)}, \quad 0 \le P(A) \le 1, \quad P(A') = 1 - P(A)$$ $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$</td>
+              <td class="py-3.5 px-4">• 遇到「至少發生一件」或「生日相同問題（課綱核心觀念）」，優先使用<strong>餘事件 $1 - P(\text{全不發生})$</strong> 計算！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">條件機率與乘法法則</td>
+              <td class="py-3.5 px-4">$$P(B|A) = \frac{P(A \cap B)}{P(A)} \iff P(A \cap B) = P(A) \cdot P(B|A)$$</td>
+              <td class="py-3.5 px-4">• 條件機率對「分子」仍滿足餘事件與取捨性質：$P(B'|A) = 1 - P(B|A)$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">全機率公式與貝氏定理</td>
+              <td class="py-3.5 px-4">設 $A_1, A_2, A_3$ 為樣本空間分割，則對事件 $B$：$$P(A_1|B) = \frac{P(A_1)P(B|A_1)}{P(A_1)P(B|A_1) + P(A_2)P(B|A_2) + P(A_3)P(B|A_3)}$$</td>
+              <td class="py-3.5 px-4">• 口訣：<strong>「分母為所有通往 $B$ 的樹狀圖路徑機率總和，分子為指定來源的那一條路徑機率」</strong>！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">獨立事件及其等價性質</td>
+              <td class="py-3.5 px-4">$$A, B \text{ 獨立} \iff P(A \cap B) = P(A) \cdot P(B) \iff P(B|A) = P(B)$$</td>
+              <td class="py-3.5 px-4">• 若 $A, B$ 獨立，則 $(A, B')$、$(A', B)$、$(A', B')$ 亦必兩兩獨立！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade10-algebra.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：把「互斥事件」與「獨立事件」混為一談</p>
+          <p class="text-slate-600">常見誤區：以為 $A, B$ 互斥（$A\cap B = \varnothing$）就代表 $A, B$ 獨立。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：若 $P(A)>0, P(B)>0$：<strong>互斥則絕不獨立，獨立則絕不互斥</strong>！因為互斥時 $P(A\cap B)=0 \neq P(A)P(B)$（發生 $A$ 就保證 $B$ 絕不發生，彼此影響極大！）。</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：計算古典機率時樣本空間元素並非「等可能」</p>
+          <p class="text-slate-600">常見誤區：投兩枚相同硬幣，認為「兩正、一正一反、兩反」機率各為 $\frac{1}{3}$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：計算古典機率時，<strong>相同物也必須視為相異（編號）</strong>以確保每種結果出現機會均等！兩枚硬幣有 $(正,正), (正,反), (反,正), (反,反)$ 共 $4$ 種等可能結果，一正一反為 $\frac{2}{4}=\frac{1}{2}$。</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：將 $P(A'|B')$ 誤寫為 $1 - P(A|B)$</p>
+          <p class="text-slate-600">常見誤區：對條件機率的條件部分直接取補集。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：補集公式只對<strong>斜線左邊的目標事件</strong>成立：$P(A'|B) = 1 - P(A|B)$；若斜線右邊條件改變為 $B'$，分母完全不同，必須重新計算 $\frac{P(A'\cap B')}{P(B')}$！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">工廠生產線與貝氏定理</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 某公司的產品分別由 A、B、C 三工廠提供，其中 A 廠提供 $40\%$、B 廠提供 $30\%$、C 廠提供 $30\%$；而 A 廠產品有 $5\%$ 瑕疵品、B 廠有 $10\%$ 瑕疵品、C 廠有 $8\%$ 瑕疵品。若從該公司產品中隨機抽出一件發現為瑕疵品，則此瑕疵品是由 A 工廠製造的機率為何？
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>畫出三條分支路徑：A 廠瑕疵 $0.4 \times 0.05$、B 廠瑕疵 $0.3 \times 0.10$、C 廠瑕疵 $0.3 \times 0.08$，三者相加當分母，A 廠當分子！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：計算各廠產生瑕疵品的交集機率</strong></p>
+<p>• $P(A \cap D) = 0.40 \times 0.05 = 0.020$</p>
+<p>• $P(B \cap D) = 0.30 \times 0.10 = 0.030$</p>
+<p>• $P(C \cap D) = 0.30 \times 0.08 = 0.024$</p>
+<p><strong>步驟 2：由貝氏定理求 $P(A|D)$</strong></p>
+<p>$$P(A|D) = \frac{0.020}{0.020 + 0.030 + 0.024} = \frac{0.020}{0.074} = \frac{20}{74} = \frac{10}{37}$$</p>
+<p class="text-emerald-700 font-bold">答：$\frac{10}{37}$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">醫療檢驗準確率與貝氏定理</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 某一檢查方法對檢驗某疾病有 $90\%$ 的準確率（即患病者有 $90\%$ 呈陽性，未患病者也有 $90\%$ 呈陰性）。已知全國人口中有 $2\%$ 患有該疾病，若有一人檢查結果為陽性，則他確實罹患該病的機率為何？
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>注意「未患病者 $90\%$ 呈陰性」代表「未患病者有 $1 - 90\% = 10\%$ 會誤判為偽陽性」！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：分解真陽性與偽陽性機率</strong></p>
+<p>• 患病且陽性（真陽性）：$P(\text{病} \cap +) = 0.02 \times 0.90 = 0.018$</p>
+<p>• 未患病但陽性（偽陽性）：$P(\text{無病} \cap +) = 0.98 \times 0.10 = 0.098$</p>
+<p><strong>步驟 2：由貝氏定理求陽性下真正患病機率</strong></p>
+<p>$$P(\text{病}|+) = \frac{0.018}{0.018 + 0.098} = \frac{0.018}{0.116} = \frac{18}{116} = \frac{9}{58} \approx 15.52\%$$</p>
+<p class="text-emerald-700 font-bold">答：$\frac{9}{58}$（約 $15.52\%$）。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 3</span>
+          <span class="text-xs text-slate-500">獨立事件的聯集與餘事件</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 設甲、乙兩人獨立解同一道數學題，甲解出的機率為 $\frac{2}{3}$，乙解出的機率為 $\frac{3}{4}$。試求：<br/>(1) 兩人中恰有一人解出的機率。<br/>(2) 此題被解出（至少一人解出）的機率。
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>因甲、乙獨立，故 $(甲, 乙')$、$(甲', 乙)$、$(甲', 乙')$ 皆獨立，直接相乘即可！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>第 (1) 題（恰有一人解出）：</strong></p>
+<p>$$P(A\cap B') + P(A'\cap B) = \frac{2}{3}\left(1 - \frac{3}{4}\right) + \left(1 - \frac{2}{3}\right)\frac{3}{4} = \frac{2}{12} + \frac{3}{12} = \frac{5}{12}$$</p>
+<p><strong>第 (2) 題（至少一人解出＝1－兩人都沒解出）：</strong></p>
+<p>$$1 - P(A'\cap B') = 1 - \left(1 - \frac{2}{3}\right)\left(1 - \frac{3}{4}\right) = 1 - \frac{1}{12} = \frac{11}{12}$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $\frac{5}{12}$；(2) $\frac{11}{12}$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

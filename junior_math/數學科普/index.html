@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>數學科普日報（Math News &amp; Wiki）— 數學趣聞與歷史秘辛專刊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-[#faf7f2] text-stone-900 font-sans leading-relaxed">
+
+  <!-- 頂部跨區導覽列 -->
+  <nav class="sticky top-0 z-50 bg-stone-900 text-stone-100 border-b border-stone-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../index.html" class="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 font-semibold transition">🏠 總首頁</a>
+        <a href="../junior/index.html" class="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-300 transition">國中專區</a>
+        <a href="../high/index.html" class="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-300 transition">高中專區</a>
+        <span class="px-2.5 py-1 rounded bg-rose-700 text-white font-bold">📰 數學科普日報</span>
+      </div>
+      <a href="../math-story-presentation.html" class="px-3.5 py-1.5 rounded bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold shadow-sm transition flex items-center gap-1.5">
+        <span>🎞️</span> 進入 5 分鐘上台簡報模式 →
+      </a>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 報紙刊頭 (Masthead) -->
+    <header class="border-y-4 border-double border-stone-900 py-5 text-center space-y-2">
+      <div class="flex flex-wrap items-center justify-between text-xs font-bold tracking-widest uppercase text-stone-600 border-b border-stone-300 pb-2 px-2">
+        <span>VOL. 01 • 創刊特輯</span>
+        <span>獨立專區：數學史秘辛・幾何奇聞・生活密碼</span>
+        <span>收錄 5 篇獨家報導</span>
+      </div>
+      <h1 class="font-serif text-4xl sm:text-6xl font-black tracking-tight text-stone-950 pt-2">
+        數 學 科 普 日 報
+      </h1>
+      <p class="text-xs sm:text-sm font-bold tracking-[0.25em] text-rose-700 uppercase">
+        THE MATH CHRONICLE • WIKI &amp; STORIES
+      </p>
+    </header>
+
+    <!-- 頭條新聞 (Lead Story) -->
+    <section class="bg-white border-2 border-stone-900 p-6 sm:p-8 shadow-[6px_6px_0px_0px_rgba(28,25,23,1)]">
+      <div class="grid lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="px-2.5 py-1 bg-rose-700 text-white text-xs font-black tracking-wider uppercase">頭條獨家</span>
+            <span class="text-xs font-extrabold text-rose-700">🔥 頭條秘辛 • 數學史上第一場謀殺案</span>
+          </div>
+          <h2 class="font-serif text-2xl sm:text-4xl font-black text-stone-950 leading-tight">
+            <a href="hippasus-irrational.html" class="hover:text-rose-700 transition">【震驚愛琴海】一句「算不出來」竟遭沉海滅口？！揭開畢達哥拉斯學派死守的「血色數字」$\sqrt{2}$</a>
+          </h2>
+          <p class="text-stone-700 text-sm sm:text-base leading-relaxed border-l-4 border-rose-700 pl-4 bg-stone-50 py-2">
+            在西元前 5 世紀的古希臘，畢達哥拉斯學派奉「萬物皆有理數（分數）」為最高信仰。然而，一位名叫希帕索斯的天才門徒，只因拿著尺量了一下邊長為 1 的正方形對角線，竟掀翻整座完美神殿，最後傳聞被師兄弟丟進地中海滅口？！
+          </p>
+          <div class="flex flex-wrap gap-2"><span class="px-2.5 py-0.5 bg-rose-100 text-rose-900 text-xs font-bold rounded">無理數</span><span class="px-2.5 py-0.5 bg-rose-100 text-rose-900 text-xs font-bold rounded">畢氏定理</span><span class="px-2.5 py-0.5 bg-rose-100 text-rose-900 text-xs font-bold rounded">反證法</span><span class="px-2.5 py-0.5 bg-rose-100 text-rose-900 text-xs font-bold rounded">A4 紙比例</span></div>
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="hippasus-irrational.html" class="px-5 py-2.5 bg-stone-950 hover:bg-rose-700 text-white text-sm font-extrabold transition">
+              📰 閱讀頭條全文 →
+            </a>
+            <a href="../math-story-presentation.html#slide-1" class="px-4 py-2.5 border-2 border-stone-900 hover:bg-amber-100 text-stone-900 text-sm font-bold transition">
+              🎞️ 看簡報精華版
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 bg-stone-50 border border-stone-300 p-4 flex flex-col items-center">
+          <span class="text-[11px] font-bold tracking-wider text-stone-500 uppercase mb-2">【頭條現場圖解】單位正方形對角線</span>
+          <svg viewBox="0 0 320 220" class="w-full max-w-sm h-auto" xmlns="http://www.w3.org/2000/svg">
+          <rect x="65" y="35" width="140" height="140" fill="#fef2f2" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="65" y1="175" x2="205" y2="35" stroke="#dc2626" stroke-width="3.2"/>
+          <rect x="65" y="160" width="15" height="15" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+          <text x="128" y="196" font-size="13" font-weight="bold" fill="#0f172a">邊長 = 1</text>
+          <text x="214" y="110" font-size="13" font-weight="bold" fill="#0f172a">邊長 = 1</text>
+          <text x="112" y="95" font-size="15" font-weight="bold" fill="#dc2626" transform="rotate(-45 135 105)">對角線 = √2</text>
+          <text x="35" y="213" font-size="11" fill="#64748b">1.41421356237... 永遠寫不成分數的幽靈長度！</text>
+        </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 副刊／快報新聞區（可隨時擴充新文章） -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between border-b-2 border-stone-900 pb-2">
+        <h2 class="font-serif text-2xl font-black text-stone-950">🗞️ 精選深度專題與歷史奇聞</h2>
+        <span class="text-xs font-bold text-stone-500">持續更新・點擊標題看數學解密</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- 新聞卡片 2（可複製此區塊新增更多新聞） -->
+        <article class="bg-white border-2 border-stone-900 p-5 sm:p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] hover:-translate-y-0.5 transition flex flex-col justify-between gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2 border-b border-stone-200 pb-2 text-xs">
+              <span class="font-extrabold text-rose-700 tracking-wide">💘 皇家緋聞？ • 幾何與代數的世紀聯姻</span>
+              <span class="font-mono text-stone-500">NO.02</span>
+            </div>
+            <h3 class="font-serif text-lg sm:text-xl font-black text-stone-900 leading-snug">
+              <a href="descartes-heart.html" class="hover:text-rose-700 transition">【皇家緋聞？】體弱宅男寫給公主的「死亡告白情書」？！一句神祕方程式，畫出數學界最浪漫的一顆心</a>
+            </h3>
+            <p class="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              一位從小愛睡懶覺的法國病弱哲學家，受邀到北歐皇宮當私人教師，卻在酷寒清晨授課時凍出肺炎。傳說他在生命的最後時刻，寄給公主一封沒有任何文字、只寫著一行奇怪方程式的情書——當公主拿起筆描點連線，紙上竟浮現出一顆完美的愛心！
+            </p>
+          </div>
+          <div class="space-y-3 pt-2 border-t border-stone-100">
+            <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">心型線</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">極坐標</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">直角坐標系</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">解析幾何</span></div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-stone-400 font-medium">⏱️ 3 分鐘讀完</span>
+              <a href="descartes-heart.html" class="px-3.5 py-1.5 bg-stone-900 hover:bg-rose-700 text-white text-xs font-bold transition">
+                閱讀獨家專題 →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 新聞卡片 3（可複製此區塊新增更多新聞） -->
+        <article class="bg-white border-2 border-stone-900 p-5 sm:p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] hover:-translate-y-0.5 transition flex flex-col justify-between gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2 border-b border-stone-200 pb-2 text-xs">
+              <span class="font-extrabold text-rose-700 tracking-wide">🛁 街頭奇觀 • 古希臘最強防偽鑑定</span>
+              <span class="font-mono text-stone-500">NO.03</span>
+            </div>
+            <h3 class="font-serif text-lg sm:text-xl font-black text-stone-900 leading-snug">
+              <a href="archimedes-eureka.html" class="hover:text-rose-700 transition">【街頭奇觀】國王暴怒查假貨！大數學家竟「全裸狂奔」大喊 EUREKA，只靠一缸洗澡水揪出貪心金匠！</a>
+            </h3>
+            <p class="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              敘拉古城驚傳離奇街頭事件！城裡最受敬重的科學家阿基米德，昨日突然從公共澡堂一絲不掛衝上大街，一邊狂奔一邊嘶吼著「Eureka（我找到了）！」原來國王交給他一項不可能的任務：在不破壞新皇冠的前提下，揪出金匠是否私吞黃金偷摻白銀！
+            </p>
+          </div>
+          <div class="space-y-3 pt-2 border-t border-stone-100">
+            <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">浮力原理</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">密度</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">排水法</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">物理數學</span></div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-stone-400 font-medium">⏱️ 3 分鐘讀完</span>
+              <a href="archimedes-eureka.html" class="px-3.5 py-1.5 bg-stone-900 hover:bg-rose-700 text-white text-xs font-bold transition">
+                閱讀獨家專題 →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 新聞卡片 4（可複製此區塊新增更多新聞） -->
+        <article class="bg-white border-2 border-stone-900 p-5 sm:p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] hover:-translate-y-0.5 transition flex flex-col justify-between gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2 border-b border-stone-200 pb-2 text-xs">
+              <span class="font-extrabold text-rose-700 tracking-wide">🌉 全城賭局 • 圖論與拓撲學誕生現場</span>
+              <span class="font-mono text-stone-500">NO.04</span>
+            </div>
+            <h3 class="font-serif text-lg sm:text-xl font-black text-stone-900 leading-snug">
+              <a href="konigsberg-bridges.html" class="hover:text-rose-700 transition">【全城賭局】懸賞也沒人走得出來？7 座橋逼瘋柯尼斯堡市民，歐拉動筆幾下竟「憑空創出一門新學科」！</a>
+            </h3>
+            <p class="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              18 世紀的普魯士柯尼斯堡（今俄羅斯加里寧格勒）流傳著一個讓全城居民茶飯不思的散步挑戰：普列戈利亞河把城市切成四塊陸地，上面架了 7 座橋。市民們賭上酒錢日夜試走，卻始終沒人能「每座橋剛好只走一次」全部走完——直到數學巨匠歐拉寫出一封信，徹底終結這場無解的賭局！
+            </p>
+          </div>
+          <div class="space-y-3 pt-2 border-t border-stone-100">
+            <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">一筆畫問題</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">歐拉圖</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">圖論</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">奇偶頂點</span></div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-stone-400 font-medium">⏱️ 3 分鐘讀完</span>
+              <a href="konigsberg-bridges.html" class="px-3.5 py-1.5 bg-stone-900 hover:bg-rose-700 text-white text-xs font-bold transition">
+                閱讀獨家專題 →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 新聞卡片 5（可複製此區塊新增更多新聞） -->
+        <article class="bg-white border-2 border-stone-900 p-5 sm:p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] hover:-translate-y-0.5 transition flex flex-col justify-between gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2 border-b border-stone-200 pb-2 text-xs">
+              <span class="font-extrabold text-rose-700 tracking-wide">🌻 大自然駭客 • 隱藏在花瓣與星系裡的密碼</span>
+              <span class="font-mono text-stone-500">NO.05</span>
+            </div>
+            <h3 class="font-serif text-lg sm:text-xl font-black text-stone-900 leading-snug">
+              <a href="fibonacci-golden-ratio.html" class="hover:text-rose-700 transition">【大自然駭客】向日葵跟兔子竟然在暗號連線？！破解藏在花瓣與銀河裡的「1.618 上帝密碼」</a>
+            </h3>
+            <p class="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              為什麼多數花朵的花瓣數總是 3、5、8、13、21 片？為什麼向日葵種子的螺旋線數一數，永遠剛好是 34 條配 55 條？這一切看似毫無關聯的自然奇蹟，竟然全被 800 年前一位義大利商人隨手寫下的「兔子繁殖算式」精準命中！
+            </p>
+          </div>
+          <div class="space-y-3 pt-2 border-t border-stone-100">
+            <div class="flex flex-wrap gap-1.5"><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">費波那契數列</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">黃金比例</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">極限比值</span><span class="px-2 py-0.5 bg-stone-200/80 text-stone-700 text-[11px] font-bold rounded">自然幾何</span></div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-stone-400 font-medium">⏱️ 3 分鐘讀完</span>
+              <a href="fibonacci-golden-ratio.html" class="px-3.5 py-1.5 bg-stone-900 hover:bg-rose-700 text-white text-xs font-bold transition">
+                閱讀獨家專題 →
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5 分鐘上台簡報推廣條 -->
+    <section class="bg-stone-900 text-white border-2 border-stone-900 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2">
+        <span class="px-2.5 py-0.5 bg-amber-400 text-stone-950 text-xs font-black">5 分鐘科普投影片</span>
+        <h3 class="font-serif text-2xl font-black">不想看長文？直接打開「一頁一故事」教學型簡報！</h3>
+        <p class="text-stone-300 text-sm">支援滑鼠點擊與鍵盤方向鍵（← / →）切換頁面，把 5 大數學奇聞濃縮成外行人也能秒懂的視覺化簡報。</p>
+      </div>
+      <a href="../math-story-presentation.html" class="shrink-0 px-6 py-3 bg-amber-400 hover:bg-amber-300 text-stone-950 font-black text-sm transition shadow-lg">
+        🎞️ 啟動教學簡報 →
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-stone-500 border-t border-stone-300 mt-8">
+    數學科普日報（Math Chronicle）• 獨立於國高中課綱之外的數學故事與趣味知識專區
+  </footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5 分鐘愛上數學奇聞：教學型科普簡報 — 數學科普日報</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-stone-950 text-stone-100 min-h-screen flex flex-col justify-between font-sans select-none">
+
+  <!-- 頂部簡報控制列 -->
+  <header class="bg-stone-900/95 border-b border-stone-800 px-4 sm:px-6 py-3">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-xs sm:text-sm">
+        <a href="index.html" class="px-2.5 py-1.5 rounded bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold transition">🏠 總首頁</a>
+        <a href="數學科普/index.html" class="px-2.5 py-1.5 rounded bg-rose-700 hover:bg-rose-600 text-white font-bold transition">📰 回數學科普日報</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <span id="slide-counter" class="font-mono text-xs sm:text-sm font-bold text-amber-400 bg-stone-800 px-3 py-1 rounded-full">1 / 5</span>
+        <button id="toc-toggle" class="px-3 py-1.5 rounded bg-stone-800 hover:bg-stone-700 text-xs font-bold transition">📑 投影片目錄</button>
+      </div>
+    </div>
+    <!-- 進度條 -->
+    <div class="max-w-6xl mx-auto mt-2.5 h-1.5 bg-stone-800 rounded-full overflow-hidden">
+      <div id="progress-bar" class="h-full bg-amber-400 transition-all duration-300" style="width: 20%"></div>
+    </div>
+  </header>
+
+  <!-- 可收合快速目錄抽屜 -->
+  <div id="toc-panel" class="hidden bg-stone-900 border-b border-stone-700 px-4 sm:px-6 py-4">
+    <div id="toc-list" class="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-2.5"></div>
+  </div>
+
+  <!-- 主投影片舞台（可擴充：由 SLIDES 陣列動態渲染） -->
+  <main class="flex-1 flex items-center justify-center px-4 sm:px-8 py-6">
+    <div id="slide-stage" class="w-full max-w-6xl bg-[#faf7f2] text-stone-900 border-4 border-stone-800 rounded-2xl shadow-2xl p-6 sm:p-10 min-h-[480px] flex flex-col justify-between gap-6">
+      <!-- 內容由 JS 渲染 -->
+    </div>
+  </main>
+
+  <!-- 底部翻頁控制列 -->
+  <footer class="bg-stone-900/95 border-t border-stone-800 px-4 sm:px-6 py-3.5">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <button id="prev-btn" class="px-5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 disabled:opacity-30 disabled:cursor-not-allowed text-sm font-extrabold transition">
+        ← 上一頁
+      </button>
+
+      <div id="dots-nav" class="flex items-center gap-2"></div>
+
+      <button id="next-btn" class="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 disabled:opacity-30 disabled:cursor-not-allowed text-stone-950 text-sm font-extrabold transition">
+        下一頁 →
+      </button>
+    </div>
+    <p class="text-center text-[11px] text-stone-500 mt-2">
+      提示：可使用鍵盤左右方向鍵（← / →）或空白鍵切換投影片
+    </p>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // 可擴充投影片資料庫：未來只要在此陣列新增一筆物件，即可自動擴充投影片！
+    // =========================================================================
+    const SLIDES = [{"id": "slide-1", "kicker": "🔥 頭條秘辛 • 數學史上第一場謀殺案", "headline": "一條對角線引發的滅口傳說？！", "hook": "「如果宇宙萬物都能寫成分數……那邊長 1 的正方形對角線，為什麼永遠量不到盡頭？」", "bullets": ["畢達哥拉斯學派鐵律：世界只有「整數比（分數）」，沒有別的數字。", "希帕索斯發現邊長 $1$ 的對角線 $\\sqrt{2}$ 怎麼約分都出現「分子分母同為偶數」的矛盾！", "歷史衝擊：第一個「無理數」誕生，打破了古希臘數學信仰。"], "egg": "生活彩蛋：A4 紙長寬比正是 $\\sqrt{2}:1$，對折後比例永不變形！", "svg": "<svg viewBox=\"0 0 320 220\" class=\"w-full max-w-sm h-auto\" xmlns=\"http://www.w3.org/2000/svg\">\n          <rect x=\"65\" y=\"35\" width=\"140\" height=\"140\" fill=\"#fef2f2\" stroke=\"#1e293b\" stroke-width=\"2.5\"/>\n          <line x1=\"65\" y1=\"175\" x2=\"205\" y2=\"35\" stroke=\"#dc2626\" stroke-width=\"3.2\"/>\n          <rect x=\"65\" y=\"160\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"#1e293b\" stroke-width=\"1.5\"/>\n          <text x=\"128\" y=\"196\" font-size=\"13\" font-weight=\"bold\" fill=\"#0f172a\">邊長 = 1</text>\n          <text x=\"214\" y=\"110\" font-size=\"13\" font-weight=\"bold\" fill=\"#0f172a\">邊長 = 1</text>\n          <text x=\"112\" y=\"95\" font-size=\"15\" font-weight=\"bold\" fill=\"#dc2626\" transform=\"rotate(-45 135 105)\">對角線 = √2</text>\n          <text x=\"35\" y=\"213\" font-size=\"11\" fill=\"#64748b\">1.41421356237... 永遠寫不成分數的幽靈長度！</text>\n        </svg>", "wikiUrl": "數學科普/hippasus-irrational.html"}, {"id": "slide-2", "kicker": "💘 皇家緋聞？ • 幾何與代數的世紀聯姻", "headline": "一行方程式寫成的「死亡情書」？！", "hook": "「沒有一句我愛你，卻用極坐標 $r = a(1 - \\sin\\theta)$ 在紙上綻放出一整顆心！」", "bullets": ["賴床哲學家笛卡兒看蒼蠅發明了「坐標系」，把幾何圖形變成方程式。", "代入四個方向角度：上方縮回原點成心窩（$r=0$），下方拉長成尖端（$r=2a$）。", "解析幾何誕生：從此代數與幾何正式聯姻。"], "egg": "生活彩蛋：3D 遊戲座標、GPS 定位、心型指向麥克風全都是它的後代！", "svg": "<svg viewBox=\"0 0 320 220\" class=\"w-full max-w-sm h-auto\" xmlns=\"http://www.w3.org/2000/svg\">\n          <line x1=\"30\" y1=\"95\" x2=\"290\" y2=\"95\" stroke=\"#94a3b8\" stroke-width=\"1.3\"/>\n          <line x1=\"160\" y1=\"15\" x2=\"160\" y2=\"205\" stroke=\"#94a3b8\" stroke-width=\"1.3\"/>\n          <path d=\"M 160,95 C 160,55 225,35 235,85 C 242,125 200,165 160,190 C 120,165 78,125 85,85 C 95,35 160,55 160,95 Z\" fill=\"#ffe4e6\" stroke=\"#e11d48\" stroke-width=\"3\"/>\n          <circle cx=\"160\" cy=\"95\" r=\"3.5\" fill=\"#0f172a\"/>\n          <text x=\"166\" y=\"90\" font-size=\"11\" font-weight=\"bold\" fill=\"#0f172a\">O(0,0)</text>\n          <text x=\"102\" y=\"28\" font-size=\"13\" font-weight=\"bold\" fill=\"#be123c\">r = a(1 - sin θ)</text>\n          <text x=\"242\" y=\"92\" font-size=\"10\" fill=\"#64748b\">θ = 0 → r = a</text>\n          <text x=\"166\" y=\"203\" font-size=\"10\" fill=\"#64748b\">θ = 3π/2 → r = 2a</text>\n        </svg>", "wikiUrl": "數學科普/descartes-heart.html"}, {"id": "slide-3", "kicker": "🛁 街頭奇觀 • 古希臘最強防偽鑑定", "headline": "全裸狂奔大街只為抓假貨？！", "hook": "「不准敲碎、不准熔化，到底怎麼抓出重量一模一樣的假黃金皇冠？」", "bullets": ["破案關鍵是「密度」：白銀密度只有黃金的一半，同樣重量下白銀體積更大！", "排水測量法：皇冠排出的水量 $>$ 等重純金塊排出的水量。", "進一步誕生「阿基米德浮力原理」：浮力 $=$ 排開的液體重。"], "egg": "生活彩蛋：萬噸鋼鐵郵輪靠排開大量海水浮起來，用的正是這套原理！", "svg": "<svg viewBox=\"0 0 340 210\" class=\"w-full max-w-md h-auto\" xmlns=\"http://www.w3.org/2000/svg\">\n          <rect x=\"25\" y=\"45\" width=\"120\" height=\"125\" fill=\"#e0f2fe\" stroke=\"#0284c7\" stroke-width=\"2\"/>\n          <line x1=\"25\" y1=\"80\" x2=\"145\" y2=\"80\" stroke=\"#0284c7\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\"/>\n          <polygon points=\"60,150 68,122 85,138 102,122 110,150\" fill=\"#facc15\" stroke=\"#a16207\" stroke-width=\"2\"/>\n          <text x=\"52\" y=\"188\" font-size=\"11\" font-weight=\"bold\" fill=\"#0369a1\">皇冠（體積較大！）</text>\n          <rect x=\"195\" y=\"45\" width=\"120\" height=\"125\" fill=\"#e0f2fe\" stroke=\"#0284c7\" stroke-width=\"2\"/>\n          <line x1=\"195\" y1=\"98\" x2=\"315\" y2=\"98\" stroke=\"#0284c7\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\"/>\n          <rect x=\"235\" y=\"128\" width=\"40\" height=\"22\" fill=\"#facc15\" stroke=\"#a16207\" stroke-width=\"2\"/>\n          <text x=\"215\" y=\"188\" font-size=\"11\" font-weight=\"bold\" fill=\"#0369a1\">等重純金塊（體積小）</text>\n          <text x=\"46\" y=\"70\" font-size=\"10\" font-weight=\"bold\" fill=\"#dc2626\">水位升較高 ↑</text>\n          <text x=\"216\" y=\"88\" font-size=\"10\" font-weight=\"bold\" fill=\"#16a34a\">水位升較低</text>\n        </svg>", "wikiUrl": "數學科普/archimedes-eureka.html"}, {"id": "slide-4", "kicker": "🌉 全城賭局 • 圖論與拓撲學誕生現場", "headline": "7 座橋竟憑空創出一門新學科？！", "hook": "「不用親自去走 100 次！歐拉只把地圖簡化成 4 個點跟 7 條線，三秒證明全城無解！」", "bullets": ["神級抽象法：無視距離與大小，把陸地變成「點」、橋樑變成「線」。", "一筆畫鐵律：路過必一進一出，故奇數點最多只能有 $0$ 個或 $2$ 個。", "柯尼斯堡有 $4$ 個奇數點（3, 3, 3, 5）→ 絕對不可能一筆走完！"], "egg": "生活彩蛋：Google Maps 導航、外送路線規劃與社群好友推薦全是「圖論」！", "svg": "<svg viewBox=\"0 0 340 210\" class=\"w-full max-w-md h-auto\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M 105,65 Q 60,105 105,145\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"2.8\"/>\n          <path d=\"M 105,65 Q 130,105 105,145\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"2.8\"/>\n          <path d=\"M 105,145 Q 130,175 180,170\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"2.8\"/>\n          <path d=\"M 105,145 Q 155,135 180,170\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"2.8\"/>\n          <line x1=\"105\" y1=\"65\" x2=\"235\" y2=\"105\" stroke=\"#2563eb\" stroke-width=\"2.8\"/>\n          <line x1=\"105\" y1=\"145\" x2=\"235\" y2=\"105\" stroke=\"#2563eb\" stroke-width=\"2.8\"/>\n          <line x1=\"180\" y1=\"170\" x2=\"235\" y2=\"105\" stroke=\"#2563eb\" stroke-width=\"2.8\"/>\n          <circle cx=\"105\" cy=\"65\" r=\"14\" fill=\"#dc2626\"/><text x=\"100\" y=\"70\" font-size=\"12\" font-weight=\"bold\" fill=\"#fff\">A(3)</text>\n          <circle cx=\"105\" cy=\"145\" r=\"14\" fill=\"#dc2626\"/><text x=\"99\" y=\"150\" font-size=\"12\" font-weight=\"bold\" fill=\"#fff\">C(5)</text>\n          <circle cx=\"180\" cy=\"170\" r=\"14\" fill=\"#dc2626\"/><text x=\"174\" y=\"175\" font-size=\"12\" font-weight=\"bold\" fill=\"#fff\">B(3)</text>\n          <circle cx=\"235\" cy=\"105\" r=\"14\" fill=\"#dc2626\"/><text x=\"229\" y=\"110\" font-size=\"12\" font-weight=\"bold\" fill=\"#fff\">D(3)</text>\n          <text x=\"15\" y=\"26\" font-size=\"12\" font-weight=\"bold\" fill=\"#0f172a\">歐拉抽象圖：4 塊陸地 = 4 個點，7 座橋 = 7 條線</text>\n          <text x=\"15\" y=\"45\" font-size=\"11\" fill=\"#dc2626\">四個點連出的線數全都是「奇數」→ 絕對無法一筆畫！</text>\n        </svg>", "wikiUrl": "數學科普/konigsberg-bridges.html"}, {"id": "slide-5", "kicker": "🌻 大自然駭客 • 隱藏在花瓣與星系裡的密碼", "headline": "向日葵和兔子在用同組暗號？！", "hook": "「每一項都是前兩項相加，為什麼最後竟演變成大自然最完美的 1.618 黃金比例？」", "bullets": ["兔子數列：$1, 1, 2, 3, 5, 8, 13, 21, 34, 55\\dots$（$F_n = F_{n-1} + F_{n-2}$）。", "後項除以前項的極限收斂至黃金比例 $\\varphi = \\frac{1+\\sqrt{5}}{2} \\approx 1.618$。", "植物用「黃金角 $137.5^\\circ$」排列葉片與種子，達到最高效的不重疊採光與密鋪！"], "egg": "生活彩蛋：花瓣數、松果螺旋、向日葵花盤與建築美學都藏著 $1.618$！", "svg": "<svg viewBox=\"0 0 340 210\" class=\"w-full max-w-md h-auto\" xmlns=\"http://www.w3.org/2000/svg\">\n          <rect x=\"45\" y=\"25\" width=\"130\" height=\"130\" fill=\"#fef3c7\" stroke=\"#d97706\" stroke-width=\"1.8\"/>\n          <rect x=\"175\" y=\"25\" width=\"80\" height=\"80\" fill=\"#fde68a\" stroke=\"#d97706\" stroke-width=\"1.8\"/>\n          <rect x=\"205\" y=\"105\" width=\"50\" height=\"50\" fill=\"#fef08a\" stroke=\"#d97706\" stroke-width=\"1.8\"/>\n          <rect x=\"175\" y=\"125\" width=\"30\" height=\"30\" fill=\"#fef9c3\" stroke=\"#d97706\" stroke-width=\"1.8\"/>\n          <rect x=\"175\" y=\"105\" width=\"20\" height=\"20\" fill=\"#fffbeb\" stroke=\"#d97706\" stroke-width=\"1.8\"/>\n          <path d=\"M 45,155 A 130,130 0 0,1 175,25 A 80,80 0 0,1 255,105 A 50,50 0 0,1 205,155 A 30,30 0 0,1 175,125 A 20,20 0 0,1 195,105\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"2.8\"/>\n          <text x=\"102\" y=\"95\" font-size=\"13\" font-weight=\"bold\" fill=\"#92400e\">13</text>\n          <text x=\"210\" y=\"70\" font-size=\"12\" font-weight=\"bold\" fill=\"#92400e\">8</text>\n          <text x=\"225\" y=\"135\" font-size=\"11\" font-weight=\"bold\" fill=\"#92400e\">5</text>\n          <text x=\"45\" y=\"182\" font-size=\"12\" font-weight=\"bold\" fill=\"#b45309\">1, 1, 2, 3, 5, 8, 13, 21, 34, 55...</text>\n          <text x=\"45\" y=\"200\" font-size=\"11\" fill=\"#dc2626\">相鄰兩項比值趨近黃金比例 φ ≈ 1.618</text>\n        </svg>", "wikiUrl": "數學科普/fibonacci-golden-ratio.html"}];
+
+    let currentIndex = 0;
+
+    function parseHash() {
+      const h = window.location.hash;
+      if (h && h.startsWith("#slide-")) {
+        const num = parseInt(h.replace("#slide-", ""), 10);
+        if (!isNaN(num) && num >= 1 && num <= SLIDES.length) {
+          currentIndex = num - 1;
+        }
+      }
+    }
+
+    function renderSlide() {
+      const s = SLIDES[currentIndex];
+      const stage = document.getElementById("slide-stage");
+
+      const bulletsHtml = s.bullets.map(b => `
+        <li class="flex items-start gap-2.5">
+          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-rose-700 shrink-0"></span>
+          <span>${b}</span>
+        </li>
+      `).join("");
+
+      stage.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-stone-900 pb-3">
+          <span class="px-3 py-1 bg-rose-700 text-white text-xs font-black tracking-wider">SLIDE 0${currentIndex + 1} • ${s.kicker}</span>
+          <a href="${s.wikiUrl}" class="text-xs font-extrabold text-rose-700 hover:underline">📖 查看本篇完整新聞 Wiki →</a>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-center flex-1">
+          <div class="lg:col-span-7 space-y-5">
+            <h1 class="font-serif text-3xl sm:text-5xl font-black text-stone-950 leading-tight">
+              ${s.headline}
+            </h1>
+            <p class="text-base sm:text-xl font-bold text-rose-800 border-l-4 border-rose-700 pl-4 bg-white py-2.5 shadow-sm">
+              ${s.hook}
+            </p>
+            <ul class="space-y-3 text-sm sm:text-base text-stone-800 font-medium">
+              ${bulletsHtml}
+            </ul>
+          </div>
+
+          <div class="lg:col-span-5 space-y-4">
+            <div class="bg-white border-2 border-stone-900 p-4 rounded-xl flex justify-center shadow-[4px_4px_0px_0px_rgba(28,25,23,1)]">
+              ${s.svg}
+            </div>
+            <div class="bg-amber-100 border-2 border-stone-900 p-3.5 rounded-xl text-xs sm:text-sm font-bold text-stone-900">
+              💡 ${s.egg}
+            </div>
+          </div>
+        </div>
+      `;
+
+      // 更新計數器、進度條與按鈕狀態
+      document.getElementById("slide-counter").textContent = `${currentIndex + 1} / ${SLIDES.length}`;
+      document.getElementById("progress-bar").style.width = `${((currentIndex + 1) / SLIDES.length) * 100}%`;
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled = currentIndex === SLIDES.length - 1;
+
+      // 更新點點指示器
+      const dots = document.getElementById("dots-nav");
+      dots.innerHTML = SLIDES.map((_, idx) => `
+        <button onclick="goToSlide(${idx})" class="w-3 h-3 rounded-full transition ${idx === currentIndex ? 'bg-amber-400 scale-125' : 'bg-stone-600 hover:bg-stone-400'}" aria-label="第 ${idx+1} 頁"></button>
+      `).join("");
+
+      // 更新目錄抽屜
+      document.getElementById("toc-list").innerHTML = SLIDES.map((item, idx) => `
+        <button onclick="goToSlide(${idx}); toggleToc(false);" class="text-left p-2.5 rounded-lg border text-xs transition ${idx === currentIndex ? 'bg-amber-400 text-stone-950 border-amber-300 font-black' : 'bg-stone-800 text-stone-200 border-stone-700 hover:bg-stone-700'}">
+          <div class="opacity-75">SLIDE 0${idx+1}</div>
+          <div class="truncate font-bold mt-0.5">${item.headline}</div>
+        </button>
+      `).join("");
+
+      history.replaceState(null, "", `#${s.id}`);
+
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([stage]).catch(err => console.log(err));
+      }
+    }
+
+    function goToSlide(idx) {
+      if (idx >= 0 && idx < SLIDES.length) {
+        currentIndex = idx;
+        renderSlide();
+      }
+    }
+
+    function toggleToc(force) {
+      const panel = document.getElementById("toc-panel");
+      if (typeof force === "boolean") {
+        panel.classList.toggle("hidden", !force);
+      } else {
+        panel.classList.toggle("hidden");
+      }
+    }
+
+    document.getElementById("prev-btn").addEventListener("click", () => goToSlide(currentIndex - 1));
+    document.getElementById("next-btn").addEventListener("click", () => goToSlide(currentIndex + 1));
+    document.getElementById("toc-toggle").addEventListener("click", () => toggleToc());
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+        if (e.key === " ") e.preventDefault();
+        goToSlide(currentIndex + 1);
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        goToSlide(currentIndex - 1);
+      }
+    });
+
+    parseHash();
+    renderSlide();
+  </script>
+</body>
+</html>

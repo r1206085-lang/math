@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>八年級｜乘法公式與多項式 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold">八年級（國二）</span>
+        <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">代數 (A-8-1 ~ A-8-3)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade7-07-ratios.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 七年級單元</a>
+        <a href="grade8-02-square-roots.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：平方根與根號 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-sky-600 to-indigo-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-sky-100 text-sm font-medium mb-2">
+        <span>八年級單元 01</span>
+        <span>•</span>
+        <span>課綱代碼：a-IV-5</span>
+        <span>•</span>
+        <span>學習內容：和的平方、差的平方、平方差公式；多項式的加減乘除直式運算</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">乘法公式與多項式：面積切割與多項式四則運算</h1>
+      <p class="text-sky-50 text-base sm:text-lg mb-6">
+        透過正方形土地面積分割直觀理解三大乘法公式，並掌握多項式的升降冪排列、缺項補 $0$ 與直式長除法（被除式 $=$ 除式 $\times$ 商式 $+$ 餘式）！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-sky-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練三大乘法公式：和的平方 $(a+b)^2$、差的平方 $(a-b)^2$、平方差 $(a+b)(a-b)=a^2-b^2$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>認識多項式的次數、項、係數與常數項，並能依「降冪」或「升冪」排列。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練多項式加減乘除的橫式與直式運算（特別注意<strong>缺項補 $0$</strong>）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解除法原理：$A = B \cdot Q + R$，且餘式 $R$ 的次數必小於除式 $B$ 的次數（或 $R=0$）。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：正方形農田擴建與直式對位櫃子</h2>
+          <p class="text-sm text-slate-500">為什麼 $(a+b)^2$ 展開不是 $a^2+b^2$，中間還會多出兩塊 $2ab$？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-sky-50/70 rounded-xl p-5 border border-sky-200">
+          <h3 class="font-bold text-sky-900 text-lg mb-2">🌾 比喻一：正方形農田擴建（為什麼多出 $2ab$？）</h3>
+          <p class="text-sm text-slate-700 mb-3">原本有一塊邊長為 $a$ 的正方形農田（面積 $a^2$），現在把長和寬都往外拓寬 $b$ 公尺，變成邊長 $(a+b)$ 的大正方形：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>除了原本的 $a^2$ 和角落新增的小正方形 $b^2$ 之外，<strong>上邊和右邊還多出了兩條長為 $a$、寬為 $b$ 的長方形走道（面積各為 $ab$，合起來是 $2ab$）</strong>！</li>
+            <li>所以總面積必為：$$(a+b)^2 = a^2 + 2ab + b^2$$</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🗄️ 比喻二：多項式直式運算就像「百位、十位、個位分格收納」</h3>
+          <p class="text-sm text-slate-700 mb-3">不同次方的項（如 $x^2$ 與 $x$）就像不同面額的鈔票，絕對不能直接相加減：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>排直式時必須按照 $x^3 \to x^2 \to x \to \text{常數項}$ <strong>降冪對齊</strong>。</li>
+            <li>如果遇到 $x^3 - 8$ 除以 $x - 2$，中間缺少了 $x^2$ 和 $x$，就像百位和十位沒數字要寫 $0$ 一樣，<strong>必須補上 $+0x^2 + 0x$</strong> 才不會算錯位！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">三大乘法公式、變形求值公式與多項式除法關係</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">公式名稱</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">標準代數公式</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數字速算與代數範例</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">和的平方公式</td>
+              <td class="py-3.5 px-4">$$(a + b)^2 = a^2 + 2ab + b^2$$</td>
+              <td class="py-3.5 px-4">$103^2 = (100+3)^2 = 10000 + 600 + 9 = 10609$</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">差的平方公式</td>
+              <td class="py-3.5 px-4">$$(a - b)^2 = a^2 - 2ab + b^2$$</td>
+              <td class="py-3.5 px-4">$98^2 = (100-2)^2 = 10000 - 400 + 4 = 9604$</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">平方差公式</td>
+              <td class="py-3.5 px-4">$$(a + b)(a - b) = a^2 - b^2$$</td>
+              <td class="py-3.5 px-4">$205 \times 195 = (200+5)(200-5) = 40000 - 25 = 39975$</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">平方和互轉變形</td>
+              <td class="py-3.5 px-4">$$a^2 + b^2 = (a+b)^2 - 2ab = (a-b)^2 + 2ab$$ $$(a+b)^2 - (a-b)^2 = 4ab$$</td>
+              <td class="py-3.5 px-4">已知 $a+b=7, ab=10$，則 $a^2+b^2 = 7^2 - 2(10) = 29$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">多項式除法關係</td>
+              <td class="py-3.5 px-4">$$\text{被除式 } A = \text{除式 } B \times \text{商式 } Q + \text{餘式 } R$$</td>
+              <td class="py-3.5 px-4">反求除式：$$B = (A - R) \div Q$$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「$(a + b)^2 = a^2 + b^2$ 或 $(a - b)^2 = a^2 - b^2$」</p>
+            <p class="text-slate-600 mb-2">國中三年最常犯的頭號大忌：漏掉了中間的 $\pm 2ab$！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：完全平方展開必有<strong>三項</strong>：頭平方、加減兩倍頭乘尾、加尾平方（尾平方永遠是 $+b^2$）！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「$\frac{1}{x} + 5$ 或 $|x| + 2$ 是 $x$ 的多項式」</p>
+            <p class="text-slate-600 mb-2">忽略了多項式對文字符號位置的限制。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：在多項式中，未知數 $x$ <strong>絕對不能出現在「分母」、「絕對值內」或「根號內」</strong>！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋平方差速算、乘法公式變形求值與多項式除法反求除式</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">乘法公式數字速算</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 利用乘法公式計算：$$299^2 - 199 \times 201$$</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：分別改寫為差的平方與平方差公式</strong></p>
+            <p>$$299^2 = (300 - 1)^2 = 300^2 - 2\times 300\times 1 + 1^2 = 90000 - 600 + 1 = 89401$$</p>
+            <p>$$199 \times 201 = (200 - 1)(200 + 1) = 200^2 - 1^2 = 40000 - 1 = 39999$$</p>
+            <p><strong>步驟 2：兩數相減</strong></p>
+            <p>$$89401 - 39999 = 89401 - 40000 + 1 = 49402$$</p>
+            <p class="text-emerald-700 font-bold">答：$49402$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">多項式除法關係（$A = BQ + R$）</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 已知多項式 $6x^2 - 7x - 15$ 除以多項式 $B$ 後，得商式為 $2x - 5$，餘式為 $5$，求多項式 $B$ 為何？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：由除法原理 $\text{被除式} = \text{除式} \times \text{商式} + \text{餘式}$ 列式</strong></p>
+            <p>$$6x^2 - 7x - 15 = B \times (2x - 5) + 5$$</p>
+            <p><strong>步驟 2：先移項減去餘式，再除以商式</strong></p>
+            <p>$$B \times (2x - 5) = 6x^2 - 7x - 20$$</p>
+            <p>$$B = (6x^2 - 7x - 20) \div (2x - 5) = 3x + 4$$</p>
+            <p class="text-emerald-700 font-bold">答：多項式 $B$ 為 $3x + 4$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">平方差連乘連鎖反應</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 若 $(2 - 1)(2 + 1)(2^2 + 1)(2^4 + 1)(2^8 + 1) = 2^n - 1$，求 $n$ 的值為何？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：從最左邊兩項開始連續觸發平方差公式 $(a-b)(a+b)=a^2-b^2$</strong></p>
+            <p>• $(2 - 1)(2 + 1) = 2^2 - 1$</p>
+            <p>• $(2^2 - 1)(2^2 + 1) = 2^4 - 1$</p>
+            <p>• $(2^4 - 1)(2^4 + 1) = 2^8 - 1$</p>
+            <p>• $(2^8 - 1)(2^8 + 1) = 2^{16} - 1$</p>
+            <p class="text-emerald-700 font-bold">答：$n = 16$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高一下（數學 II）｜排列、組合與二項式定理：取捨原理、球與籃子模型與巴斯卡三角形 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">高一下（數學 II）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high10-04-sequences.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high10-06-probability.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 05 / 18</span>
+        <span>•</span>
+        <span>數學 II • 二、排列、組合与二項式定理 (1.1 ~ 3.1)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">排列、組合與二項式定理：取捨原理、球與籃子模型與巴斯卡三角形</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        擺脫刁鑽古怪的人工化題型！依循課綱「一一對應原理、取捨原理（PIE）」與「球放入籃子」四大標準模型，徹底分清楚 $P^n_k, \; n^k, \; C^n_k, \; H^n_k (C^{n+k-1}_k)$ 的使用時機與二項式定理！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：不含環狀排列；取捨原理至多三個集合；不含超過二項的展開式；避免情境不合常理或過深的題型。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解邏輯「或、且、否定」、笛摩根定律、一一對應原理，以及至多三個集合的取捨原理（Inclusion-Exclusion Principle）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>透過課綱「球與籃子模式」精準分辨直線排列 $P^n_k$、重複排列 $n^k$、組合 $C^n_k$ 與重複組合 $C^{n+k-1}_k$（含非負整數解個數）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能以組合概念推導 $(x+y)^n$ 的二項式定理一般項 $C^n_k x^{n-k}y^k$ 與巴斯卡三角形性質（$C^n_k = C^{n-1}_{k-1} + C^{n-1}_k$）。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：網球單淘汰賽的一一對應與「球放籃子」四大模型</h2>
+          <p class="text-sm text-slate-500">51 人打單淘汰賽要打幾場才產生冠軍？課綱如何用「球有沒有編號、籃子限不限一顆」秒分 $P, n^k, C, H$？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-emerald-950 text-lg mb-2">🎾 情境一：一一對應原理（課綱經典範例）</h3>
+          <p class="text-sm text-slate-700 mb-3">51 位選手參加網球單淘汰賽（輸一場即淘汰，無和局），共需比賽幾場才產生冠軍？</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>不用畫輪空樹狀圖硬加！觀察<strong>「每一場比賽」恰好對應「唯一一位失敗者」</strong>。</li>
+            <li>最後只有 $1$ 位冠軍沒輸過，代表共有 $51 - 1 = 50$ 位失敗者，所以<strong>一定剛好比 50 場</strong>！這就是一一對應原理的威力。</li>
+          </ul>
+        </div>
+        <div class="bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-emerald-950 text-lg mb-2">🧺 情境二：課綱「球與 $1 \sim n$ 號籃子」四大計數模型</h3>
+          <p class="text-sm text-slate-700 mb-3">將 $k$ 顆球放入編號 $1 \sim n$ 的籃子裡，只需問兩個問題：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>1. <strong>球有編號（相異）＋ 每籃最多 1 顆</strong> $\implies$ <strong>直線排列 $P^n_k$</strong></li>
+            <li>2. <strong>球有編號（相異）＋ 每籃球數不限</strong> $\implies$ <strong>重複排列 $n^k$</strong></li>
+            <li>3. <strong>球無編號（相同）＋ 每籃最多 1 顆</strong> $\implies$ <strong>一般組合 $C^n_k$</strong></li>
+            <li>4. <strong>球無編號（相同）＋ 每籃球數不限</strong> $\implies$ <strong>重複組合 $C^{n+k-1}_k$</strong>（即 $x_1+\cdots+x_n=k$ 非負整數解）！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">笛摩根定律與取捨原理（PIE）</td>
+              <td class="py-3.5 px-4">$$(A \cup B)' = A' \cap B', \quad (A \cap B)' = A' \cup B'$$ $$|A \cup B \cup C| = |A|+|B|+|C| - (|A\cap B|+|B\cap C|+|C\cap A|) + |A\cap B\cap C|$$</td>
+              <td class="py-3.5 px-4">• 課綱將排容原理正名為<strong>「取捨原理」</strong>，先加單一、扣兩兩交集、補回三者交集。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">排列與組合四大核心公式</td>
+              <td class="py-3.5 px-4">$$P^n_k = \frac{n!}{(n-k)!}, \quad \text{重複排列} = n^k$$ $$C^n_k = \frac{n!}{k!(n-k)!} = C^n_{n-k}, \quad \text{重複組合 } H^n_k = C^{n+k-1}_k$$</td>
+              <td class="py-3.5 px-4">• <strong>巴斯卡法則</strong>：$C^n_k = C^{n-1}_k + C^{n-1}_{k-1}$（某特定元素「不選」＋「必選」的分類加法）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">二項式定理與係數和</td>
+              <td class="py-3.5 px-4">$$(x + y)^n = \sum_{k=0}^n C^n_k x^{n-k} y^k$$ $$C^n_0 + C^n_1 + \cdots + C^n_n = 2^n$$</td>
+              <td class="py-3.5 px-4">• 一般項（第 $k+1$ 項）為 $T_{k+1} = C^n_k x^{n-k} y^k$。<br/>• 奇偶次項係數和相等：$C^n_0 + C^n_2 + \cdots = C^n_1 + C^n_3 + \cdots = 2^{n-1}$。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade10-algebra.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：重複排列 $n^k$ 把誰當底數、誰當指數搞混</p>
+          <p class="text-slate-600">常見誤區：3 封不同的信投入 5 個不同的郵筒，誤寫成 $3^5$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：必須讓<strong>「受限制／每個都要有去處的物件（信）」去選「可重複容納的對象（郵筒）」</strong>！第 1、2、3 封信各有 5 種選擇，故為 $5 \times 5 \times 5 = \mathbf{5^3 = 125}$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：正整數解與非負整數解未轉換</p>
+          <p class="text-slate-600">常見誤區：求 $x + y + z = 10$ 的「正整數解」直接代 $C^{3+10-1}_{10} = C^{12}_{10}$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：重複組合公式 $C^{n+k-1}_k$ 適用於<strong>非負整數解（$\ge 0$）</strong>！若求正整數解（$\ge 1$），須先各分 1 顆球剩 $10 - 3 = 7$ 顆，故為 $C^{3+7-1}_7 = \mathbf{C^9_7 = 36}$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：「先選再分」導致重複計數</p>
+          <p class="text-slate-600">常見誤區：將 6 本不同書平分成 3 堆（每堆 2 本），寫成 $C^6_2 C^4_2 C^2_2 = 90$ 未除以 $3!$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：當分成的<strong>各堆人數／個數相同且無編號名稱</strong>時，選取順序會造成重複，必須除以相同堆數的階乘 $\frac{C^6_2 C^4_2 C^2_2}{3!} = 15$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 4：二項式定理求係數時忽略括號內的常數係數與負號</p>
+          <p class="text-slate-600">常見誤區：求 $(2x - 3)^5$ 中 $x^3$ 的係數只寫 $C^5_2$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：一般項為 $C^5_2 (2x)^3 (-3)^2 = 10 \times 8 \times 9 \cdot x^3 = \mathbf{720}x^3$，千萬別漏掉 $2^3$ 與 $(-3)^2$！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 1</span>
+          <span class="text-xs text-slate-500">取捨原理（PIE）與倍數個數問題</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 在 $1$ 到 $300$ 的自然數中，試問：<br/>(1) 是 $2$ 或 $3$ 或 $5$ 的倍數共有幾個？<br/>(2) 與 $30$ 互質的自然數共有幾個？
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>設 $A, B, C$ 分別為 $2, 3, 5$ 的倍數集合；與 $30 = 2 \times 3 \times 5$ 互質即代表「既不是 $2$、也不是 $3$、也不是 $5$ 的倍數」！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：由取捨原理求 $|A \cup B \cup C|$</strong></p>
+<p>• $|A|=150, \; |B|=100, \; |C|=60$</p>
+<p>• $|A\cap B|=\lfloor\frac{300}{6}\rfloor=50, \; |B\cap C|=\lfloor\frac{300}{15}\rfloor=20, \; |C\cap A|=\lfloor\frac{300}{10}\rfloor=30$</p>
+<p>• $|A\cap B\cap C|=\lfloor\frac{300}{30}\rfloor=10$</p>
+<p>$$|A \cup B \cup C| = (150+100+60) - (50+20+30) + 10 = 220$$</p>
+<p><strong>步驟 2：扣回求與 $30$ 互質個數</strong></p>
+<p>$$|(A \cup B \cup C)'| = 300 - 220 = 80$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $220$ 個；(2) $80$ 個。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 2</span>
+          <span class="text-xs text-slate-500">球與籃子模型：重複排列 vs. 重複組合</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 試求下列問題的方法數：<br/>(1) 將 $4$ 枝不同的筆分給 $3$ 位小朋友，每人所得筆數不限，共有幾種分法？<br/>(2) 將 $10$ 顆相同的糖果分給 $3$ 位小朋友，每人至少分得 $2$ 顆，共有幾種分法？
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>(1) 不同的筆＝有編號的球（每枝筆有 3 人可選）。(2) 相同的糖果＝無編號的球，先給每人 2 顆（發掉 6 顆），剩下 4 顆任意分！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>第 (1) 題（重複排列）：</strong>每枝不同的筆各有 $3$ 種給法，共 $3^4 = 81$ 種。</p>
+<p><strong>第 (2) 題（重複組合）：</strong>設三人分得 $x_1, x_2, x_3 \ge 2$ 且 $x_1 + x_2 + x_3 = 10$。</p>
+<p>先給每人 $2$ 顆，令 $x_i' = x_i - 2 \ge 0$，則 $x_1' + x_2' + x_3' = 10 - 6 = 4$：</p>
+<p>$$\text{方法數} = C^{3+4-1}_4 = C^6_4 = C^6_2 = \frac{6 \times 5}{2} = 15$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $81$ 種；(2) $15$ 種。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 3</span>
+          <span class="text-xs text-slate-500">二項式定理求指定項係數</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 在 $\left(2x^2 - \frac{1}{x}\right)^6$ 的展開式中，試求：<br/>(1) $x^3$ 項的係數。<br/>(2) 常數項的值。
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>寫出一般項 $T_{k+1} = C^6_k (2x^2)^{6-k} (-x^{-1})^k = C^6_k 2^{6-k} (-1)^k x^{12-3k}$，令次方 $12-3k$ 分別等於 $3$ 與 $0$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：寫出展開式的一般項並合併 $x$ 的次方</strong></p>
+<p>$$T_{k+1} = C^6_k (2x^2)^{6-k} (-x^{-1})^k = C^6_k \cdot 2^{6-k} \cdot (-1)^k \cdot x^{12 - 3k}$$</p>
+<p><strong>步驟 2：求 $x^3$ 項係數與常數項</strong></p>
+<p>• (1) 令 $12 - 3k = 3 \implies k = 3$，係數為 $C^6_3 \cdot 2^3 \cdot (-1)^3 = 20 \times 8 \times (-1) = -160$。</p>
+<p>• (2) 令 $12 - 3k = 0 \implies k = 4$，常數項為 $C^6_4 \cdot 2^2 \cdot (-1)^4 = 15 \times 4 \times 1 = 60$。</p>
+<p class="text-emerald-700 font-bold">答：(1) $x^3$ 項係數為 $-160$；(2) 常數項為 $60$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

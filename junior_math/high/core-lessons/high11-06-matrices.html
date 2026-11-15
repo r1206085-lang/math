@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高二下（數學 IV）｜矩陣與線性變換：高斯消去法、轉移矩陣、二階反方陣與平面線性變換 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">高二下（數學 IV）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade11-trig.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high11-05-space-planes-lines.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high12-01-probability-statistics-ii.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-amber-900 via-slate-900 to-indigo-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 13 / 18</span>
+        <span>•</span>
+        <span>數學 IV • 三、矩陣 (1.1 ~ 4.2)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">矩陣與線性變換：高斯消去法、轉移矩陣、二階反方陣與平面線性變換</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        連結線性方程組與幾何變換的強大語言！熟練矩陣列運算（高斯消去法）、矩陣乘法、馬可夫轉移矩陣穩定狀態、二階反方陣 $A^{-1}$，以及 B 版專屬的平面四大線性變換（伸縮、旋轉、鏡射、推移）與面積縮放比 $|\det A|$！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：不應談特徵方程式及 Cayley-Hamilton 定理；◎4. 平面上的線性變換與二階方陣為 B 版增加題材。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練增廣矩陣的基本列運算與高斯消去法（三角化演算法）求解線性方程組。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>掌握矩陣加法、純量乘法与矩陣乘法（注意 $AB \neq BA$ 乘法不具交換律）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能建立馬可夫轉移矩陣（各行和為 $1$ 之非負方陣）並求穩定狀態機率向量，以及計算二階反方陣 $A^{-1}$ 解聯立方程組。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>（◎ B 版）理解二階方陣對應之平面線性變換（伸縮、旋轉、鏡射、推移），以及變換後圖形面積比為 $|\det A|$ 的幾何意涵。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：市場顧客流動（轉移矩陣）與標準基底 $\vec{e}_1, \vec{e}_2$ 追蹤術</h2>
+          <p class="text-sm text-slate-500">不用死背一堆線性變換矩陣？只要看 $(1,0)$ 跟 $(0,1)$ 跑去哪裡就能一秒寫出矩陣 $A$！</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-amber-50/70 border-amber-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-amber-950 text-lg mb-2">🔄 情境一：馬可夫轉移矩陣 ＝ 每一行總和恆為 $1$ 的顧客流動表</h3>
+          <p class="text-sm text-slate-700 mb-3">A、B 兩家超商每週顧客留存與跳槽比率寫成矩陣 $P$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>直行（Column）代表同一個起點的去向總和</strong>，所以轉移矩陣<strong>每一行的元素相加必等於 $1$</strong>！</li>
+            <li>當經過很長一段時間達到<strong>「穩定狀態 $X$」</strong>時，下一期狀態不再改變，即滿足 <strong>$PX = X$ 且 $x + y = 1$</strong>！</li>
+          </ul>
+        </div>
+        <div class="bg-amber-50/70 border-amber-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-amber-950 text-lg mb-2">🧭 情境二：課綱線性變換秘訣——看 $\begin{bmatrix}1\\0\end{bmatrix}$ 與 $\begin{bmatrix}0\\1\end{bmatrix}$ 映射到哪裡！</h3>
+          <p class="text-sm text-slate-700 mb-3">因為 $\begin{bmatrix}a & b\\c & d\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix} = \begin{bmatrix}a\\c\end{bmatrix}$ 且 $\begin{bmatrix}a & b\\c & d\end{bmatrix}\begin{bmatrix}0\\1\end{bmatrix} = \begin{bmatrix}b\\d\end{bmatrix}$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>二階變換矩陣 $A$ 的<strong>第一行就是 $(1,0)$ 變換後的新坐標，第二行就是 $(0,1)$ 變換後的新坐標</strong>！</li>
+            <li>而且任何圖形經過矩陣 $A$ 線性變換後，<strong>新面積 ＝ 原面積 $\times |\det A|$</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">矩陣乘法與非交換性</td>
+              <td class="py-3.5 px-4">設 $A_{m\times n}, B_{n\times p}$，則 $(AB)_{ij} = \text{第 } i \text{ 列} \cdot \text{第 } j \text{ 行}$<br/>• 一般而言 $AB \neq BA$！<br/>• $(A+B)^2 = A^2 + AB + BA + B^2$</td>
+              <td class="py-3.5 px-4">• 只有當 $AB = BA$ 時，乘法公式 $(A+B)^2 = A^2+2AB+B^2$ 才會成立！<br/>• 課綱備註：不談 Cayley-Hamilton 定理。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">二階反方陣與轉移矩陣</td>
+              <td class="py-3.5 px-4">設 $A = \begin{bmatrix}a & b\\c & d\end{bmatrix}$，當 $\det A = ad - bc \neq 0$ 時：$$A^{-1} = \frac{1}{ad - bc}\begin{bmatrix}d & -b\\-c & a\end{bmatrix}$$ • 轉移矩陣滿足 $0 \le p_{ij} \le 1$ 且<strong>每一行元素和 $= 1$</strong>；穩定狀態滿足 $PX = X, \; \sum x_i = 1$。</td>
+              <td class="py-3.5 px-4">• 口訣：二階反方陣「主對角線對調、副對角線變號，再除以行列式 $ad-bc$」。<br/>• 反方陣性質：$(AB)^{-1} = B^{-1}A^{-1}$（順序顛倒！）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">四大平面線性變換矩陣（◎）</td>
+              <td class="py-3.5 px-4">• <strong>旋轉矩陣</strong>（逆時針轉 $\theta$）：$R(\theta) = \begin{bmatrix}\cos\theta & -\sin\theta\\\sin\theta & \cos\theta\end{bmatrix}$<br/>• <strong>鏡射矩陣</strong>（對過原點夾角 $\theta$ 之直線）：$M(\theta) = \begin{bmatrix}\cos 2\theta & \sin 2\theta\\\sin 2\theta & -\cos 2\theta\end{bmatrix}$<br/>• <strong>水平推移</strong>：$\begin{bmatrix}1 & k\\0 & 1\end{bmatrix}$；<strong>面積伸縮比</strong>：$$\text{變換後面積} = |\det A| \times \text{原面積}$$</td>
+              <td class="py-3.5 px-4">• 旋轉與鏡射皆保持面積與長度不變（旋轉 $\det R = 1$、鏡射 $\det M = -1$）；推移亦保持面積不變（$\det = 1$）！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade11-trig.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade11-trig.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：直接套用 $(A+B)^2 = A^2 + 2AB + B^2$ 或 $(A+B)(A-B) = A^2 - B^2$</p>
+          <p class="text-slate-600">常見誤區：把實數乘法交換律直接當成矩陣也成立。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：因為矩陣乘法 $AB \neq BA$，展開時必須寫成 $A^2 + AB + BA + B^2$！若題目已知 $(A+B)^2 = A^2+2AB+B^2$，其隱藏條件就是 <strong>$AB = BA$</strong>！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：矩陣消去律誤用（由 $AB = AC$ 直接消掉 $A$ 得 $B = C$）</p>
+          <p class="text-slate-600">常見誤區：未檢查 $A^{-1}$ 是否存在就直接兩邊消去 $A$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：當 $\det A = 0$（$A$ 不可逆）時，即使 $A \neq O$，仍可能發生 $AB = O$ 或 $AB = AC$ 但 $B \neq C$！只有當 <strong>$\det A \neq 0$（$A^{-1}$ 存在）</strong>時才能兩邊左乘 $A^{-1}$ 消去。</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：將轉移矩陣寫成「列和為 1」或穩定狀態忘記加總為 1</p>
+          <p class="text-slate-600">常見誤區：把轉移方向寫反（高一課綱固定狀態向量為直行向量 $X_{n+1} = PX_n$）。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：高中課綱規定狀態為直行向量 $\begin{bmatrix}x_n\\y_n\end{bmatrix}$，從第 $j$ 狀態轉移至第 $i$ 狀態寫在 $p_{ij}$，故<strong>每一行（直行）和必為 $1$</strong>！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 1</span>
+          <span class="text-xs text-slate-500">馬可夫轉移矩陣與長期穩定狀態</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 某城市居民訂購 A、B 兩家報紙，已知本月訂 A 報的人下個月有 $80\%$ 繼續訂 A 報、$20\%$ 改訂 B 報；本月訂 B 報的人下個月有 $30\%$ 改訂 A 報、$70\%$ 繼續訂 B 報。<br/>(1) 寫出此市場的轉移矩陣 $P$。<br/>(2) 長期而言，A、B 兩報的市佔率達到穩定狀態時各佔多少比率？
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>第一行填「原訂 A 報者的去向 $(0.8, 0.2)$」，第二行填「原訂 B 報者的去向 $(0.3, 0.7)$」，再解 $PX = X$ 與 $x + y = 1$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：寫出轉移矩陣 $P$（檢查每一行和為 $1$）</strong></p>
+<p>$$P = \begin{bmatrix} 0.8 & 0.3 \\ 0.2 & 0.7 \end{bmatrix}$$</p>
+<p><strong>步驟 2：求穩定狀態 $X = \begin{bmatrix}x\\y\end{bmatrix}$</strong></p>
+<p>由 $PX = X$ 且 $x + y = 1$：</p>
+<p>$$\begin{cases} 0.8x + 0.3y = x \implies 0.2x = 0.3y \implies x : y = 3 : 2 \\ x + y = 1 \end{cases} \implies x = \frac{3}{5} = 60\%, \; y = \frac{2}{5} = 40\%$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $P = \begin{bmatrix}0.8 & 0.3\\0.2 & 0.7\end{bmatrix}$；(2) A 報佔 $60\%$、B 報佔 $40\%$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2（◎ B 版 p.67 原題）</span>
+          <span class="text-xs text-slate-500">由兩組對應向量求平面線性變換矩陣與面積比</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 設平面上的線性變換矩陣 $A$ 將向量 $\begin{bmatrix}1\\2\end{bmatrix}$ 與 $\begin{bmatrix}3\\4\end{bmatrix}$ 分別映射到 $\begin{bmatrix}1\\2\end{bmatrix}$ 與 $\begin{bmatrix}2\\-1\end{bmatrix}$。<br/>(1) 求此線性變換的二階方陣 $A$。<br/>(2) 設 $\triangle PQR$ 的面積為 $6$，求經矩陣 $A$ 變換後所得新三角形的面積。
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>把兩組行向量併成二階方陣：$A\begin{bmatrix}1 & 3\\2 & 4\end{bmatrix} = \begin{bmatrix}1 & 2\\2 & -1\end{bmatrix}$，右乘 $\begin{bmatrix}1 & 3\\2 & 4\end{bmatrix}^{-1}$ 即可瞬間求出 $A$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：併成矩陣方程並右乘反方陣求 $A$</strong></p>
+<p>$$A\begin{bmatrix} 1 & 3 \\ 2 & 4 \end{bmatrix} = \begin{bmatrix} 1 & 2 \\ 2 & -1 \end{bmatrix}$$</p>
+<p>因 $\det\begin{bmatrix}1 & 3\\2 & 4\end{bmatrix} = 4 - 6 = -2$，故：</p>
+<p>$$A = \begin{bmatrix} 1 & 2 \\ 2 & -1 \end{bmatrix} \cdot \left(-\frac{1}{2}\right)\begin{bmatrix} 4 & -3 \\ -2 & 1 \end{bmatrix} = -\frac{1}{2}\begin{bmatrix} 0 & -1 \\ 10 & -7 \end{bmatrix} = \begin{bmatrix} 0 & \frac{1}{2} \\ -5 & \frac{7}{2} \end{bmatrix}$$</p>
+<p><strong>步驟 2：由 $|\det A|$ 求變換後面積</strong></p>
+<p>$$|\det A| = \left|0 - \left(-\frac{5}{2}\right)\right| = \frac{5}{2} \implies \text{新面積} = \frac{5}{2} \times 6 = 15$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $A = \begin{bmatrix}0 & \frac{1}{2}\\-5 & \frac{7}{2}\end{bmatrix}$；(2) 新面積為 $15$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 3（◎ B 版）</span>
+          <span class="text-xs text-slate-500">旋轉矩陣與鏡射矩陣的合成</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 在坐標平面上，將點 $P(2, \sqrt{3})$ 以原點為中心逆時針旋轉 $60^\circ$ 得點 $P'$；又直線 $L$ 為過原點且斜角為 $30^\circ$（即 $y = \frac{1}{\sqrt{3}}x$）的直線，求點 $Q(3, \sqrt{3})$ 關於直線 $L$ 的鏡射點 $Q'$ 坐標。
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>分別套用旋轉矩陣 $R(60^\circ)$ 與鏡射矩陣 $M(2 \times 30^\circ) = M(60^\circ)$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>(1) 逆時針旋轉 $60^\circ$：</strong></p>
+<p>$$P' = \begin{bmatrix}\cos 60^\circ & -\sin 60^\circ\\\sin 60^\circ & \cos 60^\circ\end{bmatrix}\begin{bmatrix}2\\\sqrt{3}\end{bmatrix} = \begin{bmatrix}\frac{1}{2} & -\frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{2} & \frac{1}{2}\end{bmatrix}\begin{bmatrix}2\\\sqrt{3}\end{bmatrix} = \begin{bmatrix}-\frac{1}{2}\\\frac{3\sqrt{3}}{2}\end{bmatrix}$$</p>
+<p><strong>(2) 關於斜角 $\theta = 30^\circ$ 直線鏡射（$2\theta = 60^\circ$）：</strong></p>
+<p>$$Q' = \begin{bmatrix}\cos 60^\circ & \sin 60^\circ\\\sin 60^\circ & -\cos 60^\circ\end{bmatrix}\begin{bmatrix}3\\\sqrt{3}\end{bmatrix} = \begin{bmatrix}\frac{1}{2} & \frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{2} & -\frac{1}{2}\end{bmatrix}\begin{bmatrix}3\\\sqrt{3}\end{bmatrix} = \begin{bmatrix}3\\\sqrt{3}\end{bmatrix}$$</p>
+<p>（因為 $Q(3, \sqrt{3})$ 本身就在直線 $y = \frac{1}{\sqrt{3}}x$ 上，故鏡射點即為自身！）</p>
+<p class="text-emerald-700 font-bold">答：$P'\left(-\frac{1}{2}, \frac{3\sqrt{3}}{2}\right)$；$Q'(3, \sqrt{3})$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

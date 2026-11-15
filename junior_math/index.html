@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>十二年國教國中數學互動學習網｜七、八、九年級完整 20 單元課綱導覽</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- MathJax 3 Configuration & CDN -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 頂部固定導覽列 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <span class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-extrabold text-lg shadow-sm group-hover:bg-indigo-700 transition">∑</span>
+        <div>
+          <span class="font-extrabold text-slate-900 text-base sm:text-lg tracking-tight block leading-none">國中數學互動教材網</span>
+          <span class="text-[11px] text-slate-500 font-medium">十二年國教 108 課綱對齊 • 三個年級完整 20 單元全收錄</span>
+        </div>
+      </a>
+
+      <!-- 三個年級與四大核心主題分類導覽 -->
+      <nav class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-semibold">
+        <a href="#themes" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 transition">四大核心主題</a>
+        <a href="#grade-7" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition">七年級（7 單元）</a>
+        <a href="#grade-8" class="px-3 py-1.5 rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100 transition">八年級（8 單元）</a>
+        <a href="#grade-9" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-700 hover:bg-rose-100 transition">九年級（5 單元）</a>
+        <a href="junior/index.html" class="px-3 py-1.5 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition">📘 國中專區</a>
+        <a href="high/index.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">📕 高中課綱＆錯題本專區</a>
+        <a href="數學科普/index.html" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 hover:bg-amber-300 font-bold transition">📰 數學科普專區</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-14">
+
+    <!-- Hero 視覺橫幅與課綱理念 -->
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white p-8 sm:p-12 shadow-xl">
+      <div class="relative z-10 max-w-3xl space-y-5">
+        <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-semibold">
+          <span>✨ 依循 108 課綱規範建置</span>
+          <span>•</span>
+          <span>完整 20 個互動單元 100% 實作上線</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+          用生活化比喻與互動推導，<br class="hidden sm:inline" />讀懂國中三年的每一個數學公式
+        </h1>
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+          嚴格對齊教育部十二年國教數學領域課綱，完整涵蓋<strong>七年級（7 單元）、八年級（8 單元）、九年級（5 單元）共 20 個核心單元</strong>與<strong>數與量、代數、幾何、統計與機率</strong>四大主題。每單元皆包含「💡 生活比喻」、「📘 核心公式與易錯對照」及「✍️ 可折疊逐步詳解題型」。
+        </p>
+        <div class="pt-2 flex flex-wrap gap-3">
+          <a href="#grade-7" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm shadow transition">
+            🚀 七年級（國一）階段
+          </a>
+          <a href="#grade-8" class="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm shadow transition">
+            📐 八年級（國二）階段
+          </a>
+          <a href="#grade-9" class="px-5 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-sm shadow transition">
+            🏆 九年級（國三）階段
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- ==================== 🏠 網站雙專區總入口（國中科普專區 ＆ 高中課綱與個人錯題本專區） ==================== -->
+    <section class="grid md:grid-cols-2 gap-6">
+      <!-- 入口 1：國中專區 -->
+      <div class="rounded-3xl bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white p-7 sm:p-8 shadow-xl border border-emerald-500/30 flex flex-col justify-between space-y-5">
+        <div class="space-y-3">
+          <span class="px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-bold">📁 junior/ • 國中數學與科普專區</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">📘 國中三年 20 核心單元互動教材</h2>
+          <p class="text-slate-200 text-sm leading-relaxed">
+            完整保留七年級（7 單元）、八年級（8 單元）、九年級（5 單元）共 20 個課綱核心單元，每單元皆含生活化比喻、核心公式表格與可折疊逐步詳解。
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="junior/index.html" class="px-5 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-sm shadow transition">
+            進入國中數學專區 (junior/) →
+          </a>
+          <a href="#grade-7" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold transition">
+            直接瀏覽下方國中 20 單元 ↓
+          </a>
+        </div>
+      </div>
+
+      <!-- 入口 2：高中課綱講義與錯題本專區 -->
+      <div class="rounded-3xl bg-gradient-to-br from-rose-900 via-indigo-950 to-slate-900 text-white p-7 sm:p-8 shadow-xl border border-rose-500/30 flex flex-col justify-between space-y-5">
+        <div class="space-y-3">
+          <span class="px-3 py-1 rounded-full bg-rose-400/20 text-rose-200 text-xs font-bold">高中課綱講義 ＆ 錯題本專區</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">📕 高中三年 18 單元核心講義與錯題本</h2>
+          <p class="text-slate-200 text-sm leading-relaxed">
+            完整收錄高一（數學 I、II）、高二（數學 III、IV）、高三（選修數甲／乙，含二次曲線與微積分）共 18 個核心講義單元，以及高一、高二、高三專屬精選錯題本！
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="high/index.html" class="px-5 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-extrabold text-sm shadow transition">
+            進入高中數學專區 →
+          </a>
+          <a href="high/my-mistakes/index.html" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold transition">
+            📓 直達三年錯題本 →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 📰 獨立專區：數學科普專區（Wiki 資料庫 ＋ 簡報與新聞文章） ==================== -->
+    <section class="rounded-3xl bg-[#faf7f2] text-stone-900 p-7 sm:p-8 border-4 border-stone-900 shadow-[6px_6px_0px_0px_rgba(28,25,23,1)] space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-stone-900 pb-4">
+        <div class="space-y-1">
+          <span class="px-3 py-1 bg-rose-700 text-white text-xs font-black tracking-wider uppercase">獨立於國高中之外 • 數學趣聞專區</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-black text-stone-950 pt-1">📰 數學科普日報（Wiki 知識庫 ＆ 科普簡報）</h2>
+        </div>
+        <span class="text-xs font-bold text-stone-500">持續更新・數學史秘辛・生活密碼</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- 項目 1：Wiki 知識資料庫 -->
+        <div class="bg-white border-2 border-stone-900 p-5 rounded-2xl flex flex-col justify-between gap-4 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)]">
+          <div class="space-y-2">
+            <span class="text-xs font-extrabold text-rose-700">📚 模組一 • Wiki 知識資料庫</span>
+            <h3 class="font-serif text-xl font-black text-stone-950">數學史秘辛與原理 Wiki</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              用誇飾吸睛的新聞專題形式，深入拆解希帕索斯 $\sqrt{2}$、笛卡兒心型線、阿基米德皇冠、哥尼斯堡七橋與費波那契黃金比例，附 SVG 圖解與數學推導。
+            </p>
+          </div>
+          <a href="數學科普/index.html" class="inline-flex items-center justify-center px-5 py-2.5 bg-stone-900 hover:bg-rose-700 text-white text-sm font-extrabold transition">
+            進入 Wiki 知識資料庫 →
+          </a>
+        </div>
+
+        <!-- 項目 2：新聞文章 ＆ 5 頁式簡報 -->
+        <div class="bg-amber-50 border-2 border-stone-900 p-5 rounded-2xl flex flex-col justify-between gap-4 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)]">
+          <div class="space-y-2">
+            <span class="text-xs font-extrabold text-amber-800">🎞️ 模組二 • 呈現給使用者的簡報與新聞文章</span>
+            <h3 class="font-serif text-xl font-black text-stone-950">5 分鐘科普教學簡報（一頁一故事）</h3>
+            <p class="text-stone-700 text-sm leading-relaxed">
+              專為大眾與學生設計的互動簡報！支援滑鼠點擊與鍵盤方向鍵（← / →）逐頁切換，並可一鍵跳轉閱讀對應的完整新聞專題報導。
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2.5">
+            <a href="math-story-presentation.html" class="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-stone-950 text-sm font-black border-2 border-stone-900 transition">
+              🎞️ 開啟 5 頁式簡報 →
+            </a>
+            <a href="數學科普/hippasus-irrational.html" class="px-4 py-2.5 bg-white hover:bg-stone-100 text-stone-900 text-xs sm:text-sm font-bold border-2 border-stone-900 transition">
+              🔥 看頭條新聞
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 十二年國教四大核心主題篩選器 -->
+    <section id="themes" class="space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <h2 class="text-2xl font-extrabold text-slate-900">📊 十二年國教國中數學四大核心主題篩選</h2>
+          <p class="text-sm text-slate-500">點擊下方主題標籤可即時篩選對應領域的課程卡片（共 20 單元）</p>
+        </div>
+        <div class="flex flex-wrap gap-2" id="filter-buttons">
+          <button onclick="filterCards('all')" data-filter="all" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white ring-2 ring-indigo-500 ring-offset-1 transition">全部顯示 (20)</button>
+          <button onclick="filterCards('數與量')" data-filter="數與量" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-100 text-blue-800 hover:bg-blue-200 transition">🔢 數與量 (6)</button>
+          <button onclick="filterCards('代數')" data-filter="代數" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 transition">⚖️ 代數与函數 (7)</button>
+          <button onclick="filterCards('幾何')" data-filter="幾何" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-100 text-amber-800 hover:bg-amber-200 transition">📐 幾何與空間 (6)</button>
+          <button onclick="filterCards('統計與機率')" data-filter="統計與機率" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-teal-100 text-teal-800 hover:bg-teal-200 transition">📈 統計與機率 (1)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 【七年級（國一）階段】—— 奠定數系擴展與代數基礎 (7 單元) ==================== -->
+    <section id="grade-7" class="space-y-6 scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-emerald-500 pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-extrabold flex items-center justify-center text-lg shadow">7</span>
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">【七年級（國一）階段】—— 奠定數系擴展與代數基礎</h2>
+            <p class="text-sm text-slate-500">正負數線、整數與分數指數科學記號、一元一次與二元一次聯立方程式、直角座標與比例式</p>
+          </div>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">完整 7 單元已上線</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 7-01 數與數線 -->
+        <article data-theme="數與量" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">七年級 01</span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">🔢 數與量 (n-IV-2)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-emerald-600 transition">
+              <a href="lessons/grade7-01-integers.html">數與數線</a>
+            </h3>
+            <p class="text-sm text-slate-600">正負數與數線、相反數對稱性質、絕對值的意義與幾何距離意義（$|a| \ge 0$）。</p>
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200/80 text-xs text-amber-900">
+              <strong>💡 生活比喻：</strong>百貨電梯樓層（B3 為 $-3$）與計步器步數（距離永不為負）。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$\overline{AB} = |a - b|$</span>
+            <a href="lessons/grade7-01-integers.html" class="text-sm font-bold text-emerald-600 hover:text-emerald-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 7-02 整數的運算 -->
+        <article data-theme="數與量" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">七年級 02</span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">🔢 數與量 (n-IV-2)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-emerald-600 transition">
+              <a href="lessons/grade7-02-integer-operations.html">整數的運算</a>
+            </h3>
+            <p class="text-sm text-slate-600">整數的加減乘除與四則混合運算、分配律速算、五大指數律（$a^m \times a^n = a^{m+n}$）。</p>
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200/80 text-xs text-amber-900">
+              <strong>💡 生活比喻：</strong>湯鍋撈出冰塊（負負得正）與細胞分裂倍增器。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$(a^m)^n = a^{mn}$</span>
+            <a href="lessons/grade7-02-integer-operations.html" class="text-sm font-bold text-emerald-600 hover:text-emerald-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 7-03 分數的運算 -->
+        <article data-theme="數與量" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">七年級 03</span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">🔢 數與量 (n-IV-3)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-emerald-600 transition">
+              <a href="lessons/grade7-03-fractions.html">分數的運算</a>
+            </h3>
+            <p class="text-sm text-slate-600">負分數的加減乘除、倒數與四則運算、科學記號（$a \times 10^n, \; 1 \le a < 10$）與位數判讀。</p>
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200/80 text-xs text-amber-900">
+              <strong>💡 生活比喻：</strong>披薩統一切片通分與天文望遠鏡 $10^n$ 縮放檔位。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$a \times 10^n$</span>
+            <a href="lessons/grade7-03-fractions.html" class="text-sm font-bold text-emerald-600 hover:text-emerald-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 7-04 代數式與一元一次方程式 -->
+        <article data-theme="代數" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">七年級 04</span>
+              <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">⚖️ 代數 (a-IV-2)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-emerald-600 transition">
+              <a href="lessons/grade7-04-linear-equations.html">代數式與一元一次方程式</a>
+            </h3>
+            <p class="text-sm text-slate-600">列代數式、同類項化簡、等量公理移項法則與一元一次方程式五大應用問題。</p>
+            <div class="bg-indigo-50 rounded-xl p-3 border border-indigo-200/80 text-xs text-indigo-900">
+              <strong>💡 生活比喻：</strong>平衡天平（等量公理移項）與超商購物找零。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$ax + b = c$</span>
+            <a href="lessons/grade7-04-linear-equations.html" class="text-sm font-bold text-emerald-600 hover:text-emerald-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 7-05 二元一次聯立方程式 -->
+        <article data-theme="代數" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">七年級 05</span>
+              <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">⚖️ 代數 (a-IV-4)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-emerald-600 transition">
+              <a href="lessons/grade7-05-simultaneous-equations.html">二元一次聯立方程式</a>
+            </h3>
+            <p class="text-sm text-slate-600">二元一次方程式的意義、代入消去法、加減消去法與雞兔同籠、二位數對調應用題。</p>
+            <div class="bg-indigo-50 rounded-xl p-3 border border-indigo-200/80 text-xs text-indigo-900">
+              <strong>💡 生活比喻：</strong>早餐店兩張點餐收據相減抓差價與等值兌換券。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$\{a_1x+b_1y=c_1$</span>
+            <a href="lessons/grade7-05-simultaneous-equations.html" class="text-sm font-bold text-emerald-600 hover:text-emerald-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 7-06 直角座標系與二元一次方程式的圖形 -->
+        <article data-theme="代數" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">七年級 06</span>
+              <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">⚖️ 代數 / 幾何 (g-IV-1)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-emerald-600 transition">
+              <a href="lessons/grade7-06-coordinates.html">直角座標系與二元一次方程式的圖形</a>
+            </h3>
+            <p class="text-sm text-slate-600">座標平面、四大象限正負號、點到兩軸距離、水平鉛直線與線性函數直線圖形。</p>
+            <div class="bg-indigo-50 rounded-xl p-3 border border-indigo-200/80 text-xs text-indigo-900">
+              <strong>💡 生活比喻：</strong>電影院座位表 $(x, y)$ 與木匠兩點彈墨線。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$P(x, y) \leftrightarrow ax+by=c$</span>
+            <a href="lessons/grade7-06-coordinates.html" class="text-sm font-bold text-emerald-600 hover:text-emerald-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 7-07 比與比例式 -->
+        <article data-theme="數與量" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">七年級 07</span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">🔢 數與量 (n-IV-4)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-emerald-600 transition">
+              <a href="lessons/grade7-07-ratios.html">比與比例式</a>
+            </h3>
+            <p class="text-sm text-slate-600">比例的意義、內項積等於外項積（$ad = bc$）、參數假設法、正比（$y=kx$）與反比（$xy=k$）。</p>
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200/80 text-xs text-amber-900">
+              <strong>💡 生活比喻：</strong>手搖飲黃金比例配方與大披薩切分人數反比。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$y = kx \text{ vs. } xy = k$</span>
+            <a href="lessons/grade7-07-ratios.html" class="text-sm font-bold text-emerald-600 hover:text-emerald-700">進入課程 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== 【八年級（國二）階段】—— 進入多項式、根號與幾何推理 (8 單元) ==================== -->
+    <section id="grade-8" class="space-y-6 scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-sky-500 pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-sky-600 text-white font-extrabold flex items-center justify-center text-lg shadow">8</span>
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">【八年級（國二）階段】—— 進入多項式、根號與幾何推理</h2>
+            <p class="text-sm text-slate-500">乘法公式與多項式、平方根、畢氏定理、因式分解、一元二次方程式、數列級數、三角形三心與平行四邊形</p>
+          </div>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">完整 8 單元已上線</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 8-01 乘法公式與多項式 -->
+        <article data-theme="代數" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">八年級 01</span>
+              <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">⚖️ 代數 (a-IV-5)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="lessons/grade8-01-polynomials.html">乘法公式與多項式</a>
+            </h3>
+            <p class="text-sm text-slate-600">和的平方、差的平方、平方差公式；多項式的加減乘除直式運算與缺項補 $0$。</p>
+            <div class="bg-sky-50 rounded-xl p-3 border border-sky-200/80 text-xs text-sky-900">
+              <strong>💡 生活比喻：</strong>正方形農田擴建（為什麼多出 $2ab$）與降冪對位收納櫃。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$(a\pm b)^2 = a^2\pm 2ab+b^2$</span>
+            <a href="lessons/grade8-01-polynomials.html" class="text-sm font-bold text-sky-600 hover:text-sky-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 8-02 平方根與根號運算 -->
+        <article data-theme="數與量" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">八年級 02</span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">🔢 數與量 (n-IV-5 ~ 6)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="lessons/grade8-02-square-roots.html">平方根與根號運算</a>
+            </h3>
+            <p class="text-sm text-slate-600">根號的意義、正負平方根（$\pm\sqrt{a}$）、最簡根號、近似值與根號的四則運算及有理化。</p>
+            <div class="bg-sky-50 rounded-xl p-3 border border-sky-200/80 text-xs text-sky-900">
+              <strong>💡 生活比喻：</strong>雙胞胎質因數結伴出根號與完全平方數三明治夾擊法。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$\sqrt{a^2} = |a|$</span>
+            <a href="lessons/grade8-02-square-roots.html" class="text-sm font-bold text-sky-600 hover:text-sky-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 8-03 勾股定理（畢氏定理） -->
+        <article data-theme="幾何" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">八年級 03</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">📐 幾何 (s-IV-7)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="lessons/grade8-03-pythagorean.html">勾股定理（畢氏定理）</a>
+            </h3>
+            <p class="text-sm text-slate-600">直角三角形三邊長關係 $a^2 + b^2 = c^2$、斜邊上的高 $h = \frac{ab}{c}$ 與座標平面兩點距離。</p>
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200/80 text-xs text-amber-900">
+              <strong>💡 生活比喻：</strong>地板正方形磁磚拼貼與長方形公園走對角線捷徑。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$a^2 + b^2 = c^2$</span>
+            <a href="lessons/grade8-03-pythagorean.html" class="text-sm font-bold text-sky-600 hover:text-sky-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 8-04 因式分解 -->
+        <article data-theme="代數" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">八年級 04</span>
+              <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">⚖️ 代數 (a-IV-5)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="lessons/grade8-04-factorization.html">因式分解</a>
+            </h3>
+            <p class="text-sm text-slate-600">提公因式法（含變號提公因式）、乘法公式因式分解、十字交乘法。</p>
+            <div class="bg-purple-50 rounded-xl p-3 border border-purple-200/80 text-xs text-purple-900">
+              <strong>💡 生活比喻：</strong>拼圖面積重組（找回大長方形的長與寬）與十字配對。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$x^2+(p+q)x+pq=(x+p)(x+q)$</span>
+            <a href="lessons/grade8-04-factorization.html" class="text-sm font-bold text-sky-600 hover:text-sky-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 8-05 一元二次方程式 -->
+        <article data-theme="代數" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">八年級 05</span>
+              <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">⚖️ 代數 (a-IV-6)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="lessons/grade8-05-quadratic-equations.html">一元二次方程式</a>
+            </h3>
+            <p class="text-sm text-slate-600">因式分解法解一元二次方程式、配方法、公式解、判別式 $b^2-4ac$ 與應用問題。</p>
+            <div class="bg-purple-50 rounded-xl p-3 border border-purple-200/80 text-xs text-purple-900">
+              <strong>💡 生活比喻：</strong>歸零炸彈（$A \times B = 0$）與花園十字步道推到邊角合併。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}$</span>
+            <a href="lessons/grade8-05-quadratic-equations.html" class="text-sm font-bold text-sky-600 hover:text-sky-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 8-06 數列與級數 -->
+        <article data-theme="數與量" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">八年級 06</span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">🔢 數與量 (n-IV-7 ~ 8)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="lessons/grade8-06-sequences.html">數列與級數</a>
+            </h3>
+            <p class="text-sm text-slate-600">等差數列、等差中項、等差級數求和公式、等比數列與等比中項（$b = \pm\sqrt{ac}$）。</p>
+            <div class="bg-sky-50 rounded-xl p-3 border border-sky-200/80 text-xs text-sky-900">
+              <strong>💡 生活比喻：</strong>爬樓梯跨步數（$n-1$ 階）與高斯倒序拼梯形面積求和。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$S_n = \frac{n(a_1+a_n)}{2}$</span>
+            <a href="lessons/grade8-06-sequences.html" class="text-sm font-bold text-sky-600 hover:text-sky-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 8-07 幾何證明與三角形的心 -->
+        <article data-theme="幾何" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">八年級 07</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">📐 幾何 (s-IV-9 ~ 12)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="lessons/grade8-07-triangle-centers.html">幾何證明與三角形的心</a>
+            </h3>
+            <p class="text-sm text-slate-600">三角形全等性質（$SSS, SAS, ASA, AAS, RHS$）、外心 $O$、內心 $I$、重心 $G$ 性質與推論。</p>
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200/80 text-xs text-amber-900">
+              <strong>💡 生活比喻：</strong>三心選址（村莊基地台外心、馬路噴水池內心、頂紙板重心）。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$\overline{AG}:\overline{GD}=2:1$</span>
+            <a href="lessons/grade8-07-triangle-centers.html" class="text-sm font-bold text-sky-600 hover:text-sky-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 8-08 平行與四邊形 -->
+        <article data-theme="幾何" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">八年級 08</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">📐 幾何 (s-IV-8)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="lessons/grade8-08-quadrilaterals.html">平行與四邊形</a>
+            </h3>
+            <p class="text-sm text-slate-600">平行線截角性質（同位角、內錯角、同側內角）、平行四邊形、矩形、菱形、箏形與梯形。</p>
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200/80 text-xs text-amber-900">
+              <strong>💡 生活比喻：</strong>鐵軌英文字母密碼（F、Z、U）與四邊形對角線技能進化樹。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$m = \frac{\text{上底}+\text{下底}}{2}$</span>
+            <a href="lessons/grade8-08-quadrilaterals.html" class="text-sm font-bold text-sky-600 hover:text-sky-700">進入課程 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== 【九年級（國三）階段】—— 挑戰函數、相似形與統計機率 (5 單元) ==================== -->
+    <section id="grade-9" class="space-y-6 scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-rose-500 pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-rose-600 text-white font-extrabold flex items-center justify-center text-lg shadow">9</span>
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">【九年級（國三）階段】—— 挑戰函數、相似形與統計機率</h2>
+            <p class="text-sm text-slate-500">相似形與比例線段、點直線與圓的關係、二次函數極值、統計與機率、生活中的立體圖形</p>
+          </div>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">完整 5 單元已上線</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 9-01 相似形 -->
+        <article data-theme="幾何" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">九年級 01</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">📐 幾何 (s-IV-10)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="lessons/grade9-01-similarity.html">相似形</a>
+            </h3>
+            <p class="text-sm text-slate-600">比例線段、三角形相似性質（$AA, SAS, SSS$）、相似形面積比（$a^2:b^2$）與體積比（$a^3:b^3$）。</p>
+            <div class="bg-rose-50 rounded-xl p-3 border border-rose-200/80 text-xs text-rose-900">
+              <strong>💡 生活比喻：</strong>手機照片等比例放大縮小與地圖比例尺面積平方倍。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$\triangle ADE \sim \triangle ABC$</span>
+            <a href="lessons/grade9-01-similarity.html" class="text-sm font-bold text-rose-600 hover:text-rose-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 9-02 點、直線與圓的關係 -->
+        <article data-theme="幾何" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">九年級 02</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">📐 幾何 (s-IV-14)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="lessons/grade9-02-circles.html">點、直線與圓的關係</a>
+            </h3>
+            <p class="text-sm text-slate-600">圓心角與圓周角、弦心距畢氏定理、切線性質（半徑垂直切線）、內切圓與外接圓。</p>
+            <div class="bg-rose-50 rounded-xl p-3 border border-rose-200/80 text-xs text-rose-900">
+              <strong>💡 生活比喻：</strong>腳踏車輪胎貼地切線（夾 $90^\circ$）與冰淇淋甜筒兩切線等長。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$\angle ACB = \frac{1}{2}\overparen{AB}$</span>
+            <a href="lessons/grade9-02-circles.html" class="text-sm font-bold text-rose-600 hover:text-rose-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 9-03 二次函數 -->
+        <article data-theme="代數" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">九年級 03</span>
+              <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">⚖️ 代數 / 函數 (f-IV-2)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="lessons/grade9-03-quadratic-functions.html">二次函數</a>
+            </h3>
+            <p class="text-sm text-slate-600">二次函數的圖形（頂點 $(h,k)$、對稱軸 $x=h$、開口方向與大小）、配方法求最大值與最小值應用。</p>
+            <div class="bg-purple-50 rounded-xl p-3 border border-purple-200/80 text-xs text-purple-900">
+              <strong>💡 生活比喻：</strong>笑臉（$a>0$ 有最小值）哭臉（$a<0$ 有最大值）與投籃拋物線。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$y = a(x-h)^2 + k$</span>
+            <a href="lessons/grade9-03-quadratic-functions.html" class="text-sm font-bold text-rose-600 hover:text-rose-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 9-04 統計與機率 -->
+        <article data-theme="統計與機率" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">九年級 04</span>
+              <span class="px-2.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold">📈 統計與機率 (d-IV-1 ~ 2)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="lessons/grade9-04-statistics-probability.html">統計與機率</a>
+            </h3>
+            <p class="text-sm text-slate-600">次數分配直方圖、折線圖、累積次數分配、平均數、中位數、眾數、四分位數盒狀圖與古典機率。</p>
+            <div class="bg-teal-50 rounded-xl p-3 border border-teal-200/80 text-xs text-teal-900">
+              <strong>💡 生活比喻：</strong>億萬富翁進咖啡廳（平均數暴衝但中位數不動）與樹狀圖分支路線。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$P(A) = \frac{n(A)}{n(S)}$</span>
+            <a href="lessons/grade9-04-statistics-probability.html" class="text-sm font-bold text-rose-600 hover:text-rose-700">進入課程 →</a>
+          </div>
+        </article>
+
+        <!-- 9-05 生活中的立體圖形 -->
+        <article data-theme="幾何" class="course-card group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">九年級 05</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">📐 幾何與空間 (s-IV-15 ~ 16)</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="lessons/grade9-05-3d-geometry.html">生活中的立體圖形</a>
+            </h3>
+            <p class="text-sm text-slate-600">角柱、圓柱、角錐、圓錐與球體的展開圖、頂點面稜邊關係、表面積與體積計算。</p>
+            <div class="bg-amber-50 rounded-xl p-3 border border-amber-200/80 text-xs text-amber-900">
+              <strong>💡 生活比喻：</strong>吐司切片疊高（柱體體積）與派對尖帽圓錐展開扇形 $\frac{r}{R}$。
+            </div>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-500">$\frac{\theta}{360^\circ} = \frac{r}{R}, \; A_{\text{側}}=\pi rR$</span>
+            <a href="lessons/grade9-05-3d-geometry.html" class="text-sm font-bold text-rose-600 hover:text-rose-700">進入課程 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 頁尾資訊 -->
+  <footer class="bg-slate-900 text-slate-400 py-10 mt-16 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div>
+        <p class="font-bold text-slate-200 text-sm mb-1">十二年國教國中數學領域互動學習網（完整 20 單元版）</p>
+        <p>嚴格遵循教育部 108 課綱（數與量、代數、幾何、統計與機率）建置</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#grade-7" class="hover:text-white">七年級（7 單元）</a>
+        <span>•</span>
+        <a href="#grade-8" class="hover:text-white">八年級（8 單元）</a>
+        <span>•</span>
+        <a href="#grade-9" class="hover:text-white">九年級（5 單元）</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 主題篩選互動腳本 -->
+  <script>
+    function filterCards(theme) {
+      const cards = document.querySelectorAll('.course-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === theme) {
+          btn.classList.add('ring-2', 'ring-indigo-500', 'ring-offset-1');
+        } else {
+          btn.classList.remove('ring-2', 'ring-indigo-500', 'ring-offset-1');
+        }
+      });
+
+      cards.forEach(card => {
+        if (theme === 'all' || card.getAttribute('data-theme') === theme) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

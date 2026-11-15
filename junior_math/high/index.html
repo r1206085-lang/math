@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高中數學專區首頁｜三年完整 18 核心單元講義與個人手寫錯題本</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold transition">
+          🏠 返回網站總首頁
+        </a>
+        <span class="font-extrabold text-slate-900 text-base sm:text-lg">📕 高中數學課綱講義與個人錯題本專區</span>
+      </div>
+      <nav class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-semibold">
+        <a href="#my-mistakes" class="px-3 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 transition">📓 個人錯題本專區</a>
+        <a href="#grade-10" class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition">高一（7 單元）</a>
+        <a href="#grade-11" class="px-3 py-1.5 rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100 transition">高二（6 單元）</a>
+        <a href="#grade-12" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-700 hover:bg-rose-100 transition">高三（5 單元）</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-14">
+
+    <!-- Hero -->
+    <section class="rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-rose-950 text-white p-8 sm:p-12 shadow-xl space-y-5">
+      <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-semibold">
+        <span>✨ 完整涵蓋高一、高二、高三共 18 個核心單元</span>
+        <span>•</span>
+        <span>嚴格依循教育部 108 高中數學課綱規範</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+        高中三年數學課綱核心講義 ＆ 個人手寫錯題本
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
+        左側 <code class="text-indigo-300">core-lessons/</code> 收錄高一至高三完整 18 單元標準教材、課綱推導、附錄指定範例與常見觀念診斷；右側 <code class="text-rose-300">my-mistakes/</code> 則為你的高中數學錯題本寶藏庫！
+      </p>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="my-mistakes/index.html" class="px-5 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-sm shadow transition">
+          📓 進入高中數學錯題本總覽 →
+        </a>
+        <a href="#grade-10" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-sm transition">
+          📘 瀏覽高中三年 18 個核心單元講義
+        </a>
+      </div>
+    </section>
+
+    <!-- 個人手寫錯題本快速入口 -->
+    <section id="my-mistakes" class="bg-rose-50/70 rounded-3xl p-6 sm:p-8 border-2 border-rose-200 space-y-5 scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <span class="px-2.5 py-1 rounded-full bg-rose-600 text-white text-xs font-bold">📁 high/my-mistakes/</span>
+          <h2 class="text-2xl font-extrabold text-rose-950 mt-1">📓 你的高中數學錯題本專區（按年級分類）</h2>
+        </div>
+        <a href="my-mistakes/index.html" class="text-sm font-bold text-rose-700 hover:underline">查看錯題本總覽頁 →</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <a href="my-mistakes/grade10-algebra.html" class="block bg-white rounded-2xl p-5 border border-rose-200 hover:border-indigo-500 hover:shadow-md transition space-y-2">
+          <span class="text-xs font-bold text-indigo-700">Grade 10 • 數學 I、II</span>
+          <h3 class="text-lg font-extrabold text-slate-900">高一錯題本 (grade10-algebra.html)</h3>
+          <p class="text-xs text-slate-600">數與式、多項式函數、指數與對數、數列級數、排列組合、古典與貝氏機率、數據分析。</p>
+        </a>
+        <a href="my-mistakes/grade11-trig.html" class="block bg-white rounded-2xl p-5 border border-rose-200 hover:border-sky-500 hover:shadow-md transition space-y-2">
+          <span class="text-xs font-bold text-sky-700">Grade 11 • 數學 III、IV</span>
+          <h3 class="text-lg font-extrabold text-slate-900">高二錯題本 (grade11-trig.html)</h3>
+          <p class="text-xs text-slate-600">三角與差角倍角半角、直線與圓、平面向量、空間向量、空間中的平面與直線、矩陣與線性變換。</p>
+        </a>
+        <a href="my-mistakes/grade12-calculus.html" class="block bg-white rounded-2xl p-5 border border-rose-200 hover:border-rose-500 hover:shadow-md transition space-y-2">
+          <span class="text-xs font-bold text-rose-700">Grade 12 • 選修數甲／乙 I、II</span>
+          <h3 class="text-lg font-extrabold text-slate-900">高三錯題本 (grade12-calculus.html)</h3>
+          <p class="text-xs text-slate-600">機率統計 II、三角函數疊合與複數極式、極限與函數、二次曲線（拋物線／橢圓／雙曲線）、多項式微積分。</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 高一 7 單元 -->
+    <section id="grade-10" class="space-y-6 scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-indigo-600 pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-extrabold flex items-center justify-center text-lg shadow">10</span>
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">【高一（十年級）階段】—— 數學 I（函數）＆ 數學 II（有限數學）</h2>
+            <p class="text-sm text-slate-500">連續量的實數與基本函數（多項式、指對數）＋ 離散量的數列、排列組合、貝氏機率與數據標準化</p>
+          </div>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">完整 7 單元講義已上線</span>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一上（數學 I）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">一、數與式 (1.1 ~ 2.2)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition">
+              <a href="core-lessons/high10-01-numbers.html">數與式：有理數循環小數、雙重根式、算幾不等式與絕對值幾何</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">建構實數直尺！從有理數的十進位循環小數表示法出發，掌握雙重根號化簡、算幾不等式求極值，以及數線上分點公式與含絕對值的不等式幾何意義。</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade10-algebra.html#high10-01-numbers" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high10-01-numbers.html" class="text-indigo-600 hover:text-indigo-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一上（數學 I）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">二、多項式函數 (1.1 ~ 4.1)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition">
+              <a href="core-lessons/polynomial.html">多項式函數：綜合除法、插值多項式、勘根定理與圖形不等式</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">從一次與二次函數的正定性（恆正性）、單項函數 $y=cx^n(n\le 4)$ 平移出發，貫通連續綜合除法求近似值、牛頓與拉格朗日插值多項式、虛根成對與勘根定理，以及已分解高次不等式。</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade10-algebra.html#polynomial" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/polynomial.html" class="text-indigo-600 hover:text-indigo-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一上（數學 I）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">三、指數、對數函數 (1.1 ~ 5.4)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition">
+              <a href="core-lessons/high10-03-exponentials-logarithms.html">指數與對數函數：圖形凹凸性、對數定律、內插法與科學記號應用</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">嚴格遵循課綱精神：以 $2^x, 10^x$ 與 $\log x$（以 $10$ 為底）為核心，從指數律與對數定義出發，連結函數凹凸性與算幾不等式，並用內插法與科學記號解決大數估計、複利與半衰期問題！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade10-algebra.html#high10-03-exponentials-logarithms" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high10-03-exponentials-logarithms.html" class="text-indigo-600 hover:text-indigo-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一下（數學 II）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">一、數列與級數 (1.1 ~ 2.1)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition">
+              <a href="core-lessons/high10-04-sequences.html">數列與級數：一階遞迴關係、數學歸納法與 Σ 求和公式</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">從具體圖像與前幾項歸納出數列的一階遞迴規律，透過嚴謹的「骨牌效應——數學歸納法」加以證明，並熟練 $\Sigma$ 符號與三大基本級數求和公式！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade10-algebra.html#high10-04-sequences" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high10-04-sequences.html" class="text-indigo-600 hover:text-indigo-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一下（數學 II）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">二、排列、組合与二項式定理 (1.1 ~ 3.1)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition">
+              <a href="core-lessons/high10-05-combinatorics.html">排列、組合與二項式定理：取捨原理、球與籃子模型與巴斯卡三角形</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">擺脫刁鑽古怪的人工化題型！依循課綱「一一對應原理、取捨原理（PIE）」與「球放入籃子」四大標準模型，徹底分清楚 $P^n_k, \; n^k, \; C^n_k, \; H^n_k (C^{n+k-1}_k)$ 的使用時機與二項式定理！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade10-algebra.html#high10-05-combinatorics" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high10-05-combinatorics.html" class="text-indigo-600 hover:text-indigo-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一下（數學 II）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">三、機率 (1.1 ~ 3.1)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition">
+              <a href="core-lessons/high10-06-probability.html">機率：古典機率、條件機率、獨立事件與貝氏定理</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">從拉普拉斯古典機率出發，掌握「縮小樣本空間」的條件機率 $P(B|A)$，並用樹狀圖與分割定理透徹理解課綱兩大經典素養模型——「工廠瑕疵品溯源」與「醫療檢測偽陽性（貝氏定理）」！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade10-algebra.html#high10-06-probability" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high10-06-probability.html" class="text-indigo-600 hover:text-indigo-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一下（數學 II）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">四、數據分析 (1.1 ~ 2.1)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition">
+              <a href="core-lessons/high10-07-data-analysis.html">數據分析：標準差、數據標準化、相關係數與最小平方法迴歸直線</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">掌握課綱最核心的「透過平移與伸縮將數據標準化（無因次量）」思想！一次貫通母體標準差 $\sigma$、Z-score 標準化、皮爾森相關係數 $r$ 與最小平方法最適迴歸直線！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade10-algebra.html#high10-07-data-analysis" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high10-07-data-analysis.html" class="text-indigo-600 hover:text-indigo-700">進入講義 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 高二 6 單元 -->
+    <section id="grade-11" class="space-y-6 scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-sky-600 pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-sky-600 text-white font-extrabold flex items-center justify-center text-lg shadow">11</span>
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">【高二（十一年級）階段】—— 數學 III（平面坐標向量）＆ 數學 IV（空間與線性代數）</h2>
+            <p class="text-sm text-slate-500">廣義角與正餘弦差角公式、直線與圓、平面向量內積與行列式、空間向量外積、空間平直線與矩陣變換</p>
+          </div>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">完整 6 單元講義已上線</span>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">高二上（數學 III）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">一、三角 (1.1 ~ 5.2)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="core-lessons/trig.html">三角：廣義角參考角、極坐標、正餘弦定理雙證法與差角公式</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">嚴格遵循課綱脈絡：由直角三角形邊角關係與極坐標出發，引進「參考角 $\alpha$」與單位圓補角關係；以幾何分割與坐標幾何雙重證明正弦定理與餘弦定理，並由餘弦定理直接導出差角、和角、倍角與半角公式！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade11-trig.html#trig" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/trig.html" class="text-sky-600 hover:text-sky-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">高二上（數學 III）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">二、直線與圓 (1.1 ~ 3.2)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="core-lessons/high11-02-lines-circles.html">直線與圓：點斜式、平行垂直、線性規劃與圓切線關係</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">以「點斜式 $y - y_0 = m(x - x_0)$」為直線核心，掌握兩線平行與垂直斜率關係、二元一次不等式與線性規劃平行直線系，以及圓與直線相切、相割、不相交的代數與幾何雙判定！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade11-trig.html#high11-02-lines-circles" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high11-02-lines-circles.html" class="text-sky-600 hover:text-sky-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">高二上（數學 III）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">三、平面向量 (1.1 ~ 3.2)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="core-lessons/high11-03-plane-vectors.html">平面向量：線性組合、內積與餘弦定理、柯西不等式與二階行列式</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">將幾何問題代數化的終極武器！掌握課綱兩大核心定理：由餘弦定理導出的「向量內積 $\vec{a}\cdot\vec{b}=a_1b_1+a_2b_2$（投影與高）」與由正弦定理導出的「二階行列式 $|a_1b_2-a_2b_1|$（平行四邊形面積與克拉瑪公式）」！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade11-trig.html#high11-03-plane-vectors" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high11-03-plane-vectors.html" class="text-sky-600 hover:text-sky-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">高二下（數學 IV）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">一、空間向量 (1.1 ~ 4.3)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="core-lessons/high11-04-space-vectors.html">空間向量：三垂線定理、內積、外積平行四邊形面積與三階行列式體積</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">從平面邁向三維立體空間！掌握空間中的畢氏定理（距離公式）、三垂線定理、空間內積與柯西不等式，以及三維專屬的「外積 $\vec{a}\times\vec{b}$（公垂向量與面積）」與「三階行列式（平行六面體體積）」！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade11-trig.html#high11-04-space-vectors" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high11-04-space-vectors.html" class="text-sky-600 hover:text-sky-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">高二下（數學 IV）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">二、空間中的平面與直線 (1.1 ~ 3.2)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="core-lessons/high11-05-space-planes-lines.html">空間中的平面與直線：平面法向量、直線參數式與三元一次方程組</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">在三維空間中精準定位平面與直線！掌握「平面看唯一法向量 $\vec{n}$、直線看唯一方向向量 $\vec{v}$」的黃金準則，並學會判斷直線與平面關係、點面距與三平面相交的幾何意涵！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade11-trig.html#high11-05-space-planes-lines" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high11-05-space-planes-lines.html" class="text-sky-600 hover:text-sky-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">高二下（數學 IV）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">三、矩陣 (1.1 ~ 4.2)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition">
+              <a href="core-lessons/high11-06-matrices.html">矩陣與線性變換：高斯消去法、轉移矩陣、二階反方陣與平面線性變換</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">連結線性方程組與幾何變換的強大語言！熟練矩陣列運算（高斯消去法）、矩陣乘法、馬可夫轉移矩陣穩定狀態、二階反方陣 $A^{-1}$，以及 B 版專屬的平面四大線性變換（伸縮、旋轉、鏡射、推移）與面積縮放比 $|\det A|$！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade11-trig.html#high11-06-matrices" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high11-06-matrices.html" class="text-sky-600 hover:text-sky-700">進入講義 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 高三 5 單元 -->
+    <section id="grade-12" class="space-y-6 scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-rose-600 pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-rose-600 text-white font-extrabold flex items-center justify-center text-lg shadow">12</span>
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">【高三（十二年級）階段】—— 選修數學甲／乙 I、II（含高三下二次曲線與微積分）</h2>
+            <p class="text-sm text-slate-500">二項分布與信賴區間、正餘弦疊合與棣美弗定理、數列極限與夾擠定理、二次曲線（圓錐曲線）、多項式微積分</p>
+          </div>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">完整 5 單元講義已上線</span>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">高三上（選修數甲／數乙 I）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">一、機率統計 II (1.1 ~ 3.3)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="core-lessons/high12-01-probability-statistics-ii.html">機率統計 II：隨機變數、期望值、二項分布與常態分布信賴區間</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">從離散型隨機變數與機率質量函數出發，掌握期望值 $E(X)$ 與變異數 $\text{Var}(X)$ 的線性變換，貫通伯努利重複試驗「二項分布 $B(n,p)$」，並藉由中央極限定理直觀解讀民調常態分布與 $95\%$ 信賴區間！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade12-calculus.html#high12-01-probability-statistics-ii" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high12-01-probability-statistics-ii.html" class="text-rose-600 hover:text-rose-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">高三上（選修數甲／數乙 I）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">二、三角函數 (1.1 ~ 3.2)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="core-lessons/high12-02-trig-functions-complex.html">三角函數與複數極式：弧度扇形、週期圖形、正餘弦疊合與棣美弗定理</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">從角度制邁向微積分必備的「弧度制（$\pi = 180^\circ$）」！完整掌握六種三角函數的週期與圖形、簡諧波動的正餘弦疊合 $A\sin(\omega t+\theta_0)$，以及複數平面上的旋轉伸縮、棣美弗定理與單位根 $\omega$！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade12-calculus.html#high12-02-trig-functions-complex" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high12-02-trig-functions-complex.html" class="text-rose-600 hover:text-rose-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">高三下（選修數甲／數乙 II）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">一、極限與函數 (1.1 ~ 3.2)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="core-lessons/high12-03-limits-functions.html">極限與函數：數列極限、無窮等比級數、夾擠定理與連續函數</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">正式踏入微積分的起點！從數列收斂與無窮等比級數 $\frac{a_1}{1-r}$ 出發，嚴謹證明循環小數為有理數，並透過夾擠定理（內接外切正 $n$ 邊形逼近圓面積）、合成函數與連續函數介值定理建立分析直觀！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade12-calculus.html#high12-03-limits-functions" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high12-03-limits-functions.html" class="text-rose-600 hover:text-rose-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">高三下（選修數甲 II）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">二次曲線（拋物線、橢圓、雙曲線）</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="core-lessons/high12-04-conics.html">二次曲線（圓錐曲線）：拋物線、橢圓與雙曲線的標準式與平移伸縮</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">從幾何距離定義出發，一次貫通高三下圓錐曲線三大主角：「到焦點距離＝到準線距離」的拋物線、「到兩焦點距離和 $= 2a$」的橢圓，以及「到兩焦點距離差 $= 2a$」的雙曲線與漸近線！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade12-calculus.html#high12-04-conics" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high12-04-conics.html" class="text-rose-600 hover:text-rose-700">進入講義 →</a>
+          </div>
+        </article>
+        <article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-400 transition-all flex flex-col justify-between overflow-hidden">
+          <div class="p-6 space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">高三下（選修數甲 II）</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">二、多項式函數的微積分 (1.1 ~ 4.1)</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-rose-600 transition">
+              <a href="core-lessons/high12-05-calculus.html">多項式函數的微積分：導數切線、極值反曲點繪圖与定積分旋轉體體積</a>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">高中三年數學的巔峰統整！以一階導數 $f'(x)$ 判讀切線斜率與極值、二階導數 $f''(x)$ 判讀凹凸性與三次函數反曲點（對稱中心）；再藉由微積分基本定理，一舉推導出圓面積 $\pi R^2$、球體體積 $\frac{4}{3}\pi R^3$ 與角錐體積 $\frac{1}{3}AH$！</p>
+          </div>
+          <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+            <a href="my-mistakes/grade12-calculus.html#high12-05-calculus" class="text-rose-600 hover:underline">📓 對應錯題區</a>
+            <a href="core-lessons/high12-05-calculus.html" class="text-rose-600 hover:text-rose-700">進入講義 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 py-10 mt-16 border-t border-slate-800 text-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>高中數學課綱核心講義與高中數學錯題本專區 • 遵循 <code class="text-indigo-400">AGENTS.md</code> 自動化檢核規範建置</p>
+      <div class="flex gap-3">
+        <a href="../index.html" class="hover:text-white">網站總首頁</a>
+        <span>•</span>
+        <a href="../junior/index.html" class="hover:text-white">國中數學專區</a>
+        <span>•</span>
+        <a href="my-mistakes/index.html" class="hover:text-white">個人錯題本總覽</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

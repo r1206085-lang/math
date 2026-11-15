@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>七年級｜代數式與一元一次方程式 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">七年級（國一）</span>
+        <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">代數 (A-7-1 ~ A-7-3)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade7-03-fractions.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade7-05-simultaneous-equations.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：二元一次聯立方程式 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-100 text-sm font-medium mb-2">
+        <span>七年級單元 04</span>
+        <span>•</span>
+        <span>課綱代碼：a-IV-1, a-IV-2</span>
+        <span>•</span>
+        <span>學習內容：列代數式、化簡、等量公理與一元一次方程式應用問題</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">代數式與一元一次方程式：天平公理與應用建模</h1>
+      <p class="text-indigo-50 text-base sm:text-lg mb-6">
+        從文字符號列代數式、同類項化簡出發，透過「平衡天平」的等量公理與「超商購物找零」的等式關係，將複雜的文字敘述翻譯成乾淨俐落的數學方程式！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-indigo-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能將日常文字敘述列成含未知數 $x$ 的代數式，並熟練去括號與同類項合併化簡。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解等量公理（天平兩端同加、減、乘、除）與移項變號法則的對應關係。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練購物找零、折扣定價、年齡問題、分配盈虧與速率行程等五大應用題型。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>分辨「化簡代數式（不可同乘分母消去）」與「解方程式（可同乘分母去分母）」的關鍵差異。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：平衡天平與超商購物找零</h2>
+          <p class="text-sm text-slate-500">為什麼移項要變號？文字應用題怎麼找到「等號 $=$」放在哪裡？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-indigo-50/70 rounded-xl p-5 border border-indigo-200">
+          <h3 class="font-bold text-indigo-900 text-lg mb-2">⚖️ 比喻一：平衡天平（等量公理與移項法則）</h3>
+          <p class="text-sm text-slate-700 mb-3">方程式的<strong>等號「$=$」就像一座保持水平平衡的天平</strong>：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>左盤放「$3$ 袋神秘蘋果 $+$ $20$ 克砝碼」，右盤放「$350$ 克砝碼」：$$3x + 20 = 350$$</li>
+            <li><strong>兩邊同時拿走 $20$ 克砝碼</strong>，天平依然平衡：$$3x = 350 - 20 = 330$$（這就是為什麼 $+20$ 移到等號右邊會變成 $-20$！）</li>
+            <li>接著把左右兩盤重量<strong>同時平分成 $3$ 等份</strong>，就知道每袋蘋果重 $x = 110$ 克！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🛒 比喻二：超商購物找零（抓出隱藏等式）</h3>
+          <p class="text-sm text-slate-700 mb-3">想像你在<strong>超商櫃檯結帳</strong>：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>拿一張 $500$ 元鈔票，買了 $4$ 杯同價位的珍奶（每杯設為 $x$ 元），店員找回 $260$ 元。</li>
+            <li><strong>收銀機鐵律</strong>：$$\text{付出去的錢} - \text{商品總價} = \text{找回的零錢} \implies 500 - 4x = 260$$</li>
+            <li>只要抓住生活中「不變的總量關係」，方程式就自動浮現！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">代數式化簡與五大必考應用題型公式表</h2>
+          <p class="text-sm text-slate-500">掌握代數翻譯關鍵句，任何應用題都能迎刃而解</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與代數關係</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">未知數假設與列式範例</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">代數式化簡與去括號</td>
+              <td class="py-3.5 px-4">$$-(ax - b) = -ax + b$$ $$m(ax + b) = max + mb$$</td>
+              <td class="py-3.5 px-4">括號前為負號時，去括號後<strong>括號內每一項都要變號</strong>！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">購物找零與總價</td>
+              <td class="py-3.5 px-4">$$\text{單價} \times \text{數量} = \text{總價}$$ $$\text{付出金額} - \text{總花費} = \text{找回金額}$$</td>
+              <td class="py-3.5 px-4">買兩種商品共 $14$ 件：若甲買 $x$ 件，則乙買 $(14 - x)$ 件。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">成本、定價與折扣</td>
+              <td class="py-3.5 px-4">$$\text{定價} = \text{成本} \times (1 + \text{加成}\%)$$ $$\text{售價} = \text{定價} \times \text{折數}$$</td>
+              <td class="py-3.5 px-4">成本 $x$ 元，加四成作為定價 $\implies 1.4x$；打八折出售 $\implies 0.8 \times 1.4x = 1.12x$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">分配與盈虧問題</td>
+              <td class="py-3.5 px-4">$$a x + \text{剩餘 } m = b x - \text{不足 } n$$</td>
+              <td class="py-3.5 px-4">設帳篷有 $x$ 頂：每頂住 $6$ 人多 $10$ 人，每頂住 $8$ 人空 $1$ 頂 $\implies 6x + 10 = 8(x - 1)$。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒（化簡 vs. 解方程式）</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「化簡代數式 $\frac{x+1}{2} - \frac{x-1}{3}$ 時直接同乘 $6$ 把分母消掉！」</p>
+            <p class="text-slate-600 mb-2">把沒有等號的「一元一次式化簡」當成「解方程式」。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：沒有等號時<strong>只能通分保留分母 $6$</strong>：$\frac{3(x+1)-2(x-1)}{6} = \frac{x+5}{6}$；只有含等號「$=$」的方程式才能左右同乘 $6$ 去分母！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「分數前面有減號時，分子忘記加括號變號」</p>
+            <p class="text-slate-600 mb-2">計算 $\frac{3x+1}{2} - \frac{x-2}{2}$ 時寫成 $\frac{3x+1-x-2}{2}$。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：分數線自帶隱形括號！減掉整個分子必須變號：$\frac{(3x+1)-(x-2)}{2} = \frac{2x+3}{2}$。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">結合平衡天平與購物找零概念，挑戰三道必考代表題！</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">超商購物找零與總量分配</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 小明帶著一張 $500$ 元鈔票去文具店，買了每枝 $25$ 元的螢光筆與每枝 $15$ 元的原子筆共 $14$ 枝，結帳時店員找回 $210$ 元。請問小明買了幾枝螢光筆？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：設買了 $x$ 枝螢光筆，則原子筆買了 $(14 - x)$ 枝</strong></p>
+            <p><strong>步驟 2：利用「購物找零」列方程式</strong></p>
+            <p>$$25x + 15(14 - x) = 500 - 210$$</p>
+            <p>$$25x + 210 - 15x = 290 \implies 10x = 80 \implies x = 8$$</p>
+            <p class="text-emerald-700 font-bold">答：買了 $8$ 枝螢光筆。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">宿營帳篷分配（盈虧問題）</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 七年級舉辦隔宿露營，若每頂帳篷住 $6$ 人，則有 $10$ 人沒有帳篷可住；若每頂帳篷改住 $8$ 人，則剛好空出 $1$ 頂帳篷（其餘帳篷皆住滿 $8$ 人）。請問帳篷共有幾頂？學生共有幾人？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：設帳篷有 $x$ 頂，由學生總人數相等列式</strong></p>
+            <p>$$6x + 10 = 8(x - 1)$$</p>
+            <p>$$6x + 10 = 8x - 8 \implies 2x = 18 \implies x = 9$$</p>
+            <p><strong>步驟 2：代回求人數</strong>：$6 \times 9 + 10 = 64$ 人。</p>
+            <p class="text-emerald-700 font-bold">答：帳篷 $9$ 頂，學生 $64$ 人。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">成本、定價與百貨週年慶折扣</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 某運動品牌的球鞋以成本加四成作為定價。在週年慶期間，老闆將定價打八折出售，結果每雙球鞋仍可賺得利潤 $240$ 元。請問這雙球鞋的「成本」與「定價」分別是多少元？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：設成本為 $x$ 元，則定價為 $1.4x$ 元，售價為 $1.4x \times 0.8 = 1.12x$ 元</strong></p>
+            <p><strong>步驟 2：由「售價 $-$ 成本 $=$ 利潤」列式</strong></p>
+            <p>$$1.12x - x = 240 \implies 0.12x = 240 \implies x = 2000$$</p>
+            <p>定價 $= 1.4 \times 2000 = 2800$ 元。</p>
+            <p class="text-emerald-700 font-bold">答：成本 $2000$ 元，定價 $2800$ 元。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

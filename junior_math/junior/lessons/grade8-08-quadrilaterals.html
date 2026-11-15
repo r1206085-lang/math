@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>八年級｜平行與四邊形 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold">八年級（國二）</span>
+        <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold">幾何與空間 (S-8-9 ~ S-8-11)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade8-07-triangle-centers.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade9-01-similarity.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">九年級：相似形 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-teal-600 to-emerald-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-teal-100 text-sm font-medium mb-2">
+        <span>八年級單元 08</span>
+        <span>•</span>
+        <span>課綱代碼：s-IV-8</span>
+        <span>•</span>
+        <span>學習內容：平行線截角性質、平行四邊形、矩形、菱形、箏形與梯形</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">平行與四邊形：截角定律與四邊形家族族譜</h1>
+      <p class="text-teal-50 text-base sm:text-lg mb-6">
+        掌握兩平行線被截線所截出的「同位角相等、內錯角相等、同側內角互補」，並完整釐清平行四邊形、矩形（長方形）、菱形、正方形、箏形與梯形的邊角及對角線性質！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-teal-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練平行線三大截角性質（F 字同位角、Z 字內錯角、U 字同側內角互補）與閃電鋸齒角模型。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>掌握平行四邊形的四大性質與五大判別方法（特別是「一組對邊平行且相等」及「對角線互相平分」）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>比較矩形（對角線等長）、菱形（對角線互相垂直）、箏形與正方形的對角線差異。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練梯形兩腰中點連線長 $m = \frac{\text{上底} + \text{下底}}{2}$ 與面積公式 $\text{面積} = m \times h$。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：鐵軌英文字母密碼（F、Z、U）與四邊形 VIP 進化樹</h2>
+          <p class="text-sm text-slate-500">怎麼一眼看出同位角、內錯角與同側內角？正方形為什麼是四邊形界的「全滿貫混血兒」？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-teal-50/70 rounded-xl p-5 border border-teal-200">
+          <h3 class="font-bold text-teal-900 text-lg mb-2">🛤️ 比喻一：平行鐵軌上的英文字母密碼 F、Z、U</h3>
+          <p class="text-sm text-slate-700 mb-3">當兩條平行的鐵軌被一條斜向斑馬線（截線）切過時：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>字母 F（同位角）</strong>：都坐在十字路口的「右上角」相同方位 $\implies$ <strong>角度相等</strong>！</li>
+            <li><strong>字母 Z（內錯角）</strong>：像閃電 Z 的兩個轉角，一左一右交錯在鐵軌內側 $\implies$ <strong>角度相等</strong>！</li>
+            <li><strong>字母 U / C（同側內角）</strong>：關在同一個 U 型房間裡的兩個內角 $\implies$ <strong>相加等於 $180^\circ$（互補）</strong>！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">👑 比喻二：四邊形家族的「技能升級樹」</h3>
+          <p class="text-sm text-slate-700 mb-3">把<strong>平行四邊形</strong>當作基礎職業（對邊平行等長、對角線互相平分）：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>如果把四個角都扳正成 $90^\circ$ $\implies$ 進化成<strong>矩形（長方形，對角線變等長）</strong>。</li>
+            <li>如果把四條邊都修成一樣長 $\implies$ 進化成<strong>菱形（對角線變互相垂直）</strong>。</li>
+            <li>如果同時擁有矩形的 $90^\circ$ 與菱形的四邊等長 $\implies$ 終極進化成<strong>正方形（所有性質全包！）</strong>。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">特殊四邊形對角線性質與梯形公式總表</h2>
+          <p class="text-sm text-slate-500">會考最愛考的「對角線性質比較」與「梯形兩腰中點連線」</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">圖形名稱</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">對角線核心性質</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">重要面積與計算公式</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">平行四邊形</td>
+              <td class="py-3.5 px-4">兩對角線<strong>互相平分</strong>（不一定等長、不一定垂直）</td>
+              <td class="py-3.5 px-4">兩條對角線將平行四邊形分成<strong>四個面積相等</strong>的三角形。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">長方形（矩形）</td>
+              <td class="py-3.5 px-4">兩對角線<strong>互相平分且等長</strong></td>
+              <td class="py-3.5 px-4">對角線長 $= \sqrt{\text{長}^2 + \text{寬}^2}$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">菱形 & 箏形</td>
+              <td class="py-3.5 px-4">
+                • <strong>菱形</strong>：兩對角線<strong>互相垂直平分</strong>（且平分內角）<br/>
+                • <strong>箏形</strong>：一條對角線垂直平分另一條對角線
+              </td>
+              <td class="py-3.5 px-4">凡是<strong>對角線互相垂直</strong>的四邊形（菱形、箏形、正方形）：$$\text{面積} = \frac{1}{2} \times \text{對角線 } d_1 \times \text{對角線 } d_2$$</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">梯形與等腰梯形</td>
+              <td class="py-3.5 px-4">
+                • <strong>等腰梯形</strong>：兩底角相等，且<strong>兩對角線等長</strong><br/>
+                • 兩腰中點連線必平行兩底
+              </td>
+              <td class="py-3.5 px-4">
+                兩腰中點連線長 $$m = \frac{\text{上底 } a + \text{下底 } b}{2}$$
+                梯形面積 $= m \times \text{高 } h$
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒（段考是非題必考陷阱！）</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「一組對邊平行、另一組對邊相等的四邊形必為平行四邊形」</p>
+            <p class="text-slate-600 mb-2">全台灣八年級最常被騙的幾何是非題！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：反例就是<strong>「等腰梯形」</strong>（上下底平行、左右兩腰等長，但它不是平行四邊形）！必須是<strong>「同一組對邊既平行又相等」</strong>才必為平行四邊形！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「對角線互相垂直的四邊形必為菱形」</p>
+            <p class="text-slate-600 mb-2">忘了還有對角線不互相平分的箏形或任意垂直對角線四邊形。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：必須是「對角線互相<strong>垂直且平分</strong>」的四邊形才必為菱形！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋平行線折線角、平行四邊形座標頂點與等腰梯形應用</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">平行四邊形在座標平面上的第四個頂點</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 在座標平面上，已知平行四邊形 $ABCD$ 的三個頂點座標依序為 $A(1, 2)$、$B(4, -1)$、$C(7, 3)$，求第四個頂點 $D$ 的座標。</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用「平行四邊形對角線互相平分（對角頂點座標相加相等）」速解公式</strong></p>
+            <p>因為 $AC$ 與 $BD$ 為對角線，中點相同，故：</p>
+            <p>$$A + C = B + D \implies D = A + C - B$$</p>
+            <p><strong>步驟 2：分別計算 $x, y$ 座標</strong></p>
+            <p>• $x_D = 1 + 7 - 4 = 4$</p>
+            <p>• $y_D = 2 + 3 - (-1) = 6$</p>
+            <p class="text-emerald-700 font-bold">答：$D(4, 6)$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">菱形對角線垂直平分與周長面積</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 已知菱形 $ABCD$ 的兩條對角線長分別為 $\overline{AC} = 16\text{ cm}$、$\overline{BD} = 12\text{ cm}$，求此菱形的「面積」與「周長」分別為多少？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：求菱形面積（對角線相乘除以 $2$）</strong></p>
+            <p>$$\text{面積} = \frac{1}{2} \times 16 \times 12 = 96\text{ cm}^2$$</p>
+            <p><strong>步驟 2：利用對角線互相垂直平分與畢氏定理求邊長</strong></p>
+            <p>對角線的一半分別為 $8\text{ cm}$ 與 $6\text{ cm}$，構成直角三角形兩股，故菱形邊長 $= \sqrt{8^2 + 6^2} = 10\text{ cm}$。</p>
+            <p>周長 $= 10 \times 4 = 40\text{ cm}$。</p>
+            <p class="text-emerald-700 font-bold">答：面積為 $96\text{ cm}^2$，周長為 $40\text{ cm}$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">等腰梯形高與兩腰中點連線面積計算</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 等腰梯形 $ABCD$ 中，$\overline{AD} \parallel \overline{BC}$，已知上底 $\overline{AD} = 6$、下底 $\overline{BC} = 16$，且腰長 $\overline{AB} = \overline{CD} = 13$。求此等腰梯形的兩腰中點連線長與梯形面積。</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：求兩腰中點連線長 $m$</strong></p>
+            <p>$$m = \frac{6 + 16}{2} = 11$$</p>
+            <p><strong>步驟 2：由上底兩端點向下底作垂直高 $h$，將下底多出的部分平分為左右兩段</strong></p>
+            <p>左右兩小段底邊長 $= \frac{16 - 6}{2} = 5$。</p>
+            <p>由直角三角形畢氏數 $(5, 12, 13)$ 得梯形的高 $h = \sqrt{13^2 - 5^2} = 12$。</p>
+            <p><strong>步驟 3：求梯形面積 $= \text{兩腰中點連線長} \times \text{高}$</strong></p>
+            <p>$$\text{面積} = 11 \times 12 = 132$$</p>
+            <p class="text-emerald-700 font-bold">答：兩腰中點連線長為 $11$，面積為 $132$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

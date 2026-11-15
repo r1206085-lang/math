@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高二下（數學 IV）｜空間向量：三垂線定理、內積、外積平行四邊形面積與三階行列式體積 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">高二下（數學 IV）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade11-trig.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high11-03-plane-vectors.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high11-05-space-planes-lines.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-amber-900 via-slate-900 to-indigo-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 11 / 18</span>
+        <span>•</span>
+        <span>數學 IV • 一、空間向量 (1.1 ~ 4.3)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">空間向量：三垂線定理、內積、外積平行四邊形面積與三階行列式體積</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        從平面邁向三維立體空間！掌握空間中的畢氏定理（距離公式）、三垂線定理、空間內積與柯西不等式，以及三維專屬的「外積 $\vec{a}\times\vec{b}$（公垂向量與面積）」與「三階行列式（平行六面體體積）」！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：空間概念僅作簡單概念介紹；◎4.3 三階行列式的定義與性質為 B 版增加題材，不含特殊技巧之行列式題型。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解空間中兩直線（相交、平行、歪斜）、兩平面與線面垂直關係（含三垂線定理）及空間直角坐標距離公式。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練空間向量的線性組合、分點公式、空間內積 $\vec{a}\cdot\vec{b}=a_1b_1+a_2b_2+a_3b_3$ 與三維柯西不等式。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>掌握空間向量外積 $\vec{a}\times\vec{b}$ 的定義（同時垂直於 $\vec{a}, \vec{b}$ 的右手定則公垂向量）及其長度 $|\vec{a}\times\vec{b}| = |\vec{a}||\vec{b}|\sin\theta$ 為平行四邊形面積的幾何意義。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解三向量張出的平行六面體體積為 $|\vec{a}\cdot(\vec{b}\times\vec{c})|$，即三階行列式的絕對值。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：右手螺旋定則（外積）與斜疊撲克牌（平行六面體體積）</h2>
+          <p class="text-sm text-slate-500">在三維空間中，要怎麼一秒鐘找出同時垂直於兩個向量的「法向量」？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-amber-50/70 border-amber-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-amber-950 text-lg mb-2">✋ 情境一：外積 $\vec{a} \times \vec{b}$ ＝ 同時生出「公垂方向」與「面積大小」</h3>
+          <p class="text-sm text-slate-700 mb-3">平面上只有一個法方向，但在三維空間中，給定兩個不平行向量 $\vec{a}, \vec{b}$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>方向看右手</strong>：四指從 $\vec{a}$ 彎向 $\vec{b}$，大拇指翹起的方向就是外積 $\vec{a} \times \vec{b}$，它<strong>同時垂直於 $\vec{a}$ 與 $\vec{b}$</strong>！</li>
+            <li><strong>長度看面積</strong>：外積向量的長度 $|\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin\theta$，剛好就是 $\vec{a}, \vec{b}$ 所張開的<strong>平行四邊形面積</strong>（三角形面積就是它的一半）！</li>
+          </ul>
+        </div>
+        <div class="bg-amber-50/70 border-amber-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-amber-950 text-lg mb-2">📦 情境二：平行六面體體積 $|\vec{a}\cdot(\vec{b}\times\vec{c})|$ ＝ 底面積 × 高</h3>
+          <p class="text-sm text-slate-700 mb-3">課綱第 65～66 頁用最直觀的幾何解釋三階行列式：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>先用 $|\vec{b} \times \vec{c}|$ 算出底面平行四邊形的面積，且 $\vec{b}\times\vec{c}$ 方向剛好垂直於底面！</li>
+            <li>再將第三個向量 $\vec{a}$ 投影到公垂向量 $\vec{b}\times\vec{c}$ 上求高，兩者相乘恰好就是內積與外積的純量三重積 $|\vec{a}\cdot(\vec{b}\times\vec{c})|$（即三階行列式絕對值）！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">空間距離與內積</td>
+              <td class="py-3.5 px-4">$$\overline{AB} = \sqrt{(x_1-x_2)^2 + (y_1-y_2)^2 + (z_1-z_2)^2}$$ $$\vec{a}\cdot\vec{b} = a_1b_1 + a_2b_2 + a_3b_3 = |\vec{a}||\vec{b}|\cos\theta$$</td>
+              <td class="py-3.5 px-4">• 三維柯西不等式：$(a_1^2+a_2^2+a_3^2)(b_1^2+b_2^2+b_3^2) \ge (a_1b_1+a_2b_2+a_3b_3)^2$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">空間外積與平行四邊形面積</td>
+              <td class="py-3.5 px-4">$$\vec{a} \times \vec{b} = \left(\begin{vmatrix}a_2 & a_3\\b_2 & b_3\end{vmatrix}, \; \begin{vmatrix}a_3 & a_1\\b_3 & b_1\end{vmatrix}, \; \begin{vmatrix}a_1 & a_2\\b_1 & b_2\end{vmatrix}\right)$$ $$|\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin\theta = \sqrt{|\vec{a}|^2|\vec{b}|^2 - (\vec{a}\cdot\vec{b})^2}$$</td>
+              <td class="py-3.5 px-4">• 反對稱性：$\vec{b} \times \vec{a} = -(\vec{a} \times \vec{b})$，且 $\vec{a} \times \vec{a} = \vec{0}$。<br/>• 空間 $\triangle ABC$ 面積 $= \frac{1}{2}|\vec{AB} \times \vec{AC}|$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">平行六面體體積與三階行列式（◎）</td>
+              <td class="py-3.5 px-4">$$V = |\vec{a}\cdot(\vec{b}\times\vec{c})| = \left|\begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix}\right|$$</td>
+              <td class="py-3.5 px-4">• 四面體體積為平行六面體體積的 <strong>$\frac{1}{6}$</strong>！<br/>• 三向量共平面 $\iff$ 所張平行六面體體積（三階行列式）為 $0$。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade11-trig.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade11-trig.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：空間中誤以為「不相交的兩直線必平行」</p>
+          <p class="text-slate-600">常見誤區：把平面幾何直覺直接搬到三維空間。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：在三維空間中，不共面的兩條直線既不相交也不平行，稱為<strong>「歪斜線（Skew lines）」</strong>！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：以為外積滿足交換律 $\vec{a}\times\vec{b} = \vec{b}\times\vec{a}$</p>
+          <p class="text-slate-600">常見誤區：外積順序顛倒未變號。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：外積具有<strong>反交換性</strong>：$\vec{b} \times \vec{a} = -(\vec{a} \times \vec{b})$（方向完全相反，差一個負號）！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：算四面體體積時忘記乘以 $\frac{1}{6}$</p>
+          <p class="text-slate-600">常見誤區：算出三階行列式絕對值就直接當成四面體體積（或只乘 $\frac{1}{3}$）。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：角錐體積 $= \frac{1}{3} \times \text{底面積} \times \text{高}$，而三角形底面積又是平行四邊形的 $\frac{1}{2}$，故四面體體積 $= \frac{1}{3} \times \frac{1}{2} V = \mathbf{\frac{1}{6}|\det(\vec{AB}, \vec{AC}, \vec{AD})|}$！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">外積求公垂向量與空間三角形面積</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 已知空間中三點 $A(1, 0, 2), \; B(2, 2, 4), \; C(3, 1, 1)$。試求：<br/>(1) 同時垂直於 $\vec{AB}$ 與 $\vec{AC}$ 的一個公垂向量。<br/>(2) $\triangle ABC$ 的面積。
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>先求 $\vec{AB} = (1, 2, 2)$ 與 $\vec{AC} = (2, 1, -1)$，計算外積 $\vec{AB} \times \vec{AC}$，其長度的一半即為 $\triangle ABC$ 面積！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：求向量 $\vec{AB}, \vec{AC}$ 及其外積</strong></p>
+<p>$$\vec{AB} = (1, 2, 2), \quad \vec{AC} = (2, 1, -1)$$</p>
+<p>$$\vec{AB} \times \vec{AC} = \left(\begin{vmatrix}2 & 2\\1 & -1\end{vmatrix}, \; \begin{vmatrix}2 & 1\\-1 & 2\end{vmatrix}, \; \begin{vmatrix}1 & 2\\2 & 1\end{vmatrix}\right) = (-4, 5, -3)$$</p>
+<p><strong>步驟 2：求 $\triangle ABC$ 面積</strong></p>
+<p>$$\triangle ABC \text{ 面積} = \frac{1}{2}|\vec{AB} \times \vec{AC}| = \frac{1}{2}\sqrt{(-4)^2 + 5^2 + (-3)^2} = \frac{1}{2}\sqrt{50} = \frac{5\sqrt{2}}{2}$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $(-4, 5, -3)$（或其非零倍數）；(2) $\frac{5\sqrt{2}}{2}$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">三向量所張平行六面體體積與四面體體積</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 已知空間中三向量 $\vec{a} = (1, 2, -1), \; \vec{b} = (2, 0, 3), \; \vec{c} = (0, 1, 4)$。試求由 $\vec{a}, \vec{b}, \vec{c}$ 所張出的平行六面體體積。
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>先算 $\vec{b} \times \vec{c}$，再與 $\vec{a}$ 作內積取絕對值（或直接展開三階行列式）！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：計算 $\vec{b} \times \vec{c}$</strong></p>
+<p>$$\vec{b} \times \vec{c} = (2, 0, 3) \times (0, 1, 4) = (-3, -8, 2)$$</p>
+<p><strong>步驟 2：與 $\vec{a} = (1, 2, -1)$ 作內積取絕對值</strong></p>
+<p>$$V = |\vec{a}\cdot(\vec{b}\times\vec{c})| = |1(-3) + 2(-8) + (-1)(2)| = |-21| = 21$$</p>
+<p class="text-emerald-700 font-bold">答：$21$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 3</span>
+          <span class="text-xs text-slate-500">三維柯西不等式求空間極值</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 設實數 $x, y, z$ 滿足 $x^2 + y^2 + z^2 = 9$，試求 $x - 2y + 2z$ 的最大值與最小值。
+        </p>
+        <div class="bg-amber-50/80 border-amber-200 text-amber-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>套用三維柯西不等式 $(x^2+y^2+z^2)[1^2+(-2)^2+2^2] \ge (x-2y+2z)^2$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p>由三維柯西不等式：</p>
+<p>$$(x^2 + y^2 + z^2)[1^2 + (-2)^2 + 2^2] \ge (x - 2y + 2z)^2$$</p>
+<p>$$9 \times 9 \ge (x - 2y + 2z)^2 \implies -9 \le x - 2y + 2z \le 9$$</p>
+<p class="text-emerald-700 font-bold">答：最大值 $9$，最小值 $-9$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

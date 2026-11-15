@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>七年級｜二元一次聯立方程式 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">七年級（國一）</span>
+        <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">代數 (A-7-4 ~ A-7-5)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade7-04-linear-equations.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade7-06-coordinates.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：直角座標系 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-violet-100 text-sm font-medium mb-2">
+        <span>七年級單元 05</span>
+        <span>•</span>
+        <span>課綱代碼：a-IV-4</span>
+        <span>•</span>
+        <span>學習內容：二元一次方程式的意義、代入消去法、加減消去法與應用題</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">二元一次聯立方程式：雙未知數消去破案術</h1>
+      <p class="text-violet-50 text-base sm:text-lg mb-6">
+        當題目有兩個未知數時，直接假設 $x$ 與 $y$ 列式比一元一次更直覺！掌握「代入消去法」與「加減消去法」兩大絕招，把兩個未知數消去一個，輕鬆破案！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-violet-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解單一二元一次方程式 $ax + by = c$ 有無限多組解（非負整數解除外）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練「代入消去法」：當某未知數係數為 $\pm 1$ 時，將一式代入另一式消元。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練「加減消去法」：將兩式同乘倍數使某未知數係數相等或互為相反數，相加減消元。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能應用聯立方程式解決雞兔同籠、十位數個位數對調、順流逆流等經典應用題。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：早餐店兩張點餐收據對比破案</h2>
+          <p class="text-sm text-slate-500">為什麼兩張收據相減，就能立刻算出蛋餅和豆漿各多少錢？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-violet-50/70 rounded-xl p-5 border border-violet-200">
+          <h3 class="font-bold text-violet-900 text-lg mb-2">🧾 比喻一：加減消去法就像「對比兩張點餐收據的差價」</h3>
+          <p class="text-sm text-slate-700 mb-3">設漢堡一個 $x$ 元、豆漿一杯 $y$ 元：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>收據 ①</strong>：$2$ 個漢堡 $+$ $1$ 杯豆漿 $= 95$ 元（$2x + y = 95$）</li>
+            <li><strong>收據 ②</strong>：$1$ 個漢堡 $+$ $1$ 杯豆漿 $= 55$ 元（$x + y = 55$）</li>
+            <li>兩張收據<strong>都有 $1$ 杯豆漿</strong>！把收據 ① 減去收據 ②，豆漿直接抵銷，多出來的「$1$ 個漢堡」就是差價 $95 - 55 = 40$ 元（$x = 40$）！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🔄 比喻二：代入消去法就像「等值兌換券」</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            如果已知「$1$ 個漢堡的價錢等於 $2$ 杯豆漿（$x = 2y$）」：
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>看到收據上的漢堡 $x$，直接拿「$2$ 杯豆漿（$2y$）」替換進去！</li>
+            <li>原本「$1$ 個漢堡 $+$ $3$ 杯豆漿 $= 100$ 元」，立刻變成「$2y + 3y = 100$」，馬上算出豆漿 $y = 20$ 元！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">代入消去、加減消去、對稱型聯立方程與經典二位數問題</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">解法與題型</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">核心操作與數學列式</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">最佳使用時機與秘訣</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">代入消去法</td>
+              <td class="py-3.5 px-4">由一式整理出 $y = ax + b$，代入另一式消去 $y$。</td>
+              <td class="py-3.5 px-4">當其中一式有 $x = \dots$、$y = \dots$ 或某未知數係數為 $\pm 1$ 時最省力。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">加減消去法</td>
+              <td class="py-3.5 px-4">
+                • 係數<strong>互為相反數</strong>（如 $+3y$ 與 $-3y$）：兩式<strong>相加</strong><br/>
+                • 係數<strong>完全相同</strong>（如 $+3y$ 與 $+3y$）：兩式<strong>相減</strong>
+              </td>
+              <td class="py-3.5 px-4">口訣：「異號相加、同號相減」。兩式相減時特別小心負負得正！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">對稱型係數速解</td>
+              <td class="py-3.5 px-4">$$\begin{cases} 99x + 101y = 500 \\ 101x + 99y = 300 \end{cases}$$</td>
+              <td class="py-3.5 px-4">切勿暴力硬乘！先<strong>兩式相加</strong>得 $x+y=4$，再<strong>兩式相減</strong>得 $x-y=-100$，秒殺求解！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">二位數十位個位對調</td>
+              <td class="py-3.5 px-4">設十位數字為 $x$、個位數字為 $y$：<br/>原數 $= 10x + y$；對調後新數 $= 10y + x$</td>
+              <td class="py-3.5 px-4">原數與新數之差必為 $9$ 的倍數：$(10y+x)-(10x+y) = 9(y-x)$。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「十位數字 $x$、個位數字 $y$，二位數的值寫成 $xy$」</p>
+            <p class="text-slate-600 mb-2">代數中 $xy$ 代表 $x \times y$（例如 $35$ 會變成 $3 \times 5 = 15$）！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：十位數字代表幾個 $10$，故二位數的值必須寫成 <strong>$10x + y$</strong>。</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「兩式相減時，減數的負項忘記變正號」</p>
+            <p class="text-slate-600 mb-2">例如 $(3x + 2y) - (3x - 5y)$ 誤算成 $-3y$。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：$2y - (-5y) = 2y + 5y = 7y$！若容易算錯減法，可將一式同乘 $(-1)$ 改用「兩式相加」。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋加減消去法、雞兔同籠問題與二位數對調應用題</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">加減消去法解聯立方程式</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 解二元一次聯立方程式：$$\begin{cases} 3x + 2y = 13 \quad \cdots ① \\ 2x - 3y = 0 \quad \cdots ② \end{cases}$$</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：將 ①$\times 3$、②$\times 2$，使 $y$ 的係數成為 $+6$ 與 $-6$</strong></p>
+            <p>$$\begin{cases} 9x + 6y = 39 \quad \cdots ③ \\ 4x - 6y = 0 \quad \cdots ④ \end{cases}$$</p>
+            <p><strong>步驟 2：③ $+$ ④ 消去 $y$</strong></p>
+            <p>$$13x = 39 \implies x = 3$$</p>
+            <p><strong>步驟 3：將 $x = 3$ 代回 ② 求 $y$</strong></p>
+            <p>$$2(3) - 3y = 0 \implies 3y = 6 \implies y = 2$$</p>
+            <p class="text-emerald-700 font-bold">答：$x = 3, \; y = 2$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">二位數十位與個位數字對調</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 有一個二位數，其十位數字與個位數字之和為 $11$。若將十位數字與個位數字對調，所得的新數比原數大 $27$，請問原來的二位數是多少？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：設原數的十位數字為 $x$、個位數字為 $y$</strong></p>
+            <p>原數 $= 10x + y$，新數 $= 10y + x$。列聯立方程式：</p>
+            <p>$$\begin{cases} x + y = 11 \quad \cdots ① \\ (10y + x) - (10x + y) = 27 \quad \cdots ② \end{cases}$$</p>
+            <p><strong>步驟 2：化簡第 ② 式</strong></p>
+            <p>$$9y - 9x = 27 \implies -x + y = 3 \quad \cdots ③$$</p>
+            <p><strong>步驟 3：① $+$ ③ 求解</strong></p>
+            <p>$$2y = 14 \implies y = 7, \quad x = 11 - 7 = 4$$</p>
+            <p class="text-emerald-700 font-bold">答：原來的二位數是 $47$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">票價與人數雞兔同籠變形</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 博物館全票每張 $120$ 元、優待票每張 $80$ 元。週末某旅遊團共買了 $35$ 張門票，總共花費 $3400$ 元。請問該旅遊團買了全票與優待票各幾張？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：設全票買 $x$ 張、優待票買 $y$ 張</strong></p>
+            <p>$$\begin{cases} x + y = 35 \quad \cdots ① \\ 120x + 80y = 3400 \quad \cdots ② \end{cases}$$</p>
+            <p><strong>步驟 2：將 ② 同除以 $40$ 瘦身，再與 ①$\times 2$ 相減</strong></p>
+            <p>②$\div 40 \implies 3x + 2y = 85$；①$\times 2 \implies 2x + 2y = 70$</p>
+            <p>兩式相減得 $x = 15$，代回 ① 得 $y = 35 - 15 = 20$。</p>
+            <p class="text-emerald-700 font-bold">答：全票 $15$ 張，優待票 $20$ 張。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

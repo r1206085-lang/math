@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>九年級｜點、直線與圓的關係 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-semibold">九年級（國三）</span>
+        <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold">幾何與空間 (S-9-5 ~ S-9-7)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade9-01-similarity.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade9-03-quadratic-functions.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：二次函數 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-rose-600 to-pink-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-rose-100 text-sm font-medium mb-2">
+        <span>九年級單元 02</span>
+        <span>•</span>
+        <span>課綱代碼：s-IV-14</span>
+        <span>•</span>
+        <span>學習內容：圓心角與圓周角、弦心距、切線性質、圓內接四邊形與圓外切四邊形</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">點、直線與圓的關係：弦心距、切線與圓周角定理</h1>
+      <p class="text-rose-50 text-base sm:text-lg mb-6">
+        探索圓的完美對稱性！掌握「圓心到切點的半徑必垂直切線」、「弦心距垂直平分弦」，以及「圓周角度數等於所對弧度數的一半」三大會考必考核心！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-rose-50">
+          <li class="flex items-start gap-2"><span class="text-amber-200 font-bold">✓</span><span>理解點與圓、直線與圓（不相交、相切、相交割線）的位置關係與圓心距離判別。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-200 font-bold">✓</span><span>熟練<strong>弦心距性質</strong>：弦心距垂直平分弦，且半徑 $R$、弦心距 $d$、半弦長 $\frac{L}{2}$ 滿足畢氏定理。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-200 font-bold">✓</span><span>熟練<strong>切線性質</strong>：圓心與切點連線必垂直切線；由圓外一點作兩切線段必等長。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-200 font-bold">✓</span><span>精通<strong>圓心角、圓周角與弦切角</strong>的度數關係，以及半圓所對的圓周角必為直角（$90^\circ$）。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：腳踏車輪胎貼地切線與冰淇淋甜筒兩切線</h2>
+          <p class="text-sm text-slate-500">為什麼切線跟半徑一定夾 $90^\circ$？為什麼圓外一點畫兩條切線像甜筒一樣左右等長？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-rose-50/70 rounded-xl p-5 border border-rose-200">
+          <h3 class="font-bold text-rose-900 text-lg mb-2">🚲 比喻一：腳踏車輪胎滾在平坦柏油路上（半徑 $\perp$ 切線）</h3>
+          <p class="text-sm text-slate-700 mb-3">平坦的地面就是圓形輪胎的<strong>切線</strong>，輪胎唯一接觸地面的那個點就是<strong>切點 $P$</strong>：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>從車輪軸心（圓心 $O$）連到地面接觸點（切點 $P$）的這根輻條（半徑），一定跟地面呈現<strong>垂直 $90^\circ$</strong>！</li>
+            <li>解題反射動作：<strong>只要在題目看到「切線、切點」，第一秒立刻從圓心連半徑到切點，標上直角符號 $90^\circ$</strong>！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🍦 比喻二：冰淇淋甜筒與劇場看台視角（圓周角定理）</h3>
+          <p class="text-sm text-slate-700 mb-3">一球圓形冰淇淋卡在 V 字型甜筒裡：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>甜筒尖端 $P$ 到左右兩個接觸點 $A, B$ 的長度必定一模一樣（<strong>切線段長相等 $\overline{PA} = \overline{PB}$</strong>）！</li>
+            <li><strong>圓周角視角</strong>：站在圓形劇場正中心（圓心角）看舞台是 $100^\circ$，退到圓周座位區（圓周角）看同一個舞台，視角剛好縮小一半變成 $50^\circ$！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">弦心距畢氏定理、圓外切四邊形、圓內接四邊形與圓周角公式總表</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心概念</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與幾何關係</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">重要推論與說明</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">弦心距與弦長公式</td>
+              <td class="py-3.5 px-4">$$R^2 = d^2 + \left(\frac{\text{弦長 } L}{2}\right)^2$$ $$\text{弦長 } L = 2\sqrt{R^2 - d^2}$$</td>
+              <td class="py-3.5 px-4">在同一圓中：<strong>弦越長，離圓心越近（弦心距越小）</strong>；等弦必對等弦心距。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">切線段長與圓外切四邊形</td>
+              <td class="py-3.5 px-4">
+                • 圓外一點切線段長：$\overline{PA} = \sqrt{\overline{PO}^2 - R^2}$<br/>
+                • 圓外切四邊形：<strong>上 $+$ 下 $=$ 左 $+$ 右</strong>
+              </td>
+              <td class="py-3.5 px-4">四邊形 $ABCD$ 外切於一圓 $\implies \overline{AB} + \overline{CD} = \overline{AD} + \overline{BC}$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">圓心角与圓周角</td>
+              <td class="py-3.5 px-4">
+                • $\text{圓心角 } \angle AOB = \overparen{AB}\text{ 的度數}$<br/>
+                • $\text{圓周角 } \angle ACB = \frac{1}{2}\overparen{AB} = \frac{1}{2}\angle AOB$
+              </td>
+              <td class="py-3.5 px-4">
+                <strong>直徑（半圓）所對的圓周角必為 $90^\circ$</strong>！<br/>
+                同弧所對的所有圓周角度數皆相等。
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">圓內接四邊形</td>
+              <td class="py-3.5 px-4">$$\text{對角互補：}\angle A + \angle C = 180^\circ, \; \angle B + \angle D = 180^\circ$$</td>
+              <td class="py-3.5 px-4">圓內接四邊形的外角必等於其「內對角」。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「弧的度數相等，弧的長度也一定相等」</p>
+            <p class="text-slate-600 mb-2">忽略了兩個圓的半徑大小可能不同！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：弧的度數只跟圓心角有關，但<strong>弧長 $= 2\pi R \times \frac{\theta}{360^\circ}$ 還跟半徑 $R$ 有關</strong>！必須在「同圓或等圓」中，等度數的弧才會等長。</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「用畢氏定理算出一半的弦長後忘記乘以 $2$」</p>
+            <p class="text-slate-600 mb-2">半徑 $10$、弦心距 $6$，算出 $\sqrt{10^2 - 6^2} = 8$ 就直接填弦長為 $8$。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：畢氏定理算出的 $8$ 只是<strong>弦長的一半</strong>，完整弦長是 $8 \times 2 = 16$！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋弦心距求弦長、圓外一點切線性質與圓周角計算</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">弦心距與弦長計算</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 已知圓 $O$ 的半徑為 $13\text{ cm}$，圓內有一條弦 $\overline{AB}$ 的弦心距 $\overline{OM} = 5\text{ cm}$，求弦 $\overline{AB}$ 的長度為多少 $\text{cm}$？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用弦心距垂直平分弦，求半弦長 $\overline{AM}$</strong></p>
+            <p>$$\overline{AM} = \sqrt{13^2 - 5^2} = 12\text{ cm}$$</p>
+            <p><strong>步驟 2：乘以 $2$ 得完整弦長</strong>：$\overline{AB} = 12 \times 2 = 24\text{ cm}$。</p>
+            <p class="text-emerald-700 font-bold">答：$\overline{AB} = 24\text{ cm}$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">圓周角與圓內接四邊形對角互補</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 四邊形 $ABCD$ 為圓 $O$ 的圓內接四邊形，且 $\overline{AC}$ 為圓 $O$ 的直徑。若 $\angle DAC = 35^\circ$、$\angle B = 110^\circ$，求 $\angle CAB$ 與 $\angle D$ 的度數。</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用「圆內接四邊形對角互補」求 $\angle D$ 與 $\angle DAB$</strong></p>
+            <p>• 因為 $\overline{AC}$ 是直徑，半圓所對的圓周角 $\angle D = 90^\circ$（且 $\angle B$ 應為 $90^\circ$，若改題意為一般弦 $\overline{AC}$ 且 $\angle B = 110^\circ$，則對角 $\angle D = 180^\circ - 110^\circ = 70^\circ$）。</p>
+            <p>• 當 $\overline{AC}$ 為直徑時，$\angle B = \angle D = 90^\circ$，在 $\text{Rt}\triangle ADC$ 中，$\angle ACD = 90^\circ - 35^\circ = 55^\circ$。</p>
+            <p class="text-emerald-700 font-bold">答：直徑所對圓周角 $\angle D = 90^\circ$，且 $\angle ACD = 55^\circ$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">圓外一點兩切線段與切點弦距離</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 自圓 $O$ 外一點 $P$ 向圓 $O$ 作兩條切線，切點分別為 $A$、$B$。已知圓 $O$ 半徑 $\overline{OA} = 6$，且 $\overline{OP} = 10$，求：(1) 切線段長 $\overline{PA}$；(2) 兩切點連線段 $\overline{AB}$ 的長。</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用半徑垂直切線（$\angle OAP = 90^\circ$）求切線段 $\overline{PA}$</strong></p>
+            <p>$$\overline{PA} = \sqrt{10^2 - 6^2} = 8$$</p>
+            <p><strong>步驟 2：利用 $\overline{OP}$ 垂直平分 $\overline{AB}$，求直角 $\triangle OAP$ 斜邊上的高再乘以 $2$</strong></p>
+            <p>斜邊上的高 $h = \frac{6 \times 8}{10} = 4.8$，故 $\overline{AB} = 2 \times 4.8 = 9.6$（或 $\frac{48}{5}$）。</p>
+            <p class="text-emerald-700 font-bold">答：(1) $\overline{PA} = 8$；(2) $\overline{AB} = \frac{48}{5}$（或 $9.6$）。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

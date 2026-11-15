@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高一上（數學 I）｜指數與對數函數：圖形凹凸性、對數定律、內插法與科學記號應用 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一上（數學 I）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="polynomial.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high10-04-sequences.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 03 / 18</span>
+        <span>•</span>
+        <span>數學 I • 三、指數、對數函數 (1.1 ~ 5.4)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">指數與對數函數：圖形凹凸性、對數定律、內插法與科學記號應用</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        嚴格遵循課綱精神：以 $2^x, 10^x$ 與 $\log x$（以 $10$ 為底）為核心，從指數律與對數定義出發，連結函數凹凸性與算幾不等式，並用內插法與科學記號解決大數估計、複利與半衰期問題！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：換底公式以換成 10 為底為主，刪除不實用的衍生怪公式與表尾差（改用內插法）；純人工化指對數方程式與不等式不宜過度延伸。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練整數、分數與實數指數定律（如 $10^{\frac{1}{2}} \cdot 10^{\frac{1}{3}} = 10^{\frac{5}{6}}$），並認識指數函數 $y=a^x$ 的單調性與凹凸性。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解對數定義 $a^x = b \iff x = \log_a b$、三大對數定律 $\log(xy), \log(x/y), \log(x^\alpha)$ 與換 $10$ 為底公式 $\log_a x = \frac{\log x}{\log a}$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>認識 $y = a^x$ 與 $y = \log_a x$ 互為反函數（對稱於 $y=x$），並由 $\log x$ 圖形凹向下（割弦在下方）直觀理解算幾不等式。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能使用對數表（含線性內插法）、計算器與科學記號處理如 $2^{100}$ 為幾位數、$1.18^{10}$ 近似值及複利、半衰期等生活建模問題。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：將「乘除天文數字」化簡為「加減法」的翻譯機</h2>
+          <p class="text-sm text-slate-500">課綱為什麼強調換底公式只要換成以 $10$ 為底的 $\log x$？對數凹凸性怎麼一眼看出算幾不等式？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-indigo-50/70 border-indigo-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-indigo-950 text-lg mb-2">📏 情境一：換底公式 $\log_a x = \frac{1}{\log a}\log x$ 只是 $Y$ 軸伸縮！</h3>
+          <p class="text-sm text-slate-700 mb-3">課綱第 53～54 頁特別指出：不需要死背一堆花俏的換底衍生公式！</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>任何一般底數的對數函數 $\log_a x$，除以常數 $\alpha = \log a$ 後，就只是<strong>常用對數 $y = \log x$ 在 $Y$ 軸方向的伸縮</strong>！</li>
+            <li>把所有數字都統一換成 $10$ 的次方（例如 $2 \approx 10^{0.3010}, \; 3 \approx 10^{0.4771}$），大數的乘除與次方瞬間變成指數的小數加減！</li>
+          </ul>
+        </div>
+        <div class="bg-indigo-50/70 border-indigo-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-indigo-950 text-lg mb-2">🌈 情境二：對數圖形「向上拱起（凹向下）」＝ 算幾不等式</h3>
+          <p class="text-sm text-slate-700 mb-3">觀察 $y = \log x$ 的圖形，連接圖形上兩點 $(a, \log a)$ 與 $(b, \log b)$ 的割弦必在曲線下方：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>割弦中點的高度為 $\frac{\log a + \log b}{2} = \log\sqrt{ab}$，而曲線在中點 $x = \frac{a+b}{2}$ 的高度為 $\log\left(\frac{a+b}{2}\right)$。</li>
+            <li>因為<strong>曲線在割弦上方</strong>，立刻直觀得到 $\log\sqrt{ab} \le \log\left(\frac{a+b}{2}\right) \iff \sqrt{ab} \le \frac{a+b}{2}$！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">分數指數律與對數定義</td>
+              <td class="py-3.5 px-4">$$a^{\frac{m}{n}} = \sqrt[n]{a^m}, \quad a^x = b \iff x = \log_a b \quad (a>0, a\neq 1, b>0)$$ $$a^{\log_a b} = b, \quad \log_a 1 = 0, \quad \log_a a = 1$$</td>
+              <td class="py-3.5 px-4">• 符號 $\log x$ 省略底數時，代表以 $10$ 為底的<strong>常用對數 $\log_{10} x$</strong>。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">三大對數定律與換底公式</td>
+              <td class="py-3.5 px-4">$$\log(xy) = \log x + \log y, \quad \log\left(\frac{x}{y}\right) = \log x - \log y$$ $$\log(x^\alpha) = \alpha\log x, \quad \log_a x = \frac{\log x}{\log a}$$</td>
+              <td class="py-3.5 px-4">• <strong>課綱核心精神</strong>：將乘除問題化簡為加減問題，將次方問題化簡為乘除問題（刪除無實用價值的衍生公式）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">對數凹凸性與算幾不等式</td>
+              <td class="py-3.5 px-4">對 $a > 0, b > 0$：$$\frac{\log a + \log b}{2} \le \log\left(\frac{a + b}{2}\right) \iff \sqrt{ab} \le \frac{a + b}{2}$$</td>
+              <td class="py-3.5 px-4">• 指數函數 $y = 2^x, 10^x$ 割弦在圖形上方（凹向上）；對數函數 $y = \log x$ 割弦在圖形下方（凹向下）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">科學記號、位數與內插法</td>
+              <td class="py-3.5 px-4">設 $\log N = n + \alpha \; (n \in \mathbb{Z}, \; 0 \le \alpha < 1) \implies N = 10^\alpha \times 10^n$</td>
+              <td class="py-3.5 px-4">• 當 $n \ge 0$ 時，$N$ 的整數部分為 <strong>$n+1$ 位數</strong>；當 $n = -k < 0$ 時，$N$ 在小數點後<strong>第 $k$ 位始出現非 $0$ 數字</strong>。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade10-algebra.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：把對數相加誤當成真數相加</p>
+          <p class="text-slate-600">常見誤區：誤寫 $\log(x + y) = \log x + \log y$ 或 $\frac{\log x}{\log y} = \log(x - y)$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：<strong>真數相乘</strong>才是對數相加 $\log(xy) = \log x + \log y$；而兩對數相除 $\frac{\log x}{\log a} = \log_a x$ 是換底公式！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：底數 $0 < a < 1$ 時解指數或對數不等式忘記變號</p>
+          <p class="text-slate-600">常見誤區：由 $(0.5)^x > (0.5)^3$ 直接寫 $x > 3$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：當底數介於 $0$ 與 $1$ 之間時，指數與對數函數皆為<strong>嚴格遞減函數</strong>，去掉底數時不等號必須反轉為 $x < 3$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：小數點後第幾位始不為 $0$ 算錯負首數</p>
+          <p class="text-slate-600">常見誤區：算出 $\log N = -3.6990$ 就以為小數點後第 $3$ 位始不為 $0$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：尾數 $\alpha$ 必須滿足 $0 \le \alpha < 1$！須改寫為 $-3.6990 = \mathbf{-4 + 0.3010}$，故為 $10^{0.3010} \times 10^{-4}$，在小數點後<strong>第 $4$ 位</strong>始出現非零數字 $2$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 4：對數有意義條件漏掉真數 $> 0$ 或底數 $\neq 1$</p>
+          <p class="text-slate-600">常見誤區：解對數應用問題時未檢查真數正負。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：對數 $\log_a x$ 存在必須滿足底數 $a > 0, a \neq 1$ 且<strong>真數 $x > 0$</strong>。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">大數的位數與最高位數字估計</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 已知 $\log 2 \approx 0.3010, \; \log 3 \approx 0.4771$。試問 $2^{100}$ 展開後為幾位數？其最高位數字為何？
+        </p>
+        <div class="bg-indigo-50/80 border-indigo-200 text-indigo-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>計算 $\log(2^{100}) = 100\log 2 = 30.10$，改寫為科學記號 $10^{0.10} \times 10^{30}$ 即可同時讀出位數與首位數字！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：取常用對數化為科學記號</strong></p>
+<p>$$\log(2^{100}) = 100 \times \log 2 \approx 100 \times 0.3010 = 30.10$$</p>
+<p>故 $2^{100} \approx 10^{30.10} = 10^{0.10} \times 10^{30}$。</p>
+<p><strong>步驟 2：判讀位數與最高位數字</strong></p>
+<p>• 乘上 $10^{30}$ 代表為 $30 + 1 = \mathbf{31}$ 位數。</p>
+<p>• 因 $\log 1 = 0 < 0.10 < 0.3010 \approx \log 2$，故 $1 < 10^{0.10} < 2$，最高位數字為 $\mathbf{1}$。</p>
+<p class="text-emerald-700 font-bold">答：$31$ 位數，最高位數字為 $1$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">對數表與線性內插法求次方近似值</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 已知對數表中 $\log 1.18 \approx 0.0719, \; \log 5.23 \approx 0.7185, \; \log 5.24 \approx 0.7193$。試利用內插法求 $(1.18)^{10}$ 的近似值（四捨五入至小數點後第二位）。
+        </p>
+        <div class="bg-indigo-50/80 border-indigo-200 text-indigo-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>先算 $\log(1.18^{10}) = 10 \times 0.0719 = 0.7190$，再看 $0.7190$ 介於 $\log 5.23$（$0.7185$）與 $\log 5.24$（$0.7193$）之間的比例！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：取常用對數</strong></p>
+<p>設 $x = (1.18)^{10}$，則 $\log x = 10 \log 1.18 \approx 10 \times 0.0719 = 0.7190$。</p>
+<p><strong>步驟 2：利用線性內插法反查真數 $x$</strong></p>
+<p>因 $0.7185 < 0.7190 < 0.7193$，對應真數 $5.23 < x < 5.24$，由比例關係：</p>
+<p>$$\frac{x - 5.23}{5.24 - 5.23} \approx \frac{0.7190 - 0.7185}{0.7193 - 0.7185} = \frac{5}{8} = 0.625$$</p>
+<p>$$x \approx 5.23 + 0.01 \times 0.625 = 5.23625 \approx 5.24$$</p>
+<p class="text-emerald-700 font-bold">答：$(1.18)^{10} \approx 5.24$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 3</span>
+          <span class="text-xs text-slate-500">放射性元素半衰期與對數不等式建模</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 某放射性元素的半衰期為 $15$ 天（即每經過 $15$ 天，質量衰減為原來的一半）。若要使該元素質量衰減至小於原有質量的 $\frac{1}{100}$，至少需要經過幾天？（已知 $\log 2 \approx 0.3010$，天數取整數）
+        </p>
+        <div class="bg-indigo-50/80 border-indigo-200 text-indigo-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>設經過 $t$ 天後剩餘比例為 $\left(\frac{1}{2}\right)^{\frac{t}{15}} < \frac{1}{100}$，兩邊同取常用對數 $\log$ 即可求解！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：建立指數衰減不等式並取對數</strong></p>
+<p>$$\left(\frac{1}{2}\right)^{\frac{t}{15}} < \frac{1}{100} \iff 2^{\frac{t}{15}} > 100$$</p>
+<p>兩邊同取以 $10$ 為底的對數：</p>
+<p>$$\frac{t}{15}\log 2 > \log 100 = 2 \implies t > \frac{30}{\log 2} \approx \frac{30}{0.3010} \approx 99.67$$</p>
+<p class="text-emerald-700 font-bold">答：至少需經過 $100$ 天。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

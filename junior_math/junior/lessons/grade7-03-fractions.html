@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>七年級｜分數的運算與科學記號 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">七年級（國一）</span>
+        <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">數與量 (N-7-6 ~ N-7-8)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade7-02-integer-operations.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade7-04-linear-equations.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：一元一次方程式 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-teal-600 to-cyan-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-teal-100 text-sm font-medium mb-2">
+        <span>七年級單元 03</span>
+        <span>•</span>
+        <span>課綱代碼：n-IV-1, n-IV-3</span>
+        <span>•</span>
+        <span>學習內容：分數的加減乘除、科學記號</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">分數的運算與科學記號：從精準切分到宇宙級尺度</h1>
+      <p class="text-teal-50 text-base sm:text-lg mb-6">
+        掌握負分數的通分加減、倒數乘除與去括號技巧，並學會用「科學記號 $a \times 10^n$」輕鬆紀錄天文距離與奈米病毒尺寸！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-teal-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解負分數符號位置恆等式：$-\frac{b}{a} = \frac{-b}{a} = \frac{b}{-a}$，並熟練最小公倍數通分加減。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練倒數定義（兩數乘積為 $1$）與分數除法法則：「除以一個數等於乘以它的倒數」。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>掌握科學記號標準格式 $a \times 10^n$（其中 $1 \le a < 10$，$n$ 為整數）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能藉由指數 $n$ 與首數 $a$ 比較科學記號大小，並解決四則應用問題。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：披薩統一切片大小與天文望遠鏡縮放檔位</h2>
+          <p class="text-sm text-slate-500">為什麼分數加減一定要通分？科學記號為什麼規定前面數字只能是 $1 \le a < 10$？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-teal-50/70 rounded-xl p-5 border border-teal-200">
+          <h3 class="font-bold text-teal-900 text-lg mb-2">🍕 比喻一：通分就是「把披薩切成一樣小塊才能算總片數」</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            一大片 $\frac{1}{2}$ 的披薩和一小片 $\frac{1}{3}$ 的披薩，大小不同怎麼直接加減？
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>通分切法</strong>：統一切成 $6$ 等份（分母 $2$ 和 $3$ 的最小公倍數）！$\frac{1}{2} = \frac{3}{6}$ 片，$\frac{1}{3} = \frac{2}{6}$ 片，單位統一後馬上算出共有 $\frac{5}{6}$ 片。</li>
+            <li><strong>負帶分數警告</strong>：$-2\frac{3}{4}$ 代表「欠了 $2$ 個完整披薩<strong>又多欠了 $\frac{3}{4}$ 個</strong>」，即 $-\left(2 + \frac{3}{4}\right) = -2 - \frac{3}{4}$，千萬別寫成 $-2 + \frac{3}{4}$！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🔭 比喻二：科學記號就像「相機的光學變焦倍率 $10^n$」</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            要寫出地球到太陽的距離 $150,000,000,000$ 公尺，或是奈米晶片 $0.000000003$ 公尺，數 $0$ 數到眼睛花掉！
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>科學家規定：把鏡頭畫面固定調整到<strong>個位數只有一位非零數字（$1 \le a < 10$）</strong>，再用 $10^n$ 紀錄小數點移動了幾位！</li>
+            <li>大數：$150,000,000,000 = 1.5 \times 10^{11}$（共 $12$ 位數，次方為 $12 - 1 = 11$）。</li>
+            <li>小數：$0.000000003 = 3 \times 10^{-9}$（小數點後第 $9$ 位開始出現非零數字，次方即為 $-9$）。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">負分數運算規則與科學記號位數判讀速查表</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心概念</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與法則</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">關鍵說明與範例</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">負帶分數拆解</td>
+              <td class="py-3.5 px-4">$$-a\frac{c}{b} = -\left(a + \frac{c}{b}\right) = -a - \frac{c}{b}$$</td>
+              <td class="py-3.5 px-4">做乘除或次方運算時，<strong>務必先將帶分數化為假分數</strong>！例：$-1\frac{2}{3} = -\frac{5}{3}$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">倒數與分數除法</td>
+              <td class="py-3.5 px-4">$$\frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c} \quad (b, c, d \ne 0)$$</td>
+              <td class="py-3.5 px-4"><strong>$0$ 沒有倒數</strong>；負數的倒數依然是負數（例：$-\frac{3}{5}$ 的倒數是 $-\frac{5}{3}$）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">科學記號定義</td>
+              <td class="py-3.5 px-4">$$a \times 10^n \quad (1 \le a < 10, \; n \in \mathbb{Z})$$</td>
+              <td class="py-3.5 px-4">若算出 $35 \times 10^6$，必須進位調整成標準格式：$3.5 \times 10^7$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">科學記號位數判讀</td>
+              <td class="py-3.5 px-4">
+                • 當 $n \ge 0$：$a \times 10^n$ 的整數部分為 <strong>$(n + 1)$ 位數</strong><br/>
+                • 當 $n < 0$：$a \times 10^{-k}$ 從小數點後<strong>第 $k$ 位</strong>開始出現非 $0$ 數字
+              </td>
+              <td class="py-3.5 px-4">
+                例：$4.8 \times 10^5$ 是 $5+1 = 6$ 位數；$7.2 \times 10^{-4} = 0.00072$（小數點後第 $4$ 位出現 $7$）。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「除法也有分配律：$a \div (b + c) = a \div b + a \div c$」</p>
+            <p class="text-slate-600 mb-2">看到 $12 \div \left(\frac{1}{3} + \frac{1}{4}\right)$ 就直接拆開成 $12 \div \frac{1}{3} + 12 \div \frac{1}{4}$。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：<strong>除數在括號內時絕對沒有分配律！</strong>必須先將括號內通分相加：$12 \div \frac{7}{12} = 12 \times \frac{12}{7} = \frac{144}{7}$。</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「$0.8 \times 10^5$ 或 $10 \times 10^3$ 是科學記號」</p>
+            <p class="text-slate-600 mb-2">忽略了前面係數 $a$ 必須滿足 $1 \le a < 10$（不能小於 $1$，也不能等於 $10$）。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：$0.8 \times 10^5$ 應改寫為 $8 \times 10^4$；$10 \times 10^3$ 應改寫為 $1 \times 10^4$。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋負分數四則混合運算與科學記號運算轉換</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">負分數乘除與次方混合運算</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 計算下列算式的值：$$\left(-1\frac{1}{2}\right)^2 \div \left(-\frac{3}{4}\right) + \left(-\frac{5}{6}\right) \times \frac{12}{5}$$</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：先將帶分數化為假分數並計算平方</strong></p>
+            <p>$$\left(-1\frac{1}{2}\right)^2 = \left(-\frac{3}{2}\right)^2 = \frac{9}{4}$$</p>
+            <p><strong>步驟 2：將除法改為乘以倒數，並先約分再相乘</strong></p>
+            <p>$$\text{原式} = \frac{9}{4} \times \left(-\frac{4}{3}\right) + (-2) = -3 + (-2) = -5$$</p>
+            <p class="text-emerald-700 font-bold">答：$-5$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">科學記號的乘除與加減運算</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 請以科學記號表示下列兩式的值：(1) $(4 \times 10^{-5}) \times (7.5 \times 10^8)$；(2) $6.2 \times 10^7 - 8 \times 10^6$</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>(1) 乘法：數字乘數字、$10$ 的次方乘 $10$ 的次方</strong></p>
+            <p>$$(4 \times 7.5) \times 10^{-5+8} = 30 \times 10^3 = 3 \times 10^4$$</p>
+            <p><strong>(2) 減法：先將 $10$ 的次方調整為相同（提公因數）再相減</strong></p>
+            <p>$$6.2 \times 10^7 - 0.8 \times 10^7 = (6.2 - 0.8) \times 10^7 = 5.4 \times 10^7$$</p>
+            <p class="text-emerald-700 font-bold">答：(1) $3 \times 10^4$；(2) $5.4 \times 10^7$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">光速與天文距離換算</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 已知光在真空中每秒約傳播 $3 \times 10^8$ 公尺。若太陽光照射到某行星表面需要 $2500$ 秒，請問該行星距離太陽約多少「公里」？（以科學記號表示，注意單位換算：$1\text{ 公里} = 10^3\text{ 公尺}$）</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：先求距離為多少「公尺」</strong></p>
+            <p>$$\text{距離} = (3 \times 10^8) \times (2.5 \times 10^3) = 7.5 \times 10^{11}\text{（公尺）}$$</p>
+            <p><strong>步驟 2：將公尺除以 $10^3$ 換算為公里</strong></p>
+            <p>$$(7.5 \times 10^{11}) \div 10^3 = 7.5 \times 10^8\text{（公里）}$$</p>
+            <p class="text-emerald-700 font-bold">答：$7.5 \times 10^8$ 公里。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

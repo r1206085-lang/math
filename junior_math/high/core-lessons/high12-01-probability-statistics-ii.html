@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高三上（選修數甲／數乙 I）｜機率統計 II：隨機變數、期望值、二項分布與常態分布信賴區間 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">高三上（選修數甲／數乙 I）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade12-calculus.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high11-06-matrices.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high12-02-trig-functions-complex.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-rose-900 via-indigo-950 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 14 / 18</span>
+        <span>•</span>
+        <span>選修數甲/乙 I • 一、機率統計 II (1.1 ~ 3.3)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">機率統計 II：隨機變數、期望值、二項分布與常態分布信賴區間</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        從離散型隨機變數與機率質量函數出發，掌握期望值 $E(X)$ 與變異數 $\text{Var}(X)$ 的線性變換，貫通伯努利重複試驗「二項分布 $B(n,p)$」，並藉由中央極限定理直觀解讀民調常態分布與 $95\%$ 信賴區間！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：高中只處理離散型隨機變數；不含系統抽樣、部落抽樣；統計推論只做期望值估計與信賴區間、信心水準的通識解讀。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解離散型隨機變數 $X$、機率質量函數 $P(X=x_i)$、期望值 $E(X) = \sum x_i p_i$ 與變異數 $\text{Var}(X) = E(X^2)-[E(X)]^2$ 的意義。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練獨立重複試驗與二項分布 $P(X=k) = C^n_k p^k (1-p)^{n-k}$，並直接由公式求出期望值 $\mu = np$ 與標準差 $\sigma = \sqrt{np(1-p)}$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>認識簡單隨機抽樣與亂數表的使用，理解中央極限定理使二項分布在 $n$ 很大時趨近常態分布鐘形曲線的直觀意義。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能正確計算並解讀母體比例 $p$ 的 $95\%$ 信賴區間 $\left[\hat{p} - 2\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}, \; \hat{p} + 2\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right]$ 與信心水準。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：彩券公平定價（期望值）與新聞民調「抽樣誤差 ±3%」的真相</h2>
+          <p class="text-sm text-slate-500">為什麼已經開出來的具體一個 95% 信賴區間，絕對不能說「母體比例 p 落在裡面的機率是 95%」？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-rose-50/70 border-rose-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-rose-950 text-lg mb-2">🎰 情境一：二項分布 ＝ 投籃 $n$ 次進球數的「完美公式」</h3>
+          <p class="text-sm text-slate-700 mb-3">如果單次投籃命中率固定為 $p$，連續獨立投 $n$ 球，進球數 $X$ 服從二項分布 $B(n,p)$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>不必把 $k = 0, 1, \dots, n$ 每一項機率乘上 $k$ 慢慢加！直接用<strong>期望值 $\mu = np$、變異數 $\sigma^2 = np(1-p)$</strong> 一秒鐘算出平均進幾球與穩定度！</li>
+          </ul>
+        </div>
+        <div class="bg-rose-50/70 border-rose-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-rose-950 text-lg mb-2">📊 情境二：課綱信賴區間＝「套圈圈遊戲」（母體 $p$ 是固定木樁！）</h3>
+          <p class="text-sm text-slate-700 mb-3">母體支持率 $p$ 是一根<strong>釘死在地上不會動的木樁</strong>（常數），而每次抽樣算出的信賴區間則是你丟出去的<strong>圈圈</strong>：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>$95\%$ 信心水準的意思是：「如果我們重複抽樣丟出 $100$ 個圈圈，<strong>大約有 $95$ 個圈圈會套中木樁 $p$</strong>」！</li>
+            <li>一旦某一次民調已經算出了具體區間（例如 $[0.42, 0.48]$），這個圈圈已經落地不動了，$p$ 要嘛在裡面、要嘛不在裡面，<strong>絕對不能說『$p$ 落在 $[0.42, 0.48]$ 的機率是 $95\%$』</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">隨機變數期望值與變異數</td>
+              <td class="py-3.5 px-4">$$E(X) = \mu = \sum x_i p_i, \quad \text{Var}(X) = \sigma^2 = \sum (x_i - \mu)^2 p_i = E(X^2) - [E(X)]^2$$ • 線性變換：$E(aX + b) = aE(X) + b, \quad \text{Var}(aX + b) = a^2\text{Var}(X), \quad \sigma_{aX+b} = |a|\sigma_X$</td>
+              <td class="py-3.5 px-4">• 期望值具有線性可加性：$E(X + Y) = E(X) + E(Y)$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">二項分布 $X \sim B(n, p)$</td>
+              <td class="py-3.5 px-4">獨立重複試驗 $n$ 次，每次成功機率 $p$、失敗機率 $q = 1-p$：$$P(X = k) = C^n_k p^k q^{n-k} \quad (k = 0, 1, \dots, n)$$ $$E(X) = np, \quad \text{Var}(X) = np(1-p), \quad \sigma_X = \sqrt{np(1-p)}$$</td>
+              <td class="py-3.5 px-4">• 由二項式定理 $\sum_{k=0}^n C^n_k p^k q^{n-k} = (p+q)^n = 1^n = 1$ 驗證總機率為 $1$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">母體比例 $p$ 的信賴區間</td>
+              <td class="py-3.5 px-4">設樣本數為 $n$，樣本比例為 $\hat{p}$，標準誤 $SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$：<br/>• <strong>$68\%$ 信賴區間</strong>：$[\hat{p} - SE, \; \hat{p} + SE]$<br/>• <strong>$95\%$ 信賴區間</strong>：$[\hat{p} - 2SE, \; \hat{p} + 2SE]$<br/>• <strong>$99.7\%$ 信賴區間</strong>：$[\hat{p} - 3SE, \; \hat{p} + 3SE]$</td>
+              <td class="py-3.5 px-4">• 若要使抽樣誤差（半寬度）縮小為原來的 $\frac{1}{k}$，則<strong>抽樣人數 $n$ 必須放大為原來的 $k^2$ 倍</strong>！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade12-calculus.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade12-calculus.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：錯誤解讀信賴區間為「參數 $p$ 落在該區間內的機率為 95%」</p>
+          <p class="text-slate-600">常見誤區：學測與分科測驗最常考的觀念是非題！</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：母體參數 $p$ 是未知的<strong>定值（非隨機變數）</strong>，已經算出來的單一信賴區間不包含隨機性，不能談機率 $95\%$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：計算 $\text{Var}(aX + b)$ 時忘記將係數 $a$ 平方或把 $+b$ 加進去</p>
+          <p class="text-slate-600">常見誤區：誤寫 $\text{Var}(3X + 5) = 3\text{Var}(X) + 5$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：平移 $+5$ 不改變分散程度，而變異數有平方單位，故 $\text{Var}(3X + 5) = 3^2\text{Var}(X) = \mathbf{9\text{Var}(X)}$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：將「抽一枚硬幣給 100 元」與「抽 100 枚硬幣各給 1 元」變異數當成一樣</p>
+          <p class="text-slate-600">常見誤區：混淆 $100X_1$ 與 $X_1 + X_2 + \cdots + X_{100}$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：兩者期望值雖相同，但 $\text{Var}(100X_1) = 100^2 \sigma^2 = 10000\sigma^2$，而獨立和 $\text{Var}(X_1+\cdots+X_{100}) = 100\sigma^2$，風險相差 $100$ 倍！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">二項分布期望值、標準差與線性變換</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 某籃球選手每次罰球命中的機率皆為 $0.8$，且每次罰球結果互相獨立。若該選手進行 $100$ 次罰球，每投進一球可得獎金 $50$ 元，沒投進則倒扣 $10$ 元。設投進球數為隨機變數 $X$，總獎金為 $Y$ 元，求 $X$ 與 $Y$ 的期望值與標準差。
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>先由 $X \sim B(100, 0.8)$ 算出 $E(X) = np$ 與 $\sigma_X = \sqrt{np(1-p)}$；再將獎金寫成 $X$ 的一次函數 $Y = 50X - 10(100 - X) = 60X - 1000$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：求進球數 $X \sim B(100, 0.8)$ 的期望值與標準差</strong></p>
+<p>$$E(X) = np = 100 \times 0.8 = 80$$</p>
+<p>$$\sigma_X = \sqrt{np(1-p)} = \sqrt{100 \times 0.8 \times 0.2} = \sqrt{16} = 4$$</p>
+<p><strong>步驟 2：建立總獎金函數 $Y = 50X - 10(100 - X) = 60X - 1000$</strong></p>
+<p>$$E(Y) = 60E(X) - 1000 = 60(80) - 1000 = 3800 \text{ 元}$$</p>
+<p>$$\sigma_Y = |60|\sigma_X = 60 \times 4 = 240 \text{ 元}$$</p>
+<p class="text-emerald-700 font-bold">答：$E(X)=80, \; \sigma_X=4$；獎金期望值 $3800$ 元，標準差 $240$ 元。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">常態分布近似與 95% 信賴區間計算</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 某電視台為了解某候選人的支持度 $p$，隨機成功訪問了 $n = 400$ 位選民，其中有 $240$ 人表示支持。試求母體支持度 $p$ 的 $95\%$ 信賴區間（以兩倍標準誤計算）；若希望在相同樣本比例下將最大抽樣誤差縮小為原來的一半，則抽樣人數應增加為多少人？
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>樣本比例 $\hat{p} = \frac{240}{400} = 0.6$，先算標準誤 $SE = \sqrt{\frac{0.6 \times 0.4}{400}}$；誤差縮小為 $\frac{1}{2}$ 時，樣本數須變為 $2^2 = 4$ 倍！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：求樣本比例 $\hat{p}$ 與標準誤 $SE$</strong></p>
+<p>$$\hat{p} = \frac{240}{400} = 0.6, \quad SE = \sqrt{\frac{0.6 \times (1 - 0.6)}{400}} = \frac{\sqrt{0.24}}{20} \approx \frac{0.49}{20} = 0.0245$$</p>
+<p><strong>步驟 2：求 $95\%$ 信賴區間與抽樣人數倍數</strong></p>
+<p>• $95\%$ 信賴區間為 $[0.6 - 2(0.0245), \; 0.6 + 2(0.0245)] = [0.551, \; 0.649]$。</p>
+<p>• 誤差與 $\frac{1}{\sqrt{n}}$ 成正比，欲使誤差減半，樣本數須變為 $2^2 = 4$ 倍，即 $400 \times 4 = 1600$ 人。</p>
+<p class="text-emerald-700 font-bold">答：$95\%$ 信賴區間為 $[0.551, \; 0.649]$；抽樣人數應增為 $1600$ 人。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 3</span>
+          <span class="text-xs text-slate-500">離散隨機變數的期望值與變異數計算</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 袋中有 $3$ 顆紅球與 $2$ 顆白球，今從袋中隨機一次取出 $2$ 顆球，設取出的紅球顆數為隨機變數 $X$，試寫出 $X$ 的機率質量函數，並求期望值 $E(X)$ 與變異數 $\text{Var}(X)$。
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>$X$ 可能值為 $0, 1, 2$，分母為 $C^5_2 = 10$，分別算出機率後驗證總和為 $1$，再代 $E(X)$ 與 $E(X^2) - [E(X)]^2$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：求機率質量函數</strong></p>
+<p>$$P(X=0)=\frac{C^3_0 C^2_2}{C^5_2}=\frac{1}{10}, \quad P(X=1)=\frac{C^3_1 C^2_1}{C^5_2}=\frac{6}{10}, \quad P(X=2)=\frac{C^3_2 C^2_0}{C^5_2}=\frac{3}{10}$$</p>
+<p><strong>步驟 2：求 $E(X)$ 與 $\text{Var}(X)$</strong></p>
+<p>$$E(X) = 0\cdot\frac{1}{10} + 1\cdot\frac{6}{10} + 2\cdot\frac{3}{10} = \frac{12}{10} = \frac{6}{5}$$</p>
+<p>$$E(X^2) = 0^2\cdot\frac{1}{10} + 1^2\cdot\frac{6}{10} + 2^2\cdot\frac{3}{10} = \frac{18}{10} = \frac{9}{5}$$</p>
+<p>$$\text{Var}(X) = E(X^2) - [E(X)]^2 = \frac{9}{5} - \frac{36}{25} = \frac{9}{25}$$</p>
+<p class="text-emerald-700 font-bold">答：$E(X) = \frac{6}{5}, \; \text{Var}(X) = \frac{9}{25}$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

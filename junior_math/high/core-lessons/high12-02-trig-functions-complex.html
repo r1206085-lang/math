@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高三上（選修數甲／數乙 I）｜三角函數與複數極式：弧度扇形、週期圖形、正餘弦疊合與棣美弗定理 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">高三上（選修數甲／數乙 I）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade12-calculus.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high12-01-probability-statistics-ii.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high12-03-limits-functions.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-rose-900 via-indigo-950 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 15 / 18</span>
+        <span>•</span>
+        <span>選修數甲 I • 二、三角函數 (1.1 ~ 3.2)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">三角函數與複數極式：弧度扇形、週期圖形、正餘弦疊合與棣美弗定理</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        從角度制邁向微積分必備的「弧度制（$\pi = 180^\circ$）」！完整掌握六種三角函數的週期與圖形、簡諧波動的正餘弦疊合 $A\sin(\omega t+\theta_0)$，以及複數平面上的旋轉伸縮、棣美弗定理與單位根 $\omega$！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：不含不同週期的三角函數疊合（故不談和差化積與積化和差）；複數的 n 次方根不宜做牽涉到根的變形的複雜級數問題。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練弧度（弳）與度數的換算、扇形弧長 $s = r\theta$ 與面積 $A = \frac{1}{2}r^2\theta = \frac{1}{2}rs$ 公式。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>認識六種三角函數（含 $\cot, \sec, \csc$ 與 $1+\tan^2\theta=\sec^2\theta$）的定義域、值域、週期性質與圖形伸縮平移。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能利用和角公式將同週期正餘弦函數疊合為 $a\cos(\omega t)+b\sin(\omega t) = \sqrt{a^2+b^2}\sin(\omega t + \theta_0)$，並求限定範圍內的極值。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解複數平面、複數極式 $r(\cos\theta + i\sin\theta)$ 乘除法的旋轉伸縮幾何意義、棣美弗定理與複數 $n$ 次方根（正 $n$ 邊形頂點）。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：交流電簡諧波疊合與複數平面的「旋轉望遠鏡」</h2>
+          <p class="text-sm text-slate-500">為什麼在複數平面上，乘上 $(\cos\theta + i\sin\theta)$ 就等於把向量逆時針旋轉 $\theta$ 角？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-rose-50/70 border-rose-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-rose-950 text-lg mb-2">🌊 情境一：同週期正餘弦疊合 ＝ 合成一道振幅為 $\sqrt{a^2+b^2}$ 的水波</h3>
+          <p class="text-sm text-slate-700 mb-3">課綱第 76 頁指出：同頻率的 $\sin(\omega t)$ 與 $\cos(\omega t)$ 相加後，仍然是同頻率的正弦波：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>把係數 $(b, a)$ 看成直角三角形的兩股，斜邊 $\sqrt{a^2+b^2}$ 就是合成波的<strong>新振幅 $A$</strong>！</li>
+            <li>因此 $a\cos(\omega t) + b\sin(\omega t) = \sqrt{a^2+b^2}\sin(\omega t + \theta_0)$，最高峰就是 $+A$、最低谷就是 $-A$！</li>
+          </ul>
+        </div>
+        <div class="bg-rose-50/70 border-rose-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-rose-950 text-lg mb-2">🎡 情境二：複數極式乘法 ＝ 長度相乘、角度相加（課綱核心觀念）</h3>
+          <p class="text-sm text-slate-700 mb-3">設 $z_1 = r_1(\cos\alpha + i\sin\alpha), \; z_2 = r_2(\cos\beta + i\sin\beta)$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>乘開後實部剛好是 $\cos\alpha\cos\beta - \sin\alpha\sin\beta = \cos(\alpha+\beta)$，虛部剛好是 $\sin(\alpha+\beta)$！</li>
+            <li>這代表複數相乘在幾何上就是<strong>「模長相乘 $r_1r_2$，主幅角相加 $\alpha + \beta$（逆時針旋轉）」</strong>！連乘 $n$ 次就得到<strong>棣美弗定理 $[r(\cos\theta+i\sin\theta)]^n = r^n(\cos n\theta + i\sin n\theta)$</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">弧度扇形與週期函數</td>
+              <td class="py-3.5 px-4">$$\pi \text{ 弳} = 180^\circ, \quad s = r\theta, \quad A = \frac{1}{2}r^2\theta = \frac{1}{2}rs$$ • $y = A\sin(\omega x + \phi) + k$ 之週期為 $T = \frac{2\pi}{|\omega|}$，振幅為 $|A|$</td>
+              <td class="py-3.5 px-4">• 注意：$\tan x$ 的基本週期為 $\pi$，故 $y = \tan(\omega x + \phi)$ 的週期為 $\mathbf{\frac{\pi}{|\omega|}}$；而 $|\sin x|$ 與 $|\cos x|$ 的週期亦減半為 $\pi$！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">同週期正餘弦函數的疊合</td>
+              <td class="py-3.5 px-4">$$a\sin x + b\cos x = \sqrt{a^2 + b^2}\sin(x + \phi)$$ 其中 $\cos\phi = \frac{a}{\sqrt{a^2+b^2}}, \; \sin\phi = \frac{b}{\sqrt{a^2+b^2}}$</td>
+              <td class="py-3.5 px-4">• 當 $x \in \mathbb{R}$ 時，最大值為 $\sqrt{a^2+b^2}$，最小值為 $-\sqrt{a^2+b^2}$；若有範圍限制，須先求出相角 $x + \phi$ 的區間！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">複數極式與棣美弗定理</td>
+              <td class="py-3.5 px-4">$$z = a + bi = r(\cos\theta + i\sin\theta), \quad r = |z| = \sqrt{a^2+b^2}$$ $$z_1z_2 = r_1r_2[\cos(\theta_1+\theta_2) + i\sin(\theta_1+\theta_2)]$$ $$[r(\cos\theta + i\sin\theta)]^n = r^n(\cos n\theta + i\sin n\theta)$$</td>
+              <td class="py-3.5 px-4">• <strong>標準極式三大條件</strong>：① 模長 $r \ge 0$、② 實部為 $\cos\theta$、虛部為 $\sin\theta$ 且角度相同、③ 中間連接號必為 <strong>$+$ 號</strong>！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">複數的 $n$ 次方根與單位根</td>
+              <td class="py-3.5 px-4">$z^n = 1$ 的 $n$ 個根為：$$\omega_k = \cos\frac{2k\pi}{n} + i\sin\frac{2k\pi}{n} \quad (k = 0, 1, \dots, n-1)$$ 且滿足 $1 + \omega + \omega^2 + \cdots + \omega^{n-1} = 0$</td>
+              <td class="py-3.5 px-4">• 在複數平面上，$z^n = r(\cos\theta+i\sin\theta)$ 的 $n$ 個根必構成以原點為中心、半徑為 $\sqrt[n]{r}$ 的<strong>正 $n$ 邊形頂點</strong>！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade12-calculus.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade12-calculus.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：將「假極式」直接套用棣美弗定理</p>
+          <p class="text-slate-600">常見誤區：看到 $(\sin 20^\circ + i\cos 20^\circ)^9$ 直接把角度乘以 $9$ 寫 $\sin 180^\circ + i\cos 180^\circ$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：棣美弗定理規定<strong>實部必須是 $\cos$、虛部必須是 $\sin$</strong>！須先利用餘角化為標準極式 $(\cos 70^\circ + i\sin 70^\circ)^9 = \cos 630^\circ + i\sin 630^\circ = -i$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：求 $y = \tan(2x + \frac{\pi}{3})$ 的週期時誤代 $\frac{2\pi}{2} = \pi$</p>
+          <p class="text-slate-600">常見誤區：把正弦週期公式 $\frac{2\pi}{|\omega|}$ 套用到正切函數上。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：$\tan x$ 的原週期是 $\pi$ 而非 $2\pi$！故 $\tan(2x + \frac{\pi}{3})$ 的週期為 $\mathbf{\frac{\pi}{2}}$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：限定區間疊合求極值忘記檢查端點與頂點是否在範圍內</p>
+          <p class="text-slate-600">常見誤區：當 $0 \le x \le \frac{\pi}{2}$ 時，求 $\sin x - \sqrt{3}\cos x = 2\sin(x - \frac{\pi}{3})$ 的最大值寫 $2$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：因為 $-\frac{\pi}{3} \le x - \frac{\pi}{3} \le \frac{\pi}{6}$，相角根本碰不到 $\frac{\pi}{2}$！最大值發生在 $x - \frac{\pi}{3} = \frac{\pi}{6}$ 處，為 $2\sin\frac{\pi}{6} = \mathbf{1}$！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">正餘弦疊合與限定區間極值</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 設 $0 \le x \le \pi$，函數 $f(x) = \sqrt{3}\sin x + \cos x + 1$。<br/>(1) 將 $f(x)$ 化為 $A\sin(x + \phi) + 1$ 的形式。<br/>(2) 求 $f(x)$ 在 $0 \le x \le \pi$ 上的最大值與最小值，以及對應的 $x$ 值。
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>提出 $A = 2$ 疊合為 $2\sin\left(x + \frac{\pi}{6}\right) + 1$，再由 $0 \le x \le \pi$ 確定相角範圍 $\frac{\pi}{6} \le x + \frac{\pi}{6} \le \frac{7\pi}{6}$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：正弦疊合</strong></p>
+<p>$$f(x) = 2\left(\frac{\sqrt{3}}{2}\sin x + \frac{1}{2}\cos x\right) + 1 = 2\sin\left(x + \frac{\pi}{6}\right) + 1$$</p>
+<p><strong>步驟 2：檢查相角區間 $\left[\frac{\pi}{6}, \frac{7\pi}{6}\right]$ 的極值</strong></p>
+<p>• 當 $x + \frac{\pi}{6} = \frac{\pi}{2} \implies x = \frac{\pi}{3}$ 時，$\sin\frac{\pi}{2} = 1$，有最大值 $2(1) + 1 = 3$。</p>
+<p>• 當 $x + \frac{\pi}{6} = \frac{7\pi}{6} \implies x = \pi$ 時，$\sin\frac{7\pi}{6} = -\frac{1}{2}$，有最小值 $2\left(-\frac{1}{2}\right) + 1 = 0$。</p>
+<p class="text-emerald-700 font-bold">答：(1) $2\sin\left(x+\frac{\pi}{6}\right)+1$；(2) $x=\frac{\pi}{3}$ 時最大值 $3$，$x=\pi$ 時最小值 $0$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">複數極式與棣美弗定理高次方運算</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 試求下列複數之值：<br/>(1) $(1 + \sqrt{3}i)^6$<br/>(2) $\frac{(\cos 15^\circ + i\sin 15^\circ)^4}{(\sin 30^\circ - i\cos 30^\circ)^2}$
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>(1) 提出模長 $r = 2$ 化為 $2(\cos 60^\circ + i\sin 60^\circ)$。(2) 分母是假極式！先用 $\sin 30^\circ = \cos(-60^\circ), \; -\cos 30^\circ = \sin(-60^\circ)$ 轉為標準極式！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>第 (1) 題：</strong></p>
+<p>$$(1 + \sqrt{3}i)^6 = [2(\cos 60^\circ + i\sin 60^\circ)]^6 = 2^6(\cos 360^\circ + i\sin 360^\circ) = 64(1 + 0i) = 64$$</p>
+<p><strong>第 (2) 題：將分母轉為標準極式</strong></p>
+<p>分母 $\sin 30^\circ - i\cos 30^\circ = \frac{1}{2} - \frac{\sqrt{3}}{2}i = \cos(-60^\circ) + i\sin(-60^\circ)$。</p>
+<p>$$\text{原式} = \frac{\cos 60^\circ + i\sin 60^\circ}{\cos(-120^\circ) + i\sin(-120^\circ)} = \cos[60^\circ - (-120^\circ)] + i\sin 180^\circ = \cos 180^\circ = -1$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $64$；(2) $-1$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 3</span>
+          <span class="text-xs text-slate-500">複數的 $n$ 次方根與單位根等比級數</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 設 $\omega = \cos\frac{2\pi}{5} + i\sin\frac{2\pi}{5}$ 為 $z^5 = 1$ 的一個虛根。試求：<br/>(1) $1 + \omega + \omega^2 + \omega^3 + \omega^4$ 之值。<br/>(2) 在複數平面上，$1, \omega, \omega^2, \omega^3, \omega^4$ 五個點所圍成的正五邊形周長（以 $\sin 36^\circ$ 表示）。
+        </p>
+        <div class="bg-rose-50/80 border-rose-200 text-rose-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>(1) 由 $z^5 - 1 = (z - 1)(z^4 + z^3 + z^2 + z + 1) = 0$ 且 $\omega \neq 1$ 即得。(2) 正五邊形中心角為 $\frac{360^\circ}{5} = 72^\circ$，單邊長為 $2 \times 1 \times \sin 36^\circ$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>第 (1) 題：</strong>因為 $\omega^5 = 1$ 且 $\omega \neq 1$，由等比級數求和公式（或因式分解）：</p>
+<p>$$1 + \omega + \omega^2 + \omega^3 + \omega^4 = \frac{1 - \omega^5}{1 - \omega} = 0$$</p>
+<p><strong>第 (2) 題：</strong>五個根均勻分布在單位圓（$r = 1$）上，相鄰兩頂點對原點張角為 $72^\circ$，作角平分線得單邊長 $= 2\sin 36^\circ$，故正五邊形周長為 $5 \times 2\sin 36^\circ = 10\sin 36^\circ$。</p>
+<p class="text-emerald-700 font-bold">答：(1) $0$；(2) $10\sin 36^\circ$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高一上（數學 I）｜多項式函數：綜合除法、插值多項式、勘根定理與圖形不等式 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">高一上（數學 I）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high10-01-numbers.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high10-03-exponentials-logarithms.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 02 / 18</span>
+        <span>•</span>
+        <span>數學 I • 二、多項式函數 (1.1 ~ 4.1)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">多項式函數：綜合除法、插值多項式、勘根定理與圖形不等式</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        從一次與二次函數的正定性（恆正性）、單項函數 $y=cx^n(n\le 4)$ 平移出發，貫通連續綜合除法求近似值、牛頓與拉格朗日插值多項式、虛根成對與勘根定理，以及已分解高次不等式。
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：單項函數僅至 4 次且不涉及二項式展開逆運算；插值多項式不超過三次；不含最高公因式與複雜分式不等式。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解二次式的正定性（恆正性 $a>0, D<0$）與單項函數 $y = c(x-h)^n + k \; (n=1,2,3,4)$ 的奇偶性、單調性與平移。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練綜合除法、餘式與因式定理、連續綜合除法求 $f(a)$ 附近近似值，以及牛頓與拉格朗日插值多項式。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>掌握二次方程式複數根、有理根判定法、勘根定理求實根近似區間，以及實係數多項式虛根成對定理。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能辨識已分解多項式函數圖形特徵（零根、重根奇穿偶切、正負區間）並解高次與簡易分式不等式。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：局部放大鏡與數據點描繪曲線</h2>
+          <p class="text-sm text-slate-500">為什麼連續除以 $(x-a)$ 就能算近似值？三筆離散氣溫數據怎麼還原出連續溫度曲線？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-indigo-50/70 border-indigo-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-indigo-950 text-lg mb-2">🔍 情境一：連續綜合除法 ＝ 在 $x = a$ 架設局部放大鏡</h3>
+          <p class="text-sm text-slate-700 mb-3">將 $f(x) = 2x^3 - 5x^2 + 6x + 3$ 透過連續除以 $(x-1)$ 展開為 $a + b(x-1) + c(x-1)^2 + d(x-1)^3$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>當 $x = 1.01$ 時，$x - 1 = 0.01$，平方與立方項 $(0.01)^2 = 10^{-4}, (0.01)^3 = 10^{-6}$ 微乎其微！</li>
+            <li>因此只要取前兩項 $a + b(x-1)$ 就能瞬間得到極為精準的局部近似值！</li>
+          </ul>
+        </div>
+        <div class="bg-indigo-50/70 border-indigo-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-indigo-950 text-lg mb-2">📈 情境二：插值多項式 ＝ 離散觀測點的「平滑連連看」</h3>
+          <p class="text-sm text-slate-700 mb-3">已知函數圖形通過 $(1,1), (2,3), (3,7)$ 三個點，如何找出不超過二次的唯一拋物線？</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>牛頓插值法</strong>：像疊積木一樣設 $f(x) = a + b(x-1) + c(x-1)(x-2)$，依序代入 $x=1,2,3$ 即可逐一求出係數！</li>
+            <li><strong>拉格朗日插值法</strong>：直接構造在該點為 $1$、其餘觀測點為 $0$ 的分式基底組合而成，一步到位！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">二次式正定性與單項函數平移</td>
+              <td class="py-3.5 px-4">• 二次式恆正：$ax^2+bx+c > 0 \iff a > 0 \text{ 且 } D = b^2-4ac < 0$<br/>• 單項函數平移：$y = c(x-h)^n + k \quad (n=1,2,3,4)$</td>
+              <td class="py-3.5 px-4">• 當 $n$ 為奇數時 $y=cx^n$ 對稱於原點（奇函數）；當 $n$ 為偶數時對稱於 $y$ 軸（偶函數）。<br/>• 課綱備註：不涉及二項式展開的逆運算。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">除法原理、餘式與因式定理</td>
+              <td class="py-3.5 px-4">$$f(x) = g(x)q(x) + r(x), \quad \deg r(x) < \deg g(x) \text{ 或 } r(x)=0$$ • 除以 $(x-a)$ 餘式為 $f(a)$；$(x-a) \mid f(x) \iff f(a) = 0$</td>
+              <td class="py-3.5 px-4">• $f(x)$ 除以 $(x-a)(x-b)$ 的餘式，即為通過 $(a, f(a)), (b, f(b))$ 的一次插值多項式。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">牛頓與拉格朗日插值多項式</td>
+              <td class="py-3.5 px-4">• 牛頓型：$f(x) = a + b(x-x_1) + c(x-x_1)(x-x_2)$<br/>• 拉格朗日型：$f(x) = \sum_{i=1}^{3} y_i \prod_{j \neq i} \frac{x-x_j}{x_i-x_j}$</td>
+              <td class="py-3.5 px-4">• 由因式定理可證：通過相異 $n+1$ 點且次數 $\le n$ 的插值多項式必唯一（課綱限制次數不超過三次）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">勘根定理與虛根成對定理</td>
+              <td class="py-3.5 px-4">• 勘根定理：實係數 $f(x)$ 若 $f(a)f(b) < 0$，則 $(a,b)$ 內至少有一實根。<br/>• 虛根成對：實係數 $f(\alpha+\beta i)=0 \implies f(\alpha-\beta i)=0$。</td>
+              <td class="py-3.5 px-4">• 已分解高次不等式 $(x-a_1)^{r_1}(x-a_2)^{r_2} > 0$：奇次重根穿過 $x$ 軸變號，偶次重根相切不變號。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade10-algebra.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：以為 $f(a)f(b) > 0$ 就代表 $(a,b)$ 之間無實根</p>
+          <p class="text-slate-600">常見誤區：勘根定理逆敘述誤用。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：$f(a)f(b) < 0$ 代表有奇數個實根；若 $f(a)f(b) > 0$，在 $(a,b)$ 內仍可能有<strong>偶數個相異實根或偶次重根</strong>！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：忽略虛根成對定理的「實係數」前提</p>
+          <p class="text-slate-600">常見誤區：對虛係數方程式 $x^2 - ix + 2 = 0$ 直接套用共軛虛根。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：只有<strong>實係數多項式</strong>才滿足 $\overline{f(z)} = f(\bar{z})$，故虛根成對定理僅適用於實係數多項式！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：誤以為整係數多項式的實根都是有理根</p>
+          <p class="text-slate-600">常見誤區：用牛頓法找不出有理根就宣稱無實根。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：課綱強調：找不出有理根時，方程式仍常有<strong>無理實根</strong>（如 $x^3+2x^2+3x+4=0$），須用勘根定理定位！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 4：簡易分式不等式 $\frac{1}{x-1} < 1$ 直接乘開分母</p>
+          <p class="text-slate-600">常見誤區：兩邊同乘 $(x-1)$ 得 $1 < x - 1 \implies x > 2$，漏掉負分母區間。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：必須移項通分 $\frac{2-x}{x-1} < 0 \implies (x-2)(x-1) > 0$，得完整正解 $x > 2 \text{ 或 } x < 1$！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">連續綜合除法與多項式近似值</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 設 $f(x) = 2x^3 - 5x^2 + 6x + 3 = a + b(x - 1) + c(x - 1)^2 + d(x - 1)^3$，求 $a, b, c, d$ 之值與 $f(1.01)$ 的二位小數近似值。
+        </p>
+        <div class="bg-indigo-50/80 border-indigo-200 text-indigo-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>以 $x = 1$ 做連續三次綜合除法，由下而上（或由內而外）的餘數依序為 $a, b, c, d$。
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：連續除以 $(x-1)$</strong></p>
+<p>• $2x^3 - 5x^2 + 6x + 3 = (x-1)(2x^2 - 3x + 3) + 6 \implies a = 6$。</p>
+<p>• $2x^2 - 3x + 3 = (x-1)(2x - 1) + 2 \implies b = 2$。</p>
+<p>• $2x - 1 = 2(x - 1) + 1 \implies c = 1, \; d = 2$。</p>
+<p><strong>步驟 2：代入 $x = 1.01$ 求近似值</strong></p>
+<p>$$f(1.01) = 6 + 2(0.01) + 1(0.01)^2 + 2(0.01)^3 = 6.020102 \approx 6.02$$</p>
+<p class="text-emerald-700 font-bold">答：$(a,b,c,d) = (6, 2, 1, 2)$；$f(1.01) \approx 6.02$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">牛頓插值與拉格朗日插值多項式</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. (1) 設通過 $(1,1), (2,3), (3,7)$ 的多項式為 $f(x) = a + b(x-1) + c(x-1)(x-2)$，求 $a,b,c$ 及 $f\left(\frac{1}{2}\right)$。<br/>(2) 設通過 $(11,3), (12,5), (13,8)$ 的拉格朗日插值多項式為 $g(x)$，求 $g(11.5)$ 之值。
+        </p>
+        <div class="bg-indigo-50/80 border-indigo-200 text-indigo-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>(1) 依序代入 $x=1,2,3$ 求 $a,b,c$。(2) 代入拉格朗日三項分式求 $x=11.5$ 之值。
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>第 (1) 題：</strong>代入 $x=1 \Rightarrow a=1$；代入 $x=2 \Rightarrow 1+b=3 \Rightarrow b=2$；代入 $x=3 \Rightarrow 1+4+2c=7 \Rightarrow c=1$。故 $f\left(\frac{1}{2}\right) = 1 + 2\left(-\frac{1}{2}\right) + \left(-\frac{1}{2}\right)\left(-\frac{3}{2}\right) = \frac{3}{4}$。</p>
+<p><strong>第 (2) 題：</strong></p>
+<p>$$g(11.5) = 3\cdot\frac{(-0.5)(-1.5)}{(-1)(-2)} + 5\cdot\frac{(0.5)(-1.5)}{(1)(-1)} + 8\cdot\frac{(0.5)(-0.5)}{(2)(1)} = \frac{9 + 30 - 8}{8} = \frac{31}{8} = 3.875$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $(a,b,c)=(1,2,1), \; f\left(\frac{1}{2}\right)=\frac{3}{4}$；(2) $g(11.5) = 3.875$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 3</span>
+          <span class="text-xs text-slate-500">複數求值與已分解高次不等式</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. (1) 求 $f(x) = 5x^4 - 21x^3 + 30x^2 - 9x + 7$ 在 $x = 2 + i$ 的值。<br/>(2) 解不等式 $(x - 1)(x + 2)^2(x - 4) > 0$。
+        </p>
+        <div class="bg-indigo-50/80 border-indigo-200 text-indigo-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>(1) 由 $(x-2)^2 = i^2 = -1 \implies x^2 - 4x + 5 = 0$ 作除法求餘式。(2) 注意偶次重根 $(x+2)^2 \ge 0$ 在 $x = -2$ 為 $0$。
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>第 (1) 題：</strong>因 $x = 2 + i \implies x^2 - 4x + 5 = 0$，將 $f(x)$ 除以 $x^2 - 4x + 5$ 得：</p>
+<p>$$f(x) = (x^2 - 4x + 5)(5x^2 - x + 1) + 2 \implies f(2+i) = 0 + 2 = 2$$</p>
+<p><strong>第 (2) 題：</strong>因對 $x \neq -2$ 時 $(x+2)^2 > 0$ 恆正，故由 $(x-1)(x-4) > 0$ 且 $x \neq -2$ 得：$x > 4$ 或 $x < 1$ 且 $x \neq -2$。</p>
+<p class="text-emerald-700 font-bold">答：(1) $2$；(2) $x > 4$ 或 $x < -2$ 或 $-2 < x < 1$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

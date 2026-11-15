@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>八年級上學期｜畢氏定理 — 十二年國教國中數學互動教材</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- MathJax 3 Configuration & CDN -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 (Top Navigation) -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold">八年級上學期</span>
+        <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold">幾何與空間 (S-8-6)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade7-02-linear-equations.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 七年級單元</a>
+        <a href="grade8-02-factorization.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：因式分解 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 (Title & Learning Objectives) -->
+    <section id="objectives" class="bg-gradient-to-br from-sky-600 to-blue-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-sky-100 text-sm font-medium mb-2">
+        <span>單元 8-01</span>
+        <span>•</span>
+        <span>課綱學習表現：s-IV-7 理解畢氏定理與其逆敘述，並能應用於數學解題與日常情境</span>
+        <span>•</span>
+        <span>學習內容：S-8-6, N-8-1</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">畢氏定理（勾股定理）：直角三角形的三邊密碼</h1>
+      <p class="text-sky-50 text-base sm:text-lg mb-6">
+        連結代數平方根與幾何圖形的橋樑！探索直角三角形兩股平方和等於斜邊平方的永恆定律，並解決消防雲梯、電視螢幕尺寸與坐標平面距離問題。
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2">
+          <span>🎯</span> 本單元核心學習目標
+        </h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-sky-50">
+          <li class="flex items-start gap-2">
+            <span class="text-amber-300 font-bold">✓</span>
+            <span>透過正方形面積拼貼直觀理解畢氏定理：$a^2 + b^2 = c^2$。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-300 font-bold">✓</span>
+            <span>已知直角三角形任意兩邊長，能快速求出第三邊長，並熟記常見畢氏數。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-300 font-bold">✓</span>
+            <span>理解並計算直角三角形「斜邊上的高」公式 $h = \frac{ab}{c}$。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-300 font-bold">✓</span>
+            <span>應用畢氏定理求直角坐標平面上任意兩點 $A(x_1, y_1)$ 與 $B(x_2, y_2)$ 的直線距離。</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 (Real-life Analogy) -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：公園切西瓜走捷徑與地板方格磁磚</h2>
+          <p class="text-sm text-slate-500">為什麼走對角線比較快？畢達哥拉斯在朋友家的地板磁磚看到了什麼？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-sky-50/70 rounded-xl p-5 border border-sky-200">
+          <h3 class="font-bold text-sky-900 text-lg mb-2">🧱 比喻一：地板上的三塊正方形磁磚拼圖</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            古希臘數學家畢達哥拉斯造訪朋友家時，盯著地板上的直角三角形與周圍的正方形磁磚發現：
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>在兩條較短的直角邊（稱為<strong>股</strong>，長 $3$ 與 $4$）向外鋪正方形，分別需要 $3^2 = 9$ 塊與 $4^2 = 16$ 塊小磁磚。</li>
+            <li>在最長邊（直角對面的<strong>斜邊</strong>，長 $5$）向外鋪正方形，剛好需要 $5^2 = 25$ 塊小磁磚！</li>
+            <li>驚人巧合：<strong>兩小正方形面積總和 $=$ 最大正方形面積</strong>（$9 + 16 = 25$）！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🏃 比喻二：長方形公園「走對角線捷徑」省幾公尺？</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            假設長方形公園的邊長分別是往東 $60$ 公尺、往北 $80$ 公尺：
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>如果乖乖沿著外圍人行道轉彎走，總共要走 $60 + 80 = 140$ 公尺。</li>
+            <li>如果直接穿越對角線步道（斜邊 $c$），根據畢氏定理：
+              $$c = \sqrt{60^2 + 80^2} = \sqrt{3600 + 6400} = \sqrt{10000} = 100 \text{ 公尺}$$
+            </li>
+            <li>走對角線足足省下了 $140 - 100 = 40$ 公尺！電視機標示的「65 吋螢幕」也是量這條斜邊對角線喔！</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 視覺化畢氏數速記卡片 -->
+      <div class="mt-6 bg-slate-900 text-white rounded-xl p-5">
+        <p class="text-xs text-slate-400 mb-3 font-mono uppercase tracking-wider">秒殺計算必背：四大黃金畢氏數（整數邊長直角三角形）</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div class="bg-slate-800 p-3 rounded-lg border border-sky-500/40">
+            <div class="text-lg font-extrabold text-sky-400">(3, 4, 5)</div>
+            <div class="text-xs text-slate-400 mt-1">倍數：(6, 8, 10)、(9, 12, 15)</div>
+          </div>
+          <div class="bg-slate-800 p-3 rounded-lg border border-emerald-500/40">
+            <div class="text-lg font-extrabold text-emerald-400">(5, 12, 13)</div>
+            <div class="text-xs text-slate-400 mt-1">倍數：(10, 24, 26)</div>
+          </div>
+          <div class="bg-slate-800 p-3 rounded-lg border border-amber-500/40">
+            <div class="text-lg font-extrabold text-amber-400">(8, 15, 17)</div>
+            <div class="text-xs text-slate-400 mt-1">常見於摺紙與梯子題</div>
+          </div>
+          <div class="bg-slate-800 p-3 rounded-lg border border-purple-500/40">
+            <div class="text-lg font-extrabold text-purple-400">(7, 24, 25)</div>
+            <div class="text-xs text-slate-400 mt-1">$7^2 + 24^2 = 49 + 576 = 625$</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 (Core Formula Table & Common Pitfalls) -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">從三邊長關係、斜邊上的高到直角坐標平面兩點距離公式</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心概念</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與代數變形</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">適用條件與說明</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">畢氏定理本尊</td>
+              <td class="py-3.5 px-4">
+                $$\text{兩股平方和} = \text{斜邊平方}$$
+                $$a^2 + b^2 = c^2$$
+              </td>
+              <td class="py-3.5 px-4">
+                僅適用於<strong>直角三角形</strong>，其中 $c$ 必為直角（$90^\circ$）所對的最長邊（斜邊）。
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">求斜邊 vs. 求股</td>
+              <td class="py-3.5 px-4">
+                求斜邊：$c = \sqrt{a^2 + b^2}$<br/>
+                求一股：$a = \sqrt{c^2 - b^2}$
+              </td>
+              <td class="py-3.5 px-4">
+                求一股時可用平方差公式加速計算：<br/>
+                $$\sqrt{25^2 - 24^2} = \sqrt{(25+24)(25-24)} = \sqrt{49} = 7$$
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">斜邊上的高</td>
+              <td class="py-3.5 px-4">
+                $$h = \frac{\text{兩股相乘}}{\text{斜邊}} = \frac{a \times b}{c}$$
+              </td>
+              <td class="py-3.5 px-4">
+                由同一個直角三角形面積相等推導而來：<br/>
+                $$\frac{1}{2}ab = \frac{1}{2}ch \implies ab = ch$$
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">特殊直角三角形</td>
+              <td class="py-3.5 px-4">
+                等腰直角（$45^\circ\text{-}45^\circ\text{-}90^\circ$）：$1 : 1 : \sqrt{2}$<br/>
+                半正三角形（$30^\circ\text{-}60^\circ\text{-}90^\circ$）：$1 : \sqrt{3} : 2$
+              </td>
+              <td class="py-3.5 px-4">
+                邊長為 $a$ 的正三角形：高 $h = \frac{\sqrt{3}}{2}a$，面積 $= \frac{\sqrt{3}}{4}a^2$。
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">坐標平面兩點距離</td>
+              <td class="py-3.5 px-4">
+                $$\overline{AB} = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$$
+              </td>
+              <td class="py-3.5 px-4">
+                水平距離 $|x_1 - x_2|$ 與鉛直距離 $|y_1 - y_2|$ 構成直角三角形的兩股。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 易錯提醒區塊 -->
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2">
+          <span>⚠️</span> 常見易錯觀念提醒（段考陷阱正誤對照）
+        </h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「看到 $3$ 和 $4$，第三邊就無腦填 $5$！」</p>
+            <p class="text-slate-600 mb-2">題目只說「直角三角形兩邊長為 $3$ 和 $4$」，未指明 $4$ 是股還是斜邊。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：若 $3, 4$ 為兩股，則斜邊為 $5$；但若<strong>$4$ 是斜邊</strong>，則另一股為 $\sqrt{4^2 - 3^2} = \sqrt{7}$！有兩解！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「$\sqrt{a^2 + b^2} = a + b$」</p>
+            <p class="text-slate-600 mb-2">誤把根號內的加法直接分別開根號，例如以為 $\sqrt{3^2 + 4^2} = 3 + 4 = 7$。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：根號內有加減號時，<strong>必須先算出平方和的總數才能開根號</strong>：$\sqrt{9 + 16} = \sqrt{25} = 5 \ne 7$。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋斜邊高、雲梯滑動應用題與坐標平面距離計算</p>
+        </div>
+      </div>
+
+      <!-- 題目 1 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">畢氏定理與斜邊上的高</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          1. 已知直角三角形 $ABC$ 中，$\angle C = 90^\circ$，兩股長分別為 $\overline{AC} = 5$、$\overline{BC} = 12$。求：(1) 斜邊 $\overline{AB}$ 的長；(2) 斜邊上的高 $\overline{CD}$ 的長。
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用畢氏定理求斜邊 $\overline{AB}$</strong></p>
+            <p>$$\overline{AB} = \sqrt{5^2 + 12^2} = \sqrt{25 + 144} = \sqrt{169} = 13$$</p>
+            <p>（或直接由黃金畢氏數 $(5, 12, 13)$ 秒答！）</p>
+            <p><strong>步驟 2：利用面積相等求斜邊上的高 $\overline{CD}$</strong></p>
+            <p>$$\overline{CD} = \frac{\text{兩股相乘}}{\text{斜邊}} = \frac{5 \times 12}{13} = \frac{60}{13}$$</p>
+            <p class="text-emerald-700 font-bold">答：(1) $\overline{AB} = 13$；(2) $\overline{CD} = \frac{60}{13}$。</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 題目 2 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">鋁梯靠牆滑動問題</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          2. 有一架長 $25$ 公尺的消防雲梯斜靠在一座垂直的牆壁上，原本梯腳距離牆角 $7$ 公尺。若雲梯頂端沿著牆壁下滑了 $4$ 公尺，請問此時梯腳會往外滑移多少公尺？
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：抓住核心關鍵——「雲梯本身的長度（斜邊 $25$ 公尺）永遠不變」！</strong></p>
+            <p>先求原本梯頂離地面的高度 $h_1$：</p>
+            <p>$$h_1 = \sqrt{25^2 - 7^2} = \sqrt{625 - 49} = \sqrt{576} = 24 \text{ 公尺}$$</p>
+            <p><strong>步驟 2：計算梯頂下滑 $4$ 公尺後的新高度 $h_2$</strong></p>
+            <p>$$h_2 = 24 - 4 = 20 \text{ 公尺}$$</p>
+            <p><strong>步驟 3：求滑動後梯腳距離牆角的新距離 $d_2$</strong></p>
+            <p>$$d_2 = \sqrt{25^2 - 20^2} = \sqrt{625 - 400} = \sqrt{225} = 15 \text{ 公尺}$$</p>
+            <p><strong>步驟 4：求梯腳往外滑移的距離（切勿誤以為頂端下滑 $4$ 公尺，底部也滑移 $4$ 公尺！）</strong></p>
+            <p>$$\text{滑移距離} = 15 - 7 = 8 \text{ 公尺}$$</p>
+            <p class="text-emerald-700 font-bold">答：梯腳會往外滑移 $8$ 公尺。</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 題目 3 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">直角坐標平面上的兩點距離</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          3. 在直角坐標平面上，若學校位於點 $A(-2, 3)$，圖書館位於點 $B(6, -3)$，且每單位長代表 $100$ 公尺。請問學校到圖書館的直線距離是多少公尺？
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：分別計算水平距離（$\Delta x$）與鉛直距離（$\Delta y$）</strong></p>
+            <p>$$\Delta x = |6 - (-2)| = 8 \text{ 單位}$$</p>
+            <p>$$\Delta y = |-3 - 3| = 6 \text{ 單位}$$</p>
+            <p><strong>步驟 2：套用兩點距離公式（畢氏定理）</strong></p>
+            <p>$$\overline{AB} = \sqrt{8^2 + 6^2} = \sqrt{64 + 36} = \sqrt{100} = 10 \text{ 單位長}$$</p>
+            <p><strong>步驟 3：換算為實際公尺數</strong></p>
+            <p>$$10 \times 100 = 1000 \text{ 公尺}$$</p>
+            <p class="text-emerald-700 font-bold">答：直線距離為 $1000$ 公尺（或 $1$ 公里）。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

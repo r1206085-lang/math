@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>八年級｜平方根與根號運算 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold">八年級（國二）</span>
+        <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">數與量 (N-8-1 ~ N-8-2)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade8-01-polynomials.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade8-03-pythagorean.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：畢氏定理 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-cyan-600 to-sky-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-cyan-100 text-sm font-medium mb-2">
+        <span>八年級單元 02</span>
+        <span>•</span>
+        <span>課綱代碼：n-IV-5, n-IV-6</span>
+        <span>•</span>
+        <span>學習內容：根號的意義、最簡根式、十分逼近法近似值與根號的四則運算</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">平方根與根號運算：最簡根式與有理化秘笈</h1>
+      <p class="text-cyan-50 text-base sm:text-lg mb-6">
+        當正方形面積是 $7$ 時，它的邊長是多少？認識全新符號「根號 $\sqrt{a}$」，釐清「$\sqrt{a}$」與「$a$ 的平方根（$\pm\sqrt{a}$）」的差別，並掌握最簡根式與分母有理化！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-cyan-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>區分「$\sqrt{a}$（正平方根，必 $\ge 0$）」與「$a$ 的平方根（$\pm\sqrt{a}$，一正一負）」。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能用十分逼近法或完全平方數夾擠估計 $\sqrt{a}$ 的整數部分與近似值。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能將根式化為<strong>最簡根式</strong>，並合併<strong>同類方根</strong>進行加減四則運算。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練單項與雙項（利用平方差公式）的<strong>分母有理化</strong>技巧。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：雙胞胎結伴出獄與夾三明治估計法</h2>
+          <p class="text-sm text-slate-500">為什麼 $\sqrt{12}$ 可以化簡成 $2\sqrt{3}$？怎麼一秒鐘知道 $\sqrt{30}$ 大約是幾點幾？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-cyan-50/70 rounded-xl p-5 border border-cyan-200">
+          <h3 class="font-bold text-cyan-900 text-lg mb-2">👯 比喻一：根號監獄的「雙胞胎出獄規則」</h3>
+          <p class="text-sm text-slate-700 mb-3">把根號 $\sqrt{\quad}$ 想像成一間房間，規定<strong>「要湊滿兩個一模一樣的質因數（平方），才能合體成一個走出根號外面」</strong>：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>化簡 $\sqrt{18}$：做標準分解式 $18 = 2 \times 3^2$。</li>
+            <li>裡面的兩個 $3$（$3^2$）湊成一對，走出根號變成一個 $3$；落單的 $2$ 只能留在根號內：
+              $$\sqrt{18} = \sqrt{3^2 \times 2} = 3\sqrt{2}$$
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🥪 比喻二：完全平方數「三明治夾擊法」</h3>
+          <p class="text-sm text-slate-700 mb-3">想知道 $\sqrt{30}$ 是幾點多？只要找出 $30$ 左右兩邊最近的完全平方數（$25$ 與 $36$）：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>因為 $\sqrt{25} < \sqrt{30} < \sqrt{36}$，也就是 $5 < \sqrt{30} < 6$！</li>
+            <li>立刻得知 $\sqrt{30} = 5.\text{多}$，它的<strong>整數部分是 $5$，小數部分就是 $(\sqrt{30} - 5)$</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">平方根定義、根式乘除與分母有理化完整對照表</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心概念</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與性質</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">關鍵說明與範例</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">正數 $a$ 的平方根</td>
+              <td class="py-3.5 px-4">若 $x^2 = a \quad (a > 0)$，則 $x = \pm\sqrt{a}$</td>
+              <td class="py-3.5 px-4">正數的兩個平方根<strong>互為相反數，相加必為 $0$</strong>；$0$ 的平方根只有 $0$；負數沒有實數平方根。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">平方開根號性質</td>
+              <td class="py-3.5 px-4">$$\sqrt{a^2} = |a| = \begin{cases} a, & a \ge 0 \\ -a, & a < 0 \end{cases}$$</td>
+              <td class="py-3.5 px-4">例：$\sqrt{(-7)^2} = |-7| = 7$（絕對不會等於 $-7$！）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">根式的乘除法則</td>
+              <td class="py-3.5 px-4">$$\sqrt{a} \times \sqrt{b} = \sqrt{ab}, \quad \frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}} \quad (a \ge 0, b > 0)$$</td>
+              <td class="py-3.5 px-4">同類方根才能相加減：$3\sqrt{2} + 5\sqrt{2} = 8\sqrt{2}$，但 $\sqrt{2} + \sqrt{3}$ 不能合併！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">雙項分母有理化</td>
+              <td class="py-3.5 px-4">$$\frac{c}{\sqrt{a} - \sqrt{b}} = \frac{c(\sqrt{a} + \sqrt{b})}{(\sqrt{a}-\sqrt{b})(\sqrt{a}+\sqrt{b})} = \frac{c(\sqrt{a} + \sqrt{b})}{a - b}$$</td>
+              <td class="py-3.5 px-4">利用平方差公式消去分母根號。<br/>例：$\frac{1}{\sqrt{5}-2} = \frac{\sqrt{5}+2}{5-4} = \sqrt{5}+2$。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒（必考陷阱！）</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「$\sqrt{16} = \pm 4$」或「$\sqrt{16}$ 的平方根是 $\pm 4$」</p>
+            <p class="text-slate-600 mb-2">全台灣八年級第一次段考錯誤率高達 70% 的文字陷阱題！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：符號 $\sqrt{16}$ 前面沒有負號，本身就等於 $+4$！所以題目問「$\sqrt{16}$ 的平方根」，其實是在問「<strong>$4$ 的平方根</strong>」，答案是 $\pm\sqrt{4} = \pm 2$！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「$\sqrt{2} + \sqrt{3} = \sqrt{5}$」</p>
+            <p class="text-slate-600 mb-2">把根號內的數字直接相加減。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：不同類方根就像 $x + y$ 一樣<strong>絕對不能相加減</strong>！$\sqrt{2} + \sqrt{3}$ 已經是最簡結果。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋最簡根式化簡、兩個平方根性質與雙項分母有理化</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">最簡根式與同類方根加減</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 化簡下列根式運算：$$\sqrt{27} - \sqrt{12} + \frac{6}{\sqrt{3}}$$</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：將各項分別化為最簡根式並有理化分母</strong></p>
+            <p>• $\sqrt{27} = \sqrt{9 \times 3} = 3\sqrt{3}$</p>
+            <p>• $\sqrt{12} = \sqrt{4 \times 3} = 2\sqrt{3}$</p>
+            <p>• $\frac{6}{\sqrt{3}} = \frac{6\sqrt{3}}{3} = 2\sqrt{3}$</p>
+            <p><strong>步驟 2：合併同類方根</strong></p>
+            <p>$$\text{原式} = 3\sqrt{3} - 2\sqrt{3} + 2\sqrt{3} = 3\sqrt{3}$$</p>
+            <p class="text-emerald-700 font-bold">答：$3\sqrt{3}$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">正數的兩個平方根互為相反數</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 已知某正數 $N$ 的兩個平方根分別為 $(2x - 1)$ 與 $(-x - 5)$，求此正數 $N$ 的值為何？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用「同一個正數的兩個平方根必互為相反數（相加 $= 0$）」求 $x$</strong></p>
+            <p>$$(2x - 1) + (-x - 5) = 0 \implies x - 6 = 0 \implies x = 6$$</p>
+            <p><strong>步驟 2：代回求出平方根，再平方還原正數 $N$</strong></p>
+            <p>平方根為 $2(6) - 1 = 11$（與 $-11$），故原正數 $N = 11^2 = 121$。</p>
+            <p class="text-emerald-700 font-bold">答：$N = 121$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">雙項分母有理化與乘法公式結合</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 計算並化簡：$$\frac{4}{\sqrt{7} - \sqrt{3}} - (\sqrt{7} - \sqrt{3})^2$$</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：有理化第一項（上下同乘 $\sqrt{7} + \sqrt{3}$）</strong></p>
+            <p>$$\frac{4(\sqrt{7} + \sqrt{3})}{(\sqrt{7})^2 - (\sqrt{3})^2} = \frac{4(\sqrt{7} + \sqrt{3})}{7 - 3} = \sqrt{7} + \sqrt{3}$$</p>
+            <p><strong>步驟 2：展開第二項完全平方</strong></p>
+            <p>$$(\sqrt{7} - \sqrt{3})^2 = 7 - 2\sqrt{21} + 3 = 10 - 2\sqrt{21}$$</p>
+            <p><strong>步驟 3：合併相減</strong></p>
+            <p>$$\text{原式} = \sqrt{7} + \sqrt{3} - 10 + 2\sqrt{21}$$</p>
+            <p class="text-emerald-700 font-bold">答：$\sqrt{7} + \sqrt{3} + 2\sqrt{21} - 10$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>八年級｜一元二次方程式 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold">八年級（國二）</span>
+        <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">代數 (A-8-6 ~ A-8-7)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade8-04-factorization.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade8-06-sequences.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：數列與級數 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-indigo-600 to-blue-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-100 text-sm font-medium mb-2">
+        <span>八年級單元 05</span>
+        <span>•</span>
+        <span>課綱代碼：a-IV-6</span>
+        <span>•</span>
+        <span>學習內容：因式分解法解一元二次方程式、配方法、公式解與應用問題</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">一元二次方程式：三大解法與判別式全攻略</h1>
+      <p class="text-indigo-50 text-base sm:text-lg mb-6">
+        當方程式出現 $x^2$ 時，答案通常有兩個！掌握「因式分解法」、「配方法」與萬能「公式解 $x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$」，解決花園開闢步道與商品漲價利潤應用題！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-indigo-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解零乘積性質：若 $A \times B = 0$，則 $A = 0$ 或 $B = 0$，並用因式分解法快速求解。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>學會<strong>配方法</strong>（兩邊同加「一次項係數一半的平方」），湊成完全平方式 $(x+p)^2 = q$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟記一元二次方程式公式解與判別式 $D = b^2 - 4ac$（判斷兩相異實根、重根或無實數解）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能將花園步道平移合併法與商品售價漲降問題列成一元二次方程式，並檢驗解的合理性。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：歸零炸彈（$A \times B = 0$）與花園步道推到邊邊</h2>
+          <p class="text-sm text-slate-500">為什麼解一元二次方程式一定要先讓等號右邊變成 $0$？花園十字步道題怎麼一秒列式？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-indigo-50/70 rounded-xl p-5 border border-indigo-200">
+          <h3 class="font-bold text-indigo-900 text-lg mb-2">💣 比喻一：只有「等於 $0$」才能推理！</h3>
+          <p class="text-sm text-slate-700 mb-3">為什麼 $(x-2)(x-3) = 6$ 不能直接說 $x-2=6$？</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>因為兩個數相乘等於 $6$ 有無限多種可能（$1\times 6, 2\times 3, 12\times 0.5\dots$）！</li>
+            <li>但唯獨<strong>兩數相乘等於 $0$（$A \times B = 0$）</strong>時，其中至少有一個數必然是「歸零炸彈 $0$」！所以解一元二次方程式的第一步：<strong>永遠先把所有項移到左邊，讓等號右邊變成 $0$</strong>！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🌷 比喻二：長方形花園開闢十字步道「全部推到邊角合併」</h3>
+          <p class="text-sm text-slate-700 mb-3">長 $20$ 公尺、寬 $15$ 公尺的花園，中間開闢寬為 $x$ 公尺的十字形道路，剩餘花圃面積怎麼算最快？</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>別傻傻切四塊再扣重疊正方形！想像把水平道路<strong>推到最底下</strong>、垂直道路<strong>推到最右邊</strong>！</li>
+            <li>剩下的四塊花圃瞬間合體成一個<strong>長為 $(20 - x)$、寬為 $(15 - x)$ 的完整長方形</strong>，直接列式 $(20-x)(15-x) = \text{花圃面積}$ 秒殺！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">因式分解法、配方法、公式解與判別式 $D = b^2 - 4ac$ 總整理</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心概念</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與步驟</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">判別條件與說明</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">因式分解法</td>
+              <td class="py-3.5 px-4">$$(ax - b)(cx - d) = 0 \implies x = \frac{b}{a} \text{ 或 } \frac{d}{c}$$</td>
+              <td class="py-3.5 px-4">逆推：若已知兩根為 $\alpha, \beta$，可還原方程式為 $(x-\alpha)(x-\beta) = 0$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">配方法口訣</td>
+              <td class="py-3.5 px-4">$$x^2 + bx + \left(\frac{b}{2}\right)^2 = \left(x + \frac{b}{2}\right)^2$$</td>
+              <td class="py-3.5 px-4">前提：<strong>二次項係數必須先化為 $1$</strong>，再於等號兩邊同加「一次項係數一半的平方」。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">萬能公式解</td>
+              <td class="py-3.5 px-4">$$ax^2 + bx + c = 0 \quad (a \ne 0)$$ $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</td>
+              <td class="py-3.5 px-4">當十字交乘法拆不開時，直接代公式解！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">判別式 $D = b^2 - 4ac$</td>
+              <td class="py-3.5 px-4">
+                • $b^2 - 4ac > 0$：<strong>兩相異實根</strong><br/>
+                • $b^2 - 4ac = 0$：<strong>兩相等實根（重根 $x = -\frac{b}{2a}$）</strong><br/>
+                • $b^2 - 4ac < 0$：<strong>無實數解（無解）</strong>
+              </td>
+              <td class="py-3.5 px-4">看到題目說「方程式有重根（或恰有一解）」，立刻列式 $b^2 - 4ac = 0$！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「解 $x(x - 3) = 2(x - 3)$ 時，左右直接把 $(x - 3)$ 約掉得 $x = 2$！」</p>
+            <p class="text-slate-600 mb-2">直接約掉含未知數的因式，會導致<strong>漏掉一個根 $x = 3$</strong>！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：千萬不可隨便除以可能為 $0$ 的 $(x-3)$！應移項提公因式：$(x-3)(x-2)=0 \implies x = 3 \text{ 或 } 2$。</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「應用題算出兩個正數解都保留」</p>
+            <p class="text-slate-600 mb-2">例如寬 $15$ 公尺的花園開闢路寬 $x$，解出 $x = 3$ 或 $x = 32$ 忘記檢查。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：路寬 $32$ 公尺比花園原本的寬 $15$ 公尺還大，顯然不合！務必標註「$32$ 不合」。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋公式解、重根判別式與花園步道面積應用題</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">公式解求解一元二次方程式</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 解一元二次方程式：$$2x^2 - 4x - 1 = 0$$</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：判別式 $D = b^2 - 4ac = (-4)^2 - 4(2)(-1) = 16 + 8 = 24$</strong></p>
+            <p><strong>步驟 2：代入公式解並約分化簡</strong></p>
+            <p>$$x = \frac{-(-4) \pm \sqrt{24}}{2 \times 2} = \frac{4 \pm 2\sqrt{6}}{4} = \frac{2 \pm \sqrt{6}}{2}$$</p>
+            <p class="text-emerald-700 font-bold">答：$x = \frac{2 \pm \sqrt{6}}{2}$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">重根與判別式 $b^2 - 4ac = 0$</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 若 $x$ 的一元二次方程式 $x^2 - (k + 2)x + 9 = 0$ 有重根（兩相等實根），求 $k$ 的所有可能值為何？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：由重根條件列判別式 $b^2 - 4ac = 0$</strong></p>
+            <p>$$[-(k + 2)]^2 - 4(1)(9) = 0 \implies (k + 2)^2 = 36$$</p>
+            <p><strong>步驟 2：兩邊開平方根求解（注意有正負兩解！）</strong></p>
+            <p>$$k + 2 = \pm 6 \implies k = 4 \text{ 或 } -8$$</p>
+            <p class="text-emerald-700 font-bold">答：$k = 4 \text{ 或 } -8$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">花園開闢十字形步道問題</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 有一塊長 $20$ 公尺、寬 $14$ 公尺的長方形草地，今在內部開闢一橫一豎且等寬的十字形步道，使剩餘草地的總面積為 $216$ 平方公尺，請問步道的寬度為多少公尺？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：設步道寬為 $x$ 公尺，將步道平移至邊界後列面積方程式</strong></p>
+            <p>$$(20 - x)(14 - x) = 216$$</p>
+            <p><strong>步驟 2：展開並整理為標準式做十字交乘</strong></p>
+            <p>$$280 - 34x + x^2 = 216 \implies x^2 - 34x + 64 = 0$$</p>
+            <p>$$(x - 2)(x - 32) = 0 \implies x = 2 \text{ 或 } 32\text{（大於寬 } 14 \text{ 不合）}$$</p>
+            <p class="text-emerald-700 font-bold">答：步道的寬度為 $2$ 公尺。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>七年級｜比與比例式、正比與反比 — 十二年國教國中數學互動教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">七年級（國一）</span>
+        <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">數與量 (N-7-9)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade7-06-coordinates.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade8-01-polynomials.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">八年級：乘法公式與多項式 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-emerald-600 to-cyan-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-emerald-100 text-sm font-medium mb-2">
+        <span>七年級單元 07</span>
+        <span>•</span>
+        <span>課綱代碼：n-IV-4, n-IV-9</span>
+        <span>•</span>
+        <span>學習內容：比例的意義、內項積等於外項積、正比與反比</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">比與比例式：黃金比例調配與正反比關係</h1>
+      <p class="text-emerald-50 text-base sm:text-lg mb-6">
+        掌握「外項乘積 $=$ 內項乘積」與參數設法 $x = ar, y = br$，並釐清生活中哪些數量是「同倍數成長的正比」、哪些是「乘積固定的反比」！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 本單元核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-emerald-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解比 $a : b$ 與比值 $\frac{a}{b}$（$b \ne 0$），並熟練比例式性質：$a : b = c : d \iff ad = bc$。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>學會利用比例參數法：若 $x : y = 3 : 5$，可設 $x = 3r, \; y = 5r$（$r \ne 0$）代入求解。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解<strong>正比</strong>定義：$y = kx$（即比值 $\frac{y}{x} = k$ 為定值）。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解<strong>反比</strong>定義：$xy = k$（即兩數乘積為定值，當 $x$ 變 $2$ 倍，$y$ 變 $\frac{1}{2}$ 倍）。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：手搖飲黃金比例配方與切蛋糕分食</h2>
+          <p class="text-sm text-slate-500">為什麼「變大」不一定就是正比？怎麼一秒區分正比與反比？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-emerald-50/70 rounded-xl p-5 border border-emerald-200">
+          <h3 class="font-bold text-emerald-900 text-lg mb-2">🧋 比喻一：手搖飲調配與正比（單價固定時，買越多杯越貴）</h3>
+          <p class="text-sm text-slate-700 mb-3">一杯紅茶拿鐵的「紅茶 : 鮮奶 $= 3 : 2$」：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>不論小杯或特大杯，只要<strong>比值 $\frac{\text{紅茶}}{\text{鮮奶}} = \frac{3}{2}$ 固定不變</strong>，喝起來甜度口感就完全一樣！我們可以設紅茶為 $3r\text{ ml}$、鮮奶為 $2r\text{ ml}$。</li>
+            <li>這就是<strong>正比（$\frac{y}{x} = k$）</strong>：當鮮奶量變 $3$ 倍，紅茶量也必須變 $3$ 倍！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🎂 比喻二：反比就像「同一個大披薩分給越多人，每人吃越少」</h3>
+          <p class="text-sm text-slate-700 mb-3">一個 $1200$ 公克的披薩平分給 $x$ 人，每人分到 $y$ 公克：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>總重量（乘積）永遠固定</strong>：$$\text{人數 } x \times \text{每人克數 } y = 1200$$</li>
+            <li>當人數 $x$ 變成 $2$ 倍時，每人分到的重量 $y$ 就會縮小成 $\frac{1}{2}$ 倍，這才是真正的<strong>反比（$xy = k$）</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">比例式三大性質與正比、反比判定表</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心概念</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與代數技巧</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">生活實例與應用</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">比例式基本性質</td>
+              <td class="py-3.5 px-4">$$a : b = c : d \iff ad = bc$$（外項乘積 $=$ 內項乘積）</td>
+              <td class="py-3.5 px-4">反之，若題目給 $3x = 7y$，要小心還原成比例式時是 <strong>$x : y = 7 : 3$</strong>！</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">參數假設法</td>
+              <td class="py-3.5 px-4">若 $x : y = a : b$，則設 $x = ar, \; y = br \quad (r \ne 0)$</td>
+              <td class="py-3.5 px-4">代入含 $x, y$ 的方程式求出 $r$，即可同時算出 $x$ 與 $y$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">正比 ($y$ 與 $x$ 成正比)</td>
+              <td class="py-3.5 px-4">$$y = kx \quad \text{或} \quad \frac{y}{x} = k \quad (k \ne 0)$$</td>
+              <td class="py-3.5 px-4">例：速率固定時，距離與時間成正比；圓周長 $2\pi r$ 與半徑 $r$ 成正比。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">反比 ($y$ 與 $x$ 成反比)</td>
+              <td class="py-3.5 px-4">$$x \cdot y = k \quad (k \ne 0)$$</td>
+              <td class="py-3.5 px-4">例：距離固定時，速率與時間成反比；長方形面積固定時，長與寬成反比。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2"><span>⚠️</span> 常見易錯觀念提醒</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「看到 $4x = 9y$，就寫 $x : y = 4 : 9$」</p>
+            <p class="text-slate-600 mb-2">直接照抄係數順序，違反了內項積等於外項積！</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：若 $4x = 9y$，則 $x : y = 9 : 4$（檢驗內項積 $9y$ 等於外項積 $4x$ 才正確）！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「一天 24 小時中，白天長度 $x$ 與夜晚長度 $y$ 成反比」</p>
+            <p class="text-slate-600 mb-2">誤以為「一個變大、另一個變小」就是成反比。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：白天 $+$ 夜晚 $= x + y = 24$ 是<strong>和固定</strong>，不是乘積 $xy$ 固定，所以<strong>既不成正比也不成反比</strong>！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">涵蓋內外項乘積、參數法與正反比關係計算</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">比例式參數假設法</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">1. 已知 $(2x + y) : (x - y) = 5 : 1$，且 $x + 2y = 14$，求 $x$ 與 $y$ 的值。</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用「內項乘積 $=$ 外項乘積」化簡比例式</strong></p>
+            <p>$$5(x - y) = 1(2x + y) \implies 5x - 5y = 2x + y \implies 3x = 6y \implies x : y = 2 : 1$$</p>
+            <p><strong>步驟 2：設 $x = 2r, \; y = r$（$r \ne 0$）代入 $x + 2y = 14$</strong></p>
+            <p>$$2r + 2r = 14 \implies 4r = 14 \implies r = \frac{7}{2}$$</p>
+            <p>故 $x = 2 \times \frac{7}{2} = 7$，$y = \frac{7}{2}$。</p>
+            <p class="text-emerald-700 font-bold">答：$x = 7, \; y = \frac{7}{2}$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">正比與反比函數關係式</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">2. 已知 $(y + 2)$ 與 $(x - 1)$ 成反比，且當 $x = 5$ 時，$y = 4$。請問當 $x = -3$ 時，$y$ 的值為何？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：依反比定義（乘積為定值 $k$）列關係式</strong></p>
+            <p>$$(x - 1)(y + 2) = k$$</p>
+            <p><strong>步驟 2：將 $x = 5, \; y = 4$ 代入求出常數 $k$</strong></p>
+            <p>$$(5 - 1)(4 + 2) = k \implies k = 4 \times 6 = 24$$</p>
+            <p><strong>步驟 3：代回關係式 $(x - 1)(y + 2) = 24$，令 $x = -3$ 求 $y$</strong></p>
+            <p>$$(-3 - 1)(y + 2) = 24 \implies -4(y + 2) = 24 \implies y + 2 = -6 \implies y = -8$$</p>
+            <p class="text-emerald-700 font-bold">答：$y = -8$。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">齒輪轉動齒數與圈數反比問題</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">3. 機械鐘錶內有甲、乙兩個互相咬合的齒輪，已知甲齒輪有 $48$ 齒，乙齒輪有 $32$ 齒。當甲齒輪轉動 $12$ 圈時，乙齒輪會轉動幾圈？</p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span><span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：理解咬合齒輪的物理規律（轉過總齒數相等，故齒數與圈數成反比）</strong></p>
+            <p>$$\text{甲齒數} \times \text{甲圈數} = \text{乙齒數} \times \text{乙圈數}$$</p>
+            <p><strong>步驟 2：代入數值求解</strong></p>
+            <p>$$48 \times 12 = 32 \times \text{乙圈數} \implies \text{乙圈數} = \frac{576}{32} = 18$$</p>
+            <p class="text-emerald-700 font-bold">答：乙齒輪會轉動 $18$ 圈。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

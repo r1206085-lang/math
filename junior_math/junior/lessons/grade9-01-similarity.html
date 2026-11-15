@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>九年級上學期｜圖形的相似形與比例線段 — 十二年國教國中數學互動教材</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- MathJax 3 Configuration & CDN -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 (Top Navigation) -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-semibold">九年級上學期</span>
+        <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold">幾何與空間 (S-9-1 ~ S-9-4)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade8-08-quadrilaterals.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 八年級：平行與四邊形</a>
+        <a href="grade9-02-circles.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元：點、直線與圓 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 (Title & Learning Objectives) -->
+    <section id="objectives" class="bg-gradient-to-br from-rose-600 to-orange-600 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-rose-100 text-sm font-medium mb-2">
+        <span>單元 9-01</span>
+        <span>•</span>
+        <span>課綱學習表現：s-IV-10 理解三角形相似性質，利用平行線截比例線段解決幾何與測量問題</span>
+        <span>•</span>
+        <span>學習內容：S-9-1, S-9-2, S-9-3, S-9-4</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">圖形的相似形與比例線段：縮放世界的幾何法則</h1>
+      <p class="text-rose-50 text-base sm:text-lg mb-6">
+        從手機雙指縮放照片到 Google Maps 地圖比例尺，當圖形等比例放大或縮小時，角度發生了什麼變化？邊長與面積又遵循什麼倍數規律？一起掌握九年級幾何會考壓軸核心！
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2">
+          <span>🎯</span> 本單元核心學習目標
+        </h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-rose-50">
+          <li class="flex items-start gap-2">
+            <span class="text-amber-200 font-bold">✓</span>
+            <span>理解多邊形相似的雙重條件：<strong>「對應角相等」且「對應邊成比例」</strong>（兩者缺一不可）。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-200 font-bold">✓</span>
+            <span>掌握平行線截比例線段性質，以及三角形兩邊中點連線性質（$\overline{DE} = \frac{1}{2}\overline{BC}$）。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-200 font-bold">✓</span>
+            <span>熟練三角形三大相似性質（<strong>$AA$ 相似、$SAS$ 相似、$SSS$ 相似</strong>）的判別與幾何推理。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-200 font-bold">✓</span>
+            <span>活用相似形的面積比等於對應邊長平方比（$a^2 : b^2$），以及利用竿影立竿見影測量高塔。</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 (Real-life Analogy) -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：手機照片放大縮小與地圖比例尺</h2>
+          <p class="text-sm text-slate-500">為什麼照片放大 2 倍，裡面的屋頂角度不會變大 2 倍，但洗出來的相紙面積卻變 4 倍？</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-rose-50/70 rounded-xl p-5 border border-rose-200">
+          <h3 class="font-bold text-rose-900 text-lg mb-2">📱 比喻一：手機雙指縮放照片（維持形狀不變形）</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            當你在手機相簿用兩根手指把一張三角形屋頂的照片<strong>等比例放大 $2$ 倍</strong>時：
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>對應角完全不變</strong>：原本 $60^\circ$ 的屋頂尖角，放大後依然是 $60^\circ$（如果變成 $120^\circ$，屋頂就扁掉了！）。</li>
+            <li><strong>對應邊長同乘 $2$ 倍</strong>：屋簷、柱子、窗框的長度全部變成原來的 $2$ 倍（對應邊成比例）。</li>
+            <li>反例警告：如果只拉寬不拉高（像把 4:3 照片硬拉成 16:9 寬螢幕），人臉會變胖變扁，這就<strong>不是相似形</strong>！</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">🗺️ 比喻二：Google 地圖比例尺與面積平方倍定律</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            地圖就是真實世界縮小後的「相似圖形」：
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>若地圖比例尺為 $1 : 5000$，代表地圖上 $1\text{ cm}$ 的道路，實際長度是 $5000\text{ cm} = 50\text{ m}$。</li>
+            <li><strong>面積要平方倍！</strong>如果把邊長 $1\text{ cm}$ 的正方形瓷磚放大 $3$ 倍，新正方形的長變 $3$ 倍、寬也變 $3$ 倍，可以塞進 $3 \times 3 = 9$ 塊原瓷磚！</li>
+            <li>因此：<strong>相似圖形的周長比 $=$ 對應邊長比（$a : b$）；但面積比 $=$ 對應邊長的平方比（$a^2 : b^2$）！</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 視覺化平行線截比例線段與兩大金字塔/沙漏模型 -->
+      <div class="mt-6 bg-slate-900 text-white rounded-xl p-5">
+        <p class="text-xs text-slate-400 mb-3 font-mono uppercase tracking-wider">會考幾何必考雙模型：當 $\overline{DE} \parallel \overline{BC}$ 時，秒出 $\triangle ADE \sim \triangle ABC$ (AA 相似)</p>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-slate-800 p-4 rounded-lg border border-rose-500/40">
+            <div class="font-bold text-rose-400 mb-1">🔺 模型 A：金字塔型（A 字型平行截線）</div>
+            <p class="text-slate-300 text-xs mb-2">在 $\triangle ABC$ 內部畫一條平行底邊的線段 $\overline{DE} \parallel \overline{BC}$：</p>
+            <p class="text-amber-300 font-mono text-xs">
+              • 左右截線比：$\overline{AD} : \overline{DB} = \overline{AE} : \overline{EC}$<br/>
+              • 含底邊全體比：$\overline{AD} : \overline{AB} = \overline{AE} : \overline{AC} = \overline{DE} : \overline{BC}$
+            </p>
+          </div>
+          <div class="bg-slate-800 p-4 rounded-lg border border-amber-500/40">
+            <div class="font-bold text-amber-400 mb-1">⏳ 模型 B：沙漏型（8 字型平行內錯角）</div>
+            <p class="text-slate-300 text-xs mb-2">上下兩平行線 $\overline{DE} \parallel \overline{BC}$ 被兩條交叉直線連接於頂點 $A$：</p>
+            <p class="text-emerald-300 font-mono text-xs">
+              • 因為內錯角相等 + 對頂角相等 $\implies \triangle ADE \sim \triangle ABC$<br/>
+              • 對應邊成比例：$\overline{AD} : \overline{AB} = \overline{AE} : \overline{AC} = \overline{DE} : \overline{BC}$
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 (Core Formula Table & Common Pitfalls) -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">核心公式表格與常見易錯提醒</h2>
+          <p class="text-sm text-slate-500">三角形相似性質、比例線段、中點連線與直角母子相似定理一覽表</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心概念</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與幾何性質</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">關鍵條件與應用情境</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">三角形三大相似性質</td>
+              <td class="py-3.5 px-4">
+                1. <strong>$AA$ 相似</strong>：兩組對應角相等（最常用！）<br/>
+                2. <strong>$SAS$ 相似</strong>：兩組對應邊成比例，且<strong>夾角</strong>相等<br/>
+                3. <strong>$SSS$ 相似</strong>：三組對應邊皆成比例
+              </td>
+              <td class="py-3.5 px-4">
+                三角形只要滿足其中一項即相似；但<strong>四邊形以上必須同時檢查「對應角相等」與「對應邊成比例」</strong>。
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">平行線截比例線段</td>
+              <td class="py-3.5 px-4">
+                在 $\triangle ABC$ 中，若 $\overline{DE} \parallel \overline{BC}$，則：<br/>
+                $$\frac{\overline{AD}}{\overline{DB}} = \frac{\overline{AE}}{\overline{EC}} \quad \text{且} \quad \frac{\overline{AD}}{\overline{AB}} = \frac{\overline{AE}}{\overline{AC}} = \frac{\overline{DE}}{\overline{BC}}$$
+              </td>
+              <td class="py-3.5 px-4">
+                特別注意：求中間平行底邊 $\overline{DE}$ 時，必須用<strong>小三角形全邊 $\overline{AD}$ 比大三角形全邊 $\overline{AB}$</strong>！
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">三角形兩邊中點連線</td>
+              <td class="py-3.5 px-4">
+                若 $D, E$ 分別為 $\overline{AB}, \overline{AC}$ 的中點，則：<br/>
+                $$\overline{DE} \parallel \overline{BC} \quad \text{且} \quad \overline{DE} = \frac{1}{2}\overline{BC}$$
+              </td>
+              <td class="py-3.5 px-4">
+                推廣：任意四邊形四邊中點依序連線，必形成一個<strong>平行四邊形</strong>，且其周長等於原四邊形兩對角線長之和。
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">相似形的邊長、面積與體積比</td>
+              <td class="py-3.5 px-4">
+                若相似圖形（或相似立體圖形）對應邊長比為 $a : b$：<br/>
+                • 對應高、角平分線、中線、<strong>周長比</strong> $= a : b$<br/>
+                • <strong>面積比（表面積比）</strong> $= a^2 : b^2$<br/>
+                • <strong>體積比</strong> $= a^3 : b^3$
+              </td>
+              <td class="py-3.5 px-4">
+                例：兩相似圓錐對應高之比為 $2 : 5$，則周長比為 $2 : 5$，表面積比為 $2^2 : 5^2 = 4 : 25$，體積比為 $2^3 : 5^3 = 8 : 125$。
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">直角三角形母子相似</td>
+              <td class="py-3.5 px-4">
+                $\angle BAC = 90^\circ$，$\overline{AD} \perp \overline{BC}$ 於 $D$：<br/>
+                • $\overline{AD}^2 = \overline{BD} \times \overline{CD}$<br/>
+                • $\overline{AB}^2 = \overline{BD} \times \overline{BC}$，$\overline{AC}^2 = \overline{CD} \times \overline{BC}$
+              </td>
+              <td class="py-3.5 px-4">
+                因為 $\triangle DBA \sim \triangle DAC \sim \triangle ABC$（皆為 $AA$ 相似）。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 易錯提醒區塊 -->
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2">
+          <span>⚠️</span> 常見易錯觀念提醒（九年級段考與會考經典陷阱）
+        </h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「把 $\overline{AD} : \overline{DB}$ 直接當成 $\overline{DE} : \overline{BC}$！」</p>
+            <p class="text-slate-600 mb-2">已知 $\overline{AD} : \overline{DB} = 2 : 3$，就誤以為平行底邊比 $\overline{DE} : \overline{BC}$ 也是 $2 : 3$。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：$\overline{DB}$ 只是下半截梯形的腰，不是大三角形的邊！大三角形的邊長是 $\overline{AB} = 2 + 3 = 5$ 份，故 $\overline{DE} : \overline{BC} = \overline{AD} : \overline{AB} = 2 : 5$！</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「兩個長方形（或兩個菱形）一定相似」</p>
+            <p class="text-slate-600 mb-2">以為長方形四個角都是 $90^\circ$ 就相似，或菱形四邊等長就相似。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：長方形只滿足對應角相等，長寬比不一定相同；菱形只滿足對應邊成比例，內角不一定相等。<strong>正多邊形（如兩個正方形、兩個正三角形）才一定相似</strong>！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">精選平行截線、面積平方比與太陽影長測量大樓高度三道代表題</p>
+        </div>
+      </div>
+
+      <!-- 題目 1 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">平行線截比例線段與底邊比</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          1. 在 $\triangle ABC$ 中，$D$、$E$ 分別為 $\overline{AB}$、$\overline{AC}$ 上的點，且 $\overline{DE} \parallel \overline{BC}$。已知 $\overline{AD} = 6$、$\overline{DB} = 9$、$\overline{BC} = 20$，請問線段 $\overline{DE}$ 的長度是多少？
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：先算出大三角形的完整側邊長 $\overline{AB}$</strong></p>
+            <p>$$\overline{AB} = \overline{AD} + \overline{DB} = 6 + 9 = 15$$</p>
+            <p><strong>步驟 2：利用 $\triangle ADE \sim \triangle ABC$（$AA$ 相似）列出對應邊比例式</strong></p>
+            <p>$$\frac{\overline{DE}}{\overline{BC}} = \frac{\overline{AD}}{\overline{AB}}$$</p>
+            <p>$$\frac{\overline{DE}}{20} = \frac{6}{15} = \frac{2}{5}$$</p>
+            <p><strong>步驟 3：交叉相乘求解 $\overline{DE}$</strong></p>
+            <p>$$\overline{DE} = 20 \times \frac{2}{5} = 8$$</p>
+            <p class="text-emerald-700 font-bold">答：$\overline{DE} = 8$。</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 題目 2 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">相似三角形面積比與梯形面積切割</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          2. 承上題圖形，在 $\triangle ABC$ 中，$\overline{DE} \parallel \overline{BC}$，且 $\overline{AD} : \overline{DB} = 2 : 3$。若小三角形 $\triangle ADE$ 的面積為 $16\text{ cm}^2$，請問下半部四邊形 $DBCE$（梯形）的面積是多少 $\text{cm}^2$？
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：找出相似三角形 $\triangle ADE$ 與 $\triangle ABC$ 的對應邊長比</strong></p>
+            <p>$$\overline{AD} : \overline{AB} = 2 : (2 + 3) = 2 : 5$$</p>
+            <p><strong>步驟 2：利用「面積比 $=$ 對應邊長的平方比」求 $\triangle ABC$ 總面積</strong></p>
+            <p>$$\triangle ADE \text{ 面積} : \triangle ABC \text{ 面積} = 2^2 : 5^2 = 4 : 25$$</p>
+            <p>$$16 : \triangle ABC \text{ 面積} = 4 : 25 \implies \triangle ABC \text{ 面積} = 16 \times \frac{25}{4} = 100\text{ cm}^2$$</p>
+            <p><strong>步驟 3：用大三角形面積扣除小三角形面積，即得梯形 $DBCE$ 面積</strong></p>
+            <p>$$\text{四邊形 } DBCE \text{ 面積} = 100 - 16 = 84\text{ cm}^2$$</p>
+            <p class="text-emerald-700 font-bold">答：四邊形 $DBCE$ 的面積為 $84\text{ cm}^2$。</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 題目 3 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">立竿見影與地圖比例尺測量應用</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          3. 同一時刻下，太陽光線視為平行光。身高 $160$ 公分的小妍站在操場上，測得自己在地面上的影子長為 $240$ 公分；若此時操場旁一棟教學大樓在地面上的影子長為 $18$ 公尺，請問這棟教學大樓的實際高度是多少公尺？
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：建立相似直角三角形模型（$AA$ 相似）</strong></p>
+            <p>人與大樓皆垂直於地面（$90^\circ$），且同一時刻太陽光入射角相等，故「人高、人影與光線」構成的直角三角形，與「樓高、樓影與光線」構成的直角三角形必為 $AA$ 相似！</p>
+            <p><strong>步驟 2：先求小妍的「實物高度 : 影子長度」最簡整數比</strong></p>
+            <p>$$\text{高度} : \text{影長} = 160\text{ cm} : 240\text{ cm} = 2 : 3$$</p>
+            <p><strong>步驟 3：設教學大樓實際高度為 $x$ 公尺，列比例式求解</strong></p>
+            <p>$$x : 18 = 2 : 3$$</p>
+            <p>$$3x = 36 \implies x = 12 \text{（公尺）}$$</p>
+            <p class="text-emerald-700 font-bold">答：教學大樓的實際高度為 $12$ 公尺。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>

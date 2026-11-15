@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高一下（數學 II）｜數據分析：標準差、數據標準化、相關係數與最小平方法迴歸直線 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">高一下（數學 II）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high10-06-probability.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="trig.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 07 / 18</span>
+        <span>•</span>
+        <span>數學 II • 四、數據分析 (1.1 ~ 2.1)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">數據分析：標準差、數據標準化、相關係數與最小平方法迴歸直線</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        掌握課綱最核心的「透過平移與伸縮將數據標準化（無因次量）」思想！一次貫通母體標準差 $\sigma$、Z-score 標準化、皮爾森相關係數 $r$ 與最小平方法最適迴歸直線！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：只談母體數據分析，不涉及抽樣（分母為 n）；可用計算工具操作；最小平方法由標準化無因次量切入。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練一維數據的算術平均數 $\mu$、幾何平均數 $G$、母體標準差 $\sigma$ 與二次函數 $\frac{1}{n}\sum(x_k-x)^2$ 在 $x=\mu$ 時有最小值 $\sigma^2$ 的性質。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解數據標準化 $z_i = \frac{x_i - \mu}{\sigma}$ 的意義（標準化後平均數必為 $0$、標準差必為 $1$）以及線性變換 $y_i = ax_i + b$ 對平均數與標準差的影響。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能判讀二維散佈圖並計算相關係數 $r = \frac{1}{n}\sum \hat{x}_i\hat{y}_i \in [-1, 1]$，理解 $r$ 與單位伸縮平移無關的不變性。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>掌握最小平方法迴歸直線在標準化坐標下為 $\hat{y} = r\hat{x}$，還原為原坐標即為 $y - \mu_y = r\frac{\sigma_y}{\sigma_x}(x - \mu_x)$。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：不同考科的分數怎麼公平比較？</h2>
+          <p class="text-sm text-slate-500">身高（公分）與體重（公斤）單位完全不同，為什麼先把兩者「標準化」就能一眼看出相關係數與迴歸直線？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-emerald-950 text-lg mb-2">⚖️ 情境一：數據標準化 $z_i = \frac{x_i - \mu}{\sigma}$ ＝ 萬物通用的「無因次把尺」</h3>
+          <p class="text-sm text-slate-700 mb-3">小華數學考 $75$ 分（全班平均 $60$、標準差 $10$），英文考 $80$ 分（全班平均 $70$、標準差 $5$），哪一科表現比較好？</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>減去平均數 $\mu$（平移中心到 $0$），再除以標準差 $\sigma$（以標準差為 $1$ 單位）：</li>
+            <li>數學標準化分數 $z_{\text{數}} = \frac{75-60}{10} = +1.5$；英文標準化分數 $z_{\text{英}} = \frac{80-70}{5} = +2.0$，故英文排名更突出！</li>
+          </ul>
+        </div>
+        <div class="bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-emerald-950 text-lg mb-2">📈 情境二：課綱絕妙推導——標準化後迴歸直線斜率就是 $r$！</h3>
+          <p class="text-sm text-slate-700 mb-3">課綱將 $(x_k, y_k)$ 先標準化為 $(\hat{x}_k, \hat{y}_k)$（滿足 $\sum \hat{x}_k^2 = n, \; \sum \hat{y}_k^2 = n$）：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>找直線 $\hat{y} = m\hat{x}$ 使殘差平方和 $e(m) = \sum(\hat{y}_k - m\hat{x}_k)^2 = nm^2 - 2\left(\sum \hat{x}_k\hat{y}_k\right)m + n$ 最小！</li>
+            <li>這是開口向上的二次函數，當斜率 $m = \frac{1}{n}\sum \hat{x}_k\hat{y}_k = r$（相關係數）時殘差最小！再把 $\hat{x} = \frac{x-\mu_x}{\sigma_x}, \hat{y} = \frac{y-\mu_y}{\sigma_y}$ 代回，立刻得到迴歸直線公式！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">平均數、標準差與數據標準化</td>
+              <td class="py-3.5 px-4">$$\mu = \frac{1}{n}\sum_{k=1}^n x_k, \quad \sigma = \sqrt{\frac{1}{n}\sum_{k=1}^n (x_k - \mu)^2} = \sqrt{\frac{1}{n}\sum_{k=1}^n x_k^2 - \mu^2}$$ $$\text{標準化數據 } \hat{x}_i = \frac{x_i - \mu}{\sigma} \implies \mu_{\hat{x}} = 0, \quad \sigma_{\hat{x}} = 1$$</td>
+              <td class="py-3.5 px-4">• <strong>線性變換法則</strong>：若 $y_i = ax_i + b$，則 $\mu_y = a\mu_x + b$，且 $\sigma_y = |a|\sigma_x$（平移 $+b$ 絕不改變標準差！）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">成長率與幾何平均數</td>
+              <td class="py-3.5 px-4">$$G = \sqrt[n]{x_1 x_2 \cdots x_n}$$</td>
+              <td class="py-3.5 px-4">• 連續 $n$ 年的年成長率為 $r_1, r_2, \dots, r_n$，則平均年成長率 $r$ 滿足 $1 + r = \sqrt[n]{(1+r_1)\cdots(1+r_n)}$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">相關係數 $r$ 與其性質</td>
+              <td class="py-3.5 px-4">$$r = \frac{1}{n}\sum_{i=1}^n \hat{x}_i \hat{y}_i = \frac{\sum (x_i - \mu_x)(y_i - \mu_y)}{n\sigma_x\sigma_y}, \quad -1 \le r \le 1$$</td>
+              <td class="py-3.5 px-4">• 若 $u_i = ax_i + b, \; v_i = cy_i + d \; (ac \neq 0)$，則 $r_{uv} = \text{sgn}(ac) \cdot r_{xy}$（同號不變、異號變號）。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">最小平方法迴歸直線</td>
+              <td class="py-3.5 px-4">標準化坐標：$\hat{y} = r\hat{x}$<br/>原始坐標：$$y - \mu_y = m(x - \mu_x), \quad \text{其中斜率 } m = r\frac{\sigma_y}{\sigma_x} = \frac{\sum(x_i-\mu_x)(y_i-\mu_y)}{\sum(x_i-\mu_x)^2}$$</td>
+              <td class="py-3.5 px-4">• 迴歸直線<strong>必定通過數據重心點 $(\mu_x, \mu_y)$</strong>！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade10-algebra.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：線性調整分數 $y = ax + b$ 時，把標準差也加上 $b$</p>
+          <p class="text-slate-600">常見誤區：全班加 $10$ 分（$y = x + 10$），以為標準差也 $+10$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：全班同加 $b$ 分只是整體平移，分散程度完全不變！<strong>$\sigma_y = |a|\sigma_x$</strong>（還要記得 $a$ 要加絕對值！）。</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：以為迴歸直線斜率 $m = 2$ 代表相關係數 $r = 2$</p>
+          <p class="text-slate-600">常見誤區：混淆迴歸直線斜率 $m = r\frac{\sigma_y}{\sigma_x}$ 與相關係數 $r$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：相關係數永遠滿足 <strong>$-1 \le r \le 1$</strong>；而迴歸直線斜率 $m$ 受 $\frac{\sigma_y}{\sigma_x}$ 影響，可以是任意實數，但<strong>$m$ 與 $r$ 的正負號必定相同</strong>！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：所有數據點落在水平線 $y = 5$ 上，以為完全相關 $r = 1$</p>
+          <p class="text-slate-600">常見誤區：看到點都在一直線上就選 $|r|=1$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：水平線的 $y$ 值毫無變化（$\sigma_y = 0$ 分母為零），無法由 $x$ 解釋 $y$ 的變異（或視為無相關），只有<strong>斜率不為 $0$ 且非鉛直的直線</strong>才滿足 $|r| = 1$！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">一維數據標準差、二次函數極值與線性變換</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 已知五筆數據 $x_1, x_2, x_3, x_4, x_5$ 的算術平均數為 $\mu_x = 6$，母體標準差為 $\sigma_x = 2$。<br/>(1) 求二次函數 $f(t) = \frac{1}{5}\sum_{k=1}^5 (x_k - t)^2$ 的最小值及發生最小值時的 $t$ 值。<br/>(2) 求 $\sum_{k=1}^5 x_k^2$ 之值，以及新數據 $y_k = -3x_k + 20$ 的平均數与標準差。
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>(1) 課綱明訂 $\frac{1}{n}\sum(x_k-t)^2$ 在 $t = \mu_x$ 時有最小值 $\sigma_x^2$！(2) 由 $\sigma_x^2 = \frac{1}{5}\sum x_k^2 - \mu_x^2$ 反推平方和。
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>第 (1) 題：</strong>當 $t = \mu_x = 6$ 時，$f(t)$ 有最小值 $\sigma_x^2 = 2^2 = 4$。</p>
+<p><strong>第 (2) 題：</strong></p>
+<p>• 由 $2^2 = \frac{1}{5}\sum_{k=1}^5 x_k^2 - 6^2 \implies \frac{1}{5}\sum x_k^2 = 4 + 36 = 40 \implies \sum_{k=1}^5 x_k^2 = 200$。</p>
+<p>• 新平均數 $\mu_y = -3(6) + 20 = 2$；新標準差 $\sigma_y = |-3| \times 2 = 6$。</p>
+<p class="text-emerald-700 font-bold">答：(1) $t=6$ 時有最小值 $4$；(2) $\sum x_k^2 = 200, \; \mu_y = 2, \; \sigma_y = 6$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">相關係數與最小平方法迴歸直線預測</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 某班學生數學成績 $X$ 與物理成績 $Y$ 的統計結果為：$\mu_X = 65, \; \mu_Y = 60, \; \sigma_X = 10, \; \sigma_Y = 12$，且兩科的相關係數為 $r = 0.75$。<br/>(1) 求 $Y$ 對 $X$ 的最適迴歸直線方程式。<br/>(2) 若某生數學考 $85$ 分，利用迴歸直線預測其物理成績為幾分？
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>先算斜率 $m = r\frac{\sigma_Y}{\sigma_X} = 0.75 \times \frac{12}{10} = 0.9$，再代點斜式 $y - \mu_Y = m(x - \mu_X)$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：求迴歸直線斜率與方程式</strong></p>
+<p>$$m = r\frac{\sigma_Y}{\sigma_X} = 0.75 \times \frac{12}{10} = 0.9$$</p>
+<p>$$y - 60 = 0.9(x - 65) \implies y = 0.9x + 1.5$$</p>
+<p><strong>步驟 2：代入 $x = 85$ 預測物理成績</strong></p>
+<p>$$y = 0.9(85) + 1.5 = 76.5 + 1.5 = 78$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $y = 0.9x + 1.5$；(2) 預測物理成績為 $78$ 分。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 3</span>
+          <span class="text-xs text-slate-500">數據單位轉換對相關係數與迴歸斜率的影響</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 承上題，若將數學成績改為 $U = 2X - 10$，物理成績改為 $V = -Y + 100$，則 $(U, V)$ 的相關係數 $r_{UV}$ 為何？
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>相關係數只看縮放係數 $a = 2$ 與 $c = -1$ 的乘積正負號！因為 $2 \times (-1) < 0$ 異號，故相關係數變號！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p>因為 $U = 2X - 10 \; (a = 2 > 0)$ 且 $V = -Y + 100 \; (c = -1 < 0)$，兩縮放係數異號：</p>
+<p>$$r_{UV} = -r_{XY} = -0.75$$</p>
+<p class="text-emerald-700 font-bold">答：$r_{UV} = -0.75$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>一句「算不出來」竟遭沉海滅口？！揭開畢達哥拉斯學派死守的「血色數字」√2 — 數學科普日報</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-[#faf7f2] text-stone-900 font-sans leading-relaxed">
+
+  <nav class="sticky top-0 z-50 bg-stone-900 text-stone-100 border-b border-stone-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../index.html" class="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 font-semibold transition">🏠 總首頁</a>
+        <a href="index.html" class="px-3 py-1 rounded bg-rose-700 hover:bg-rose-600 text-white font-bold transition">← 回科普日報頭版</a>
+      </div>
+      <a href="../math-story-presentation.html#slide-1" class="px-3.5 py-1 rounded bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold transition">
+        🎞️ 看本篇簡報投影片（第 1 頁）
+      </a>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+    <!-- 報頭標籤 -->
+    <div class="border-b-4 border-double border-stone-900 pb-6 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-extrabold">
+        <span class="px-2.5 py-1 bg-rose-700 text-white">頭條獨家</span>
+        <span class="text-rose-700">🔥 頭條秘辛 • 數學史上第一場謀殺案</span>
+        <span class="text-stone-500 font-mono">第 01 篇 • 3 分鐘讀完</span>
+      </div>
+      <h1 class="font-serif text-2xl sm:text-4xl font-black text-stone-950 leading-tight">
+        【震驚愛琴海】一句「算不出來」竟遭沉海滅口？！揭開畢達哥拉斯學派死守的「血色數字」$\sqrt{2}$
+      </h1>
+      <p class="text-stone-600 text-base sm:text-lg font-medium">
+        邊長為 1 的正方形對角線，為何讓古希臘最神祕的數學宗教徹底崩潰？
+      </p>
+      <div class="flex flex-wrap gap-1.5"><span class="px-2.5 py-0.5 bg-stone-200 text-stone-800 text-xs font-bold rounded">無理數</span><span class="px-2.5 py-0.5 bg-stone-200 text-stone-800 text-xs font-bold rounded">畢氏定理</span><span class="px-2.5 py-0.5 bg-stone-200 text-stone-800 text-xs font-bold rounded">反證法</span><span class="px-2.5 py-0.5 bg-stone-200 text-stone-800 text-xs font-bold rounded">A4 紙比例</span></div>
+    </div>
+
+    <!-- 新聞導言 -->
+    <section class="bg-white border-2 border-stone-900 p-5 sm:p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)]">
+      <p class="text-stone-800 text-base sm:text-lg leading-relaxed font-medium">
+        <strong class="text-rose-700 font-black">【愛琴海特派員報導】</strong> 在西元前 5 世紀的古希臘，畢達哥拉斯學派奉「萬物皆有理數（分數）」為最高信仰。然而，一位名叫希帕索斯的天才門徒，只因拿著尺量了一下邊長為 1 的正方形對角線，竟掀翻整座完美神殿，最後傳聞被師兄弟丟進地中海滅口？！
+      </p>
+    </section>
+
+    <!-- 一、歷史現場還原 -->
+    <article class="bg-white border border-stone-300 p-6 sm:p-8 space-y-4">
+      <h2 class="font-serif text-xl sm:text-2xl font-black border-b-2 border-stone-900 pb-2">⚡ 一、事件現場還原：故事究竟怎麼發生的？</h2>
+      <div class="space-y-3 text-stone-800 text-sm sm:text-base leading-relaxed">
+        
+          <p>西元前 500 年左右，大名鼎鼎的畢達哥拉斯不僅是數學家，更像是一位宗教領袖。他的門徒在義大利南部組成一個極度神祕的秘密結社，信奉一條不容質疑的鐵律：<strong>「宇宙中的一切長度、音階與幾何，全都可以寫成兩個整數的比值 $\frac{p}{q}$！」</strong></p>
+          <p>這套理論在當時運作得完美無瑕，直到門徒<strong>希帕索斯（Hippasus）</strong>把畢氏定理套用在最簡單的圖形上——一個邊長只有 $1$ 的正方形。</p>
+          <p>根據畢氏定理，這條對角線的長度平方等於 $1^2 + 1^2 = 2$，也就是 $\sqrt{2}$。學派原本以為只要把尺規切得夠細，一定能找到一個分數等於 $\sqrt{2}$。但希帕索斯算完之後臉色大變：<strong>這個數字根本寫不成分數！</strong></p>
+          <p>當希帕索斯把這個「打破信仰」的真相洩漏出去後，傳說震怒的學派長老下達了封口令，甚至在一次海上航行中將他拋入愛琴海。雖然史學家對細節仍有爭論，但 $\sqrt{2}$ 從此背負了「第一個動搖數學根基的血色數字」之名。</p>
+        
+      </div>
+    </article>
+
+    <!-- 二、數學現場鑑識（含 SVG + MathJax） -->
+    <article class="bg-white border-2 border-stone-900 p-6 sm:p-8 space-y-5">
+      <h2 class="font-serif text-xl sm:text-2xl font-black border-b-2 border-rose-700 pb-2 text-rose-950">🔍 二、數學現場鑑識：用圖解與公式看破玄機</h2>
+      <div class="bg-stone-50 border border-stone-300 p-4 flex justify-center overflow-x-auto">
+        <svg viewBox="0 0 320 220" class="w-full max-w-sm h-auto" xmlns="http://www.w3.org/2000/svg">
+          <rect x="65" y="35" width="140" height="140" fill="#fef2f2" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="65" y1="175" x2="205" y2="35" stroke="#dc2626" stroke-width="3.2"/>
+          <rect x="65" y="160" width="15" height="15" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+          <text x="128" y="196" font-size="13" font-weight="bold" fill="#0f172a">邊長 = 1</text>
+          <text x="214" y="110" font-size="13" font-weight="bold" fill="#0f172a">邊長 = 1</text>
+          <text x="112" y="95" font-size="15" font-weight="bold" fill="#dc2626" transform="rotate(-45 135 105)">對角線 = √2</text>
+          <text x="35" y="213" font-size="11" fill="#64748b">1.41421356237... 永遠寫不成分數的幽靈長度！</text>
+        </svg>
+      </div>
+      <div class="space-y-3 text-stone-800 text-sm sm:text-base leading-relaxed">
+        
+          <p><strong>為什麼 $\sqrt{2}$ 永遠寫不成分數？只需國中奇偶數概念就能秒殺！</strong></p>
+          <p>我們使用數學史上最經典的<strong>「反證法」</strong>——先假設它是分數，再看看會發生什麼荒謬的事：</p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>假設 $\sqrt{2} = \frac{p}{q}$，而且這已經約分到<strong>最簡分數</strong>（也就是 $p$ 和 $q$ 不可能同時是偶數，否則還能再除以 $2$）。</li>
+            <li>兩邊同時平方並移項：$2 = \frac{p^2}{q^2} \implies p^2 = 2q^2$。</li>
+            <li>因為 $p^2$ 是 $2$ 的倍數（偶數），所以 <strong>$p$ 必定也是偶數</strong>！我們可以把 $p$ 寫成 $p = 2k$。</li>
+            <li>把 $p = 2k$ 代回去：$(2k)^2 = 2q^2 \implies 4k^2 = 2q^2 \implies q^2 = 2k^2$。</li>
+            <li>驚人的一幕出現了：$q^2$ 也是偶數，代表 <strong>$q$ 竟然也必須是偶數</strong>！</li>
+          </ol>
+          <p class="mt-2 font-bold text-rose-800">💥 大矛盾！$p$ 和 $q$ 同時都是偶數，代表 $\frac{p}{q}$ 還可以繼續約分，違反一開始「最簡分數」的假設！因此 $\sqrt{2}$ 絕對不是分數！</p>
+        
+      </div>
+    </article>
+
+    <!-- 三、現代彩蛋與冷知識 -->
+    <article class="bg-amber-50 border-2 border-stone-900 p-6 sm:p-8 space-y-4">
+      <h2 class="font-serif text-xl sm:text-2xl font-black border-b border-amber-300 pb-2 text-stone-950">💡 三、新聞後續彩蛋：這個故事如何影響今天的世界？</h2>
+      <div class="space-y-3 text-stone-800 text-sm sm:text-base leading-relaxed">
+        
+          <p><strong>1. 「無理數」其實不是「不講理」：</strong>英文叫 <em>Irrational Number</em>，字根 <em>Ratio</em> 是「比例」的意思，<em>Irrational</em> 原意只是「無法寫成整數比」，卻被誤譯成看起來很凶的「無理數」。</p>
+          <p><strong>2. 你每天都在摸這個禁忌數字：</strong>影印店常見的 <strong>A4、A3、B4 紙張</strong>，長與寬的比例精準設計為 <strong>$\sqrt{2} : 1$</strong>！因為只有這個比例，把 A3 紙對折一半後，得到的 A4 紙長寬比依然是 $\sqrt{2}:1$，影印放大縮小才不會裁掉邊角！</p>
+        
+      </div>
+    </article>
+
+    <!-- 上下篇新聞切換 -->
+    <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t-2 border-stone-300">
+      <span></span>
+      <a href="descartes-heart.html" class="px-4 py-2 border-2 border-stone-900 bg-stone-900 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold transition">下一篇報導 →</a>
+    </div>
+  </main>
+
+  <footer class="max-w-4xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-stone-500">
+    數學科普日報（Math Chronicle）• <a href="index.html" class="underline hover:text-rose-700">返回新聞總覽</a>
+  </footer>
+</body>
+</html>

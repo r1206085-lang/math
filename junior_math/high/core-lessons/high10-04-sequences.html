@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高一下（數學 II）｜數列與級數：一階遞迴關係、數學歸納法與 Σ 求和公式 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">高一下（數學 II）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high10-03-exponentials-logarithms.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high10-05-combinatorics.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 04 / 18</span>
+        <span>•</span>
+        <span>數學 II • 一、數列與級數 (1.1 ~ 2.1)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">數列與級數：一階遞迴關係、數學歸納法與 Σ 求和公式</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        從具體圖像與前幾項歸納出數列的一階遞迴規律，透過嚴謹的「骨牌效應——數學歸納法」加以證明，並熟練 $\Sigma$ 符號與三大基本級數求和公式！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：只談實數數列、不含二階遞迴關係；不等式型式的數學歸納法置於高三選修極限章節；換指標以一個 Σ 為限。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能由前數項推測下一項，並歸納出一階遞迴關係（如 $a_{n+1}=a_n+d, \; a_{n+1}=ra_n, \; a_{n+1}=a_n+f(n)$）且利用累加法或累乘法求一般項。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解數學歸納法的兩大步驟（基底檢驗 $n=1$ 與歸納假設 $n=k \implies n=k+1$），並能證明數列一般項與級數恆等式。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練 $\Sigma$ 符號的線性性質與三大基本求和公式 $\sum_{k=1}^n k, \; \sum_{k=1}^n k^2, \; \sum_{k=1}^n \frac{1}{k(k+1)}$（分項對消法）。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：無窮骨牌連鎖反應與夾心餅乾對消術</h2>
+          <p class="text-sm text-slate-500">要怎麼證明一個公式對「無限多個正整數 $n$」永遠對？分項對消法為什麼只剩頭跟尾？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-emerald-950 text-lg mb-2">🁢 情境一：數學歸納法 ＝ 推倒無限多張骨牌的兩大保證</h3>
+          <p class="text-sm text-slate-700 mb-3">你不必一張一張檢查到第 $100$ 億張骨牌，只要確認兩件事：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>步驟 1（推倒第一張）</strong>：驗證當 $n = 1$ 時命題成立。</li>
+            <li><strong>步驟 2（骨牌間距夠近）</strong>：假設第 $n = k$ 張骨牌倒下（$P(k)$ 成立）時，<strong>必定把下一張第 $n = k+1$ 張也撞倒</strong>（推得 $P(k+1)$ 成立）！如此一來，$1 \to 2 \to 3 \to \cdots$ 所有正整數便全數成立！</li>
+          </ul>
+        </div>
+        <div class="bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-emerald-950 text-lg mb-2">🥪 情境二：累加法與分項對消 ＝ 中間全部抵銷的望遠鏡</h3>
+          <p class="text-sm text-slate-700 mb-3">遇到 $a_{n+1} - a_n = 2n$ 或 $\frac{1}{k(k+1)} = \frac{1}{k} - \frac{1}{k+1}$：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>把 $k = 1, 2, \dots, n$ 一列一列寫出來相加，前一項的尾巴剛好跟下一項的頭一正一負相消，最後只留下<strong>第一項的頭與最後一項的尾</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">一階遞迴數列求一般項</td>
+              <td class="py-3.5 px-4">• 累加法：$a_{n+1} = a_n + f(n) \implies a_n = a_1 + \sum_{k=1}^{n-1} f(k)$<br/>• 累乘法：$a_{n+1} = f(n)a_n \implies a_n = a_1 \cdot \prod_{k=1}^{n-1} f(k)$</td>
+              <td class="py-3.5 px-4">• 針對線性遞迴 $a_{n+1} = pa_n + q \; (p \neq 1)$，可平移湊成等比數列 $a_{n+1} - \alpha = p(a_n - \alpha)$ 求解。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">Σ 的線性性質</td>
+              <td class="py-3.5 px-4">$$\sum_{k=1}^n (a_k + b_k) = \sum_{k=1}^n a_k + \sum_{k=1}^n b_k, \quad \sum_{k=1}^n c a_k = c \sum_{k=1}^n a_k$$ $$\sum_{k=1}^n c = cn$$</td>
+              <td class="py-3.5 px-4">• 注意：$\Sigma$ 對乘法<strong>沒有</strong>分配律，即 $\sum (a_k b_k) \neq (\sum a_k)(\sum b_k)$！須先展開成多項式再逐項求和。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">三大基本級數求和公式</td>
+              <td class="py-3.5 px-4">$$\sum_{k=1}^n k = \frac{n(n+1)}{2}, \quad \sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}$$ $$\sum_{k=1}^n \frac{1}{k(k+1)} = \sum_{k=1}^n \left(\frac{1}{k} - \frac{1}{k+1}\right) = 1 - \frac{1}{n+1} = \frac{n}{n+1}$$</td>
+              <td class="py-3.5 px-4">• 補充立方和：$\sum_{k=1}^n k^3 = \left[\frac{n(n+1)}{2}\right]^2$。<br/>• 課綱規定必須能用<strong>數學歸納法</strong>證明上述求和公式。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade10-algebra.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade10-algebra.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：累加法求 $a_n$ 時把項數算成 $n$ 項而非 $n-1$ 項</p>
+          <p class="text-slate-600">常見誤區：由 $a_n = a_1 + (a_2-a_1) + \cdots + (a_n-a_{n-1})$ 誤代 $\sum_{k=1}^n f(k)$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：從 $a_1$ 累加到 $a_n$ 只有 <strong>$n-1$ 個差值階梯</strong>（$k=1$ 到 $n-1$），算完務必代 $n=1, 2$ 驗算！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：數學歸納法第二步驟沒有用到「歸納假設 $n=k$」</p>
+          <p class="text-slate-600">常見誤區：在證 $n=k+1$ 時直接套用欲證的公式本身（循環論證）。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：批改手寫題時，若未使用「由 $n=k$ 的假設代入」直接給 $0$ 分！必須明確將前 $k$ 項和替換為歸納假設式再化簡。</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：$\sum_{k=1}^n 3 = 3$</p>
+          <p class="text-slate-600">常見誤區：常數求和忘記乘上項數 $n$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：$\sum_{k=1}^n c = \underbrace{c + c + \cdots + c}_{n\text{個}} = cn$，故 $\sum_{k=1}^n 3 = 3n$！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 4：已知前 $n$ 項和 $S_n$ 求 $a_n$ 忘記單獨檢驗 $a_1 = S_1$</p>
+          <p class="text-slate-600">常見誤區：直接對所有 $n \ge 1$ 寫 $a_n = S_n - S_{n-1}$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：$S_n - S_{n-1}$ 僅在 <strong>$n \ge 2$</strong> 有意義！當 $n = 1$ 時必須由 $a_1 = S_1$ 求得，若不合則需分段表示。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">平面直線分割區域與一階遞迴累加法</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 在數列 $\langle a_n \rangle$ 中，已知 $a_1 = 2$，且滿足遞迴關係 $a_{n+1} = a_n + 2n \; (n \ge 1)$。試求一般項 $a_n$（以 $n$ 表示）。
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>將 $n = 1, 2, \dots, n-1$ 共 $n-1$ 個式子列出來上下相加，消去左右兩側的 $a_2, a_3, \dots, a_{n-1}$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：列出 $n-1$ 個遞迴差式並累加</strong></p>
+<p>當 $n \ge 2$ 時：</p>
+<p>$$\begin{aligned} a_2 - a_1 &= 2(1) \\ a_3 - a_2 &= 2(2) \\ &\;\vdots \\ a_n - a_{n-1} &= 2(n-1) \end{aligned}$$</p>
+<p>將上述 $n-1$ 式相加得：</p>
+<p>$$a_n - a_1 = 2[1 + 2 + \cdots + (n-1)] = 2 \cdot \frac{(n-1)n}{2} = n^2 - n$$</p>
+<p>$$\implies a_n = a_1 + n^2 - n = n^2 - n + 2 \quad (\text{代 } n=1 \text{ 得 } a_1 = 2 \text{ 亦成立})$$</p>
+<p class="text-emerald-700 font-bold">答：$a_n = n^2 - n + 2$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">Σ 級數展開與公式求和</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 試求級數 $\sum_{k=1}^{10} k(k + 2)$ 之值，並求 $\sum_{k=1}^{n} \frac{1}{(2k-1)(2k+1)}$ 的一般和。
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>(1) 先將 $k(k+2)$ 展開為 $k^2 + 2k$ 再拆成兩個 $\Sigma$ 代公式。(2) 注意分母兩因式相差 $2$，拆項時前面要乘上 $\frac{1}{2}$！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>第 (1) 題：展開代平方和與一次和公式</strong></p>
+<p>$$\sum_{k=1}^{10} (k^2 + 2k) = \sum_{k=1}^{10} k^2 + 2\sum_{k=1}^{10} k = \frac{10 \times 11 \times 21}{6} + 2 \times \frac{10 \times 11}{2} = 385 + 110 = 495$$</p>
+<p><strong>第 (2) 題：分項對消法</strong></p>
+<p>$$\sum_{k=1}^{n} \frac{1}{(2k-1)(2k+1)} = \frac{1}{2}\sum_{k=1}^{n} \left(\frac{1}{2k-1} - \frac{1}{2k+1}\right) = \frac{1}{2}\left(1 - \frac{1}{2n+1}\right) = \frac{n}{2n+1}$$</p>
+<p class="text-emerald-700 font-bold">答：(1) $495$；(2) $\frac{n}{2n+1}$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 3</span>
+          <span class="text-xs text-slate-500">數學歸納法證明級數恆等式</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 試利用數學歸納法證明：對所有正整數 $n$，$1^2 + 2^2 + 3^2 + \cdots + n^2 = \frac{n(n+1)(2n+1)}{6}$ 恆成立。
+        </p>
+        <div class="bg-emerald-50/80 border-emerald-200 text-emerald-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>嚴格寫出 (i) $n=1$ 左式＝右式；(ii) 假設 $n=k$ 成立，推導 $n=k+1$ 時在歸納假設基礎上加上 $(k+1)^2$ 並通分因式分解！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1（基底檢驗）：</strong>當 $n = 1$ 時，左式 $= 1^2 = 1$，右式 $= \frac{1(2)(3)}{6} = 1$，左式 $=$ 右式，故 $n = 1$ 時成立。</p>
+<p><strong>步驟 2（歸納假設與推論）：</strong>假設當 $n = k \; (k \in \mathbb{N})$ 時成立，即：</p>
+<p>$$1^2 + 2^2 + \cdots + k^2 = \frac{k(k+1)(2k+1)}{6}$$</p>
+<p>則當 $n = k + 1$ 時：</p>
+<p>$$\text{左式} = (1^2 + 2^2 + \cdots + k^2) + (k+1)^2 = \frac{k(k+1)(2k+1)}{6} + (k+1)^2$$</p>
+<p>$$= \frac{(k+1)[k(2k+1) + 6(k+1)]}{6} = \frac{(k+1)(2k^2 + 7k + 6)}{6} = \frac{(k+1)(k+2)[2(k+1)+1]}{6} = \text{右式}$$</p>
+<p>故當 $n = k+1$ 時亦成立。由數學歸納法知，對所有正整數 $n$ 原式恆成立。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

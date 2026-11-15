@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高二上（數學 III）｜三角：廣義角參考角、極坐標、正餘弦定理雙證法與差角公式 — 高中數學課綱核心教材</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="../../index.html" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-medium transition">
+          <span>🏠</span> 總首頁
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold transition">
+          <span>←</span> 高中專區首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">高二上（數學 III）</span>
+      </div>
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 flex-wrap">
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 情境比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 課綱公式</a>
+        <a href="#pitfalls" class="hover:text-rose-600 px-2 py-1 font-bold text-rose-600">⚠️ 常見盲點</a>
+        <a href="#examples" class="hover:text-indigo-600 px-2 py-1">✍️ 經典範例</a>
+        <a href="../my-mistakes/grade11-trig.html" class="px-2.5 py-1.5 rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-bold transition">📓 個人錯題本</a>
+        <a href="high10-07-data-analysis.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="high11-02-lines-circles.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">下一單元 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 -->
+    <section id="objectives" class="bg-gradient-to-br from-sky-900 via-indigo-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 text-indigo-200 text-xs sm:text-sm font-medium mb-3">
+        <span>高中核心單元 08 / 18</span>
+        <span>•</span>
+        <span>數學 III • 一、三角 (1.1 ~ 5.2)</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">三角：廣義角參考角、極坐標、正餘弦定理雙證法與差角公式</h1>
+      <p class="text-slate-100 text-base sm:text-lg mb-4">
+        嚴格遵循課綱脈絡：由直角三角形邊角關係與極坐標出發，引進「參考角 $\alpha$」與單位圓補角關係；以幾何分割與坐標幾何雙重證明正弦定理與餘弦定理，並由餘弦定理直接導出差角、和角、倍角與半角公式！
+      </p>
+      <div class="mb-5 inline-block px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-semibold">
+        📌 課綱備註：cot, sec, csc 置於高三選修數甲/乙 I；不含和差化積、積化和差公式；可使用計算器求三角函數值。
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2"><span>🎯</span> 課綱核心學習目標</h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-50">
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>熟練直角三角形的正弦、餘弦、正切定義與平方關係 $\sin^2\theta+\cos^2\theta=1$、餘角關係。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>理解廣義角的參考角 $\alpha$（與 $X$ 軸的銳夾角）與單位圓 $(\cos\theta, \sin\theta)$ 補角關係，以及極坐標 $[r, \theta]$ 與直角坐標的變換。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>掌握正弦定理與餘弦定理的兩種課綱證法（分割直角三角形法 vs. 坐標幾何距離與面積法）及海龍公式。</span></li>
+          <li class="flex items-start gap-2"><span class="text-amber-300 font-bold">✓</span><span>能由單位圓與餘弦定理推導差角公式 $\cos(\theta_2-\theta_1)$，進而演繹和角、二倍角与半角公式並應用於平面與立體三角測量。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻與情境引言 -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">1. 生活情境引言：雷達極坐標與課綱「三角 → 坐標 → 向量」雙主軸</h2>
+          <p class="text-sm text-slate-500">不用死背「奇變偶不變」也能秒求廣義角？課綱第 60 頁如何串起整冊《數學 III》？</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-sky-50/70 border-sky-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-sky-950 text-lg mb-2">🧭 情境一：參考角 $\alpha$（與 $X$ 軸銳夾角）＋ 單位圓象限坐標</h3>
+          <p class="text-sm text-slate-700 mb-3">課綱第 61 頁強調：求廣義角 $\theta$ 的三角比只需兩步：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>步驟 1（找參考角 $\alpha$）</strong>：看終邊與水平 $X$ 軸夾幾度銳角（如 $\theta = \pm 150^\circ \implies \alpha = 30^\circ$；$\theta = \pm 225^\circ \implies \alpha = 45^\circ$）。</li>
+            <li><strong>步驟 2（配象限正負）</strong>：單位圓上點坐標為 $(x, y) = (\cos\theta, \sin\theta)$、斜率為 $\tan\theta = \frac{y}{x}$，看象限正負號直接加在銳角三角比前面即可！</li>
+          </ul>
+        </div>
+        <div class="bg-sky-50/70 border-sky-200 rounded-xl p-5 border">
+          <h3 class="font-bold text-sky-950 text-lg mb-2">🔗 情境二：課綱兩大黃金推導主軸</h3>
+          <p class="text-sm text-slate-700 mb-3">正弦定理與餘弦定理不只是解三角形工具，更是後面坐標與向量的源頭：</p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>面積主軸</strong>：長方形面積 $\to$ 三角形面積 $\frac{1}{2}bc\sin A$ 與<strong>正弦定理</strong> $\to$ <strong>外積與行列式</strong>。</li>
+            <li><strong>長度主軸</strong>：畢氏定理 $\to$ <strong>餘弦定理</strong> $a^2=b^2+c^2-2bc\cos A$ $\to$ 坐標距離公式 $\to$ <strong>差角公式 $\cos(\theta_2-\theta_1)$ 與向量內積</strong>！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格与推導 -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">2. 課綱核心公式與推導總整理</h2>
+          <p class="text-sm text-slate-500">嚴格對齊教育部普通高級中學必修與選修數學課程綱要</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">核心主題</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">數學公式與定理表徵</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">課綱推導精神與使用時機</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">廣義角、極坐標與補角關係</td>
+              <td class="py-3.5 px-4">$$\sin^2\theta + \cos^2\theta = 1, \quad \tan\theta = \frac{\sin\theta}{\cos\theta}$$ $$\sin(180^\circ - \theta) = \sin\theta, \quad \cos(180^\circ - \theta) = -\cos\theta$$ $$x = r\cos\theta, \; y = r\sin\theta \quad (r = \sqrt{x^2+y^2} \ge 0, \; 0^\circ \le \theta < 360^\circ)$$</td>
+              <td class="py-3.5 px-4">• 餘角關係：$\sin(90^\circ-\theta)=\cos\theta, \; \cos(90^\circ-\theta)=\sin\theta$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">面積公式、正弦定理與海龍公式</td>
+              <td class="py-3.5 px-4">$$\triangle ABC = \frac{1}{2}bc\sin A = \frac{1}{2}ac\sin B = \frac{1}{2}ab\sin C$$ $$\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R$$ $$\triangle ABC = \sqrt{s(s-a)(s-b)(s-c)}, \quad s = \frac{a+b+c}{2}$$</td>
+              <td class="py-3.5 px-4">• $R$ 為 $\triangle ABC$ 外接圓半徑；邊長比等於對角正弦比 $a:b:c = \sin A:\sin B:\sin C$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">餘弦定理（雙證法）</td>
+              <td class="py-3.5 px-4">$$a^2 = b^2 + c^2 - 2bc\cos A \iff \cos A = \frac{b^2 + c^2 - a^2}{2bc}$$</td>
+              <td class="py-3.5 px-4">• <strong>坐標證法（課綱核心觀念）</strong>：設 $A(0,0), B(c,0), C(b\cos A, b\sin A)$，由距離公式得 $a^2 = (b\cos A - c)^2 + (b\sin A)^2 = b^2 + c^2 - 2bc\cos A$。</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">差角、和角、倍角與半角公式</td>
+              <td class="py-3.5 px-4">$$\cos(\theta_2 - \theta_1) = \cos\theta_1\cos\theta_2 + \sin\theta_1\sin\theta_2$$ $$\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$$ $$\sin 2\theta = 2\sin\theta\cos\theta, \quad \cos 2\theta = \cos^2\theta - \sin^2\theta = 2\cos^2\theta - 1 = 1 - 2\sin^2\theta$$ $$\cos\frac{\theta}{2} = \pm\sqrt{\frac{1+\cos\theta}{2}}, \quad \sin\frac{\theta}{2} = \pm\sqrt{\frac{1-\cos\theta}{2}}$$</td>
+              <td class="py-3.5 px-4">• 半角公式正負號由<strong>半角 $\frac{\theta}{2}$ 所在的象限</strong>決定！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. ⚠️ 常見易錯觀念提醒與個人錯題本串聯 -->
+    <section id="pitfalls" class="bg-rose-50/70 rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-rose-200 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-rose-950">3. 常見易錯觀念提醒（課綱盲點診斷）</h2>
+            <p class="text-sm text-rose-700 font-medium">掃除觀念盲點後，點擊右側按鈕可進入「高中數學錯題本」查看實戰錯題</p>
+          </div>
+        </div>
+        <a href="../my-mistakes/grade11-trig.html" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-bold shadow transition">
+          📓 進入本年級個人手寫錯題本 (grade11-trig.html) →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 1：正弦定理解 $SSA$ 漏掉鈍角解 $180^\circ - \theta$</p>
+          <p class="text-slate-600">常見誤區：已知 $a=4, b=4\sqrt{3}, \angle A=30^\circ$，求得 $\sin B = \frac{\sqrt{3}}{2}$ 只寫 $\angle B = 60^\circ$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：因為 $b > a$（大邊對大角 $\angle B > 30^\circ$），故銳角 $60^\circ$ 與鈍角 $120^\circ$ 皆滿足內角和小於 $180^\circ$，共有<strong>兩解</strong>！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 2：半角公式忘記先將角度範圍除以 2 判斷象限</p>
+          <p class="text-slate-600">常見誤區：已知 $180^\circ < \theta < 270^\circ$，求 $\cos\frac{\theta}{2}$ 時看 $\theta$ 在第三象限或直接取正號。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：因為 $180^\circ < \theta < 270^\circ \implies 90^\circ < \frac{\theta}{2} < 135^\circ$（第二象限），第二象限的 $\cos\frac{\theta}{2} < 0$ 必為負！</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-rose-200 space-y-2 shadow-sm">
+          <p class="font-bold text-rose-700">❌ 錯題盲點 3：將邊長比誤當成角度比</p>
+          <p class="text-slate-600">常見誤區：在 $\triangle ABC$ 中已知 $\angle A:\angle B:\angle C = 1:2:3$，誤寫 $a:b:c = 1:2:3$。</p>
+          <p class="font-semibold text-emerald-700">✅ 正確課綱觀念：邊長比等於<strong>正弦值比</strong>：$a:b:c = \sin 30^\circ : \sin 60^\circ : \sin 90^\circ = 1 : \sqrt{3} : 2$！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ✍️ 經典範例、解題思路與折疊詳解 -->
+    <section id="examples" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">4 & 5. 課綱經典範例與點擊展開逐步詳解</h2>
+          <p class="text-sm text-slate-500">每題均附破題思路與原生 HTML &lt;details&gt; 折疊詳解，先思考再看解答</p>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 1</span>
+          <span class="text-xs text-slate-500">差角公式與半角公式雙途徑求 $\cos 15^\circ$</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          1. 試分別利用 (1) 差角公式 $\cos(45^\circ - 30^\circ)$ 與 (2) 半角公式 $\cos\frac{30^\circ}{2}$ 求 $\cos 15^\circ$ 之精確值。
+        </p>
+        <div class="bg-sky-50/80 border-sky-200 text-sky-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>半角公式算出雙重根號後，可利用《數學 I》配方法或分子分母同乘 $2$ 化簡！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>(1) 由差角公式：</strong></p>
+<p>$$\cos 15^\circ = \cos(45^\circ - 30^\circ) = \cos 45^\circ\cos 30^\circ + \sin 45^\circ\sin 30^\circ = \frac{\sqrt{2}}{2}\cdot\frac{\sqrt{3}}{2} + \frac{\sqrt{2}}{2}\cdot\frac{1}{2} = \frac{\sqrt{6}+\sqrt{2}}{4}$$</p>
+<p><strong>(2) 由半角公式：</strong></p>
+<p>$$\cos 15^\circ = \sqrt{\frac{1 + \cos 30^\circ}{2}} = \sqrt{\frac{2 + \sqrt{3}}{4}} = \sqrt{\frac{4 + 2\sqrt{3}}{8}} = \frac{\sqrt{3}+1}{2\sqrt{2}} = \frac{\sqrt{6}+\sqrt{2}}{4}$$</p>
+<p class="text-emerald-700 font-bold">答：$\cos 15^\circ = \frac{\sqrt{6}+\sqrt{2}}{4}$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱指定範例 2</span>
+          <span class="text-xs text-slate-500">餘弦定理、正弦定理與海龍公式</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          2. 在 $\triangle ABC$ 中，已知 $a = 5, \; b = 7, \; c = 8$，試求：(1) $\angle B$ 的度數；(2) $\triangle ABC$ 的面積與外接圓半徑 $R$。
+        </p>
+        <div class="bg-sky-50/80 border-sky-200 text-sky-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>由餘弦定理求 $\cos B = \frac{5^2+8^2-7^2}{2(5)(8)} = \frac{1}{2} \implies \angle B = 60^\circ$。
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>(1) 求 $\angle B$：</strong>$\cos B = \frac{25 + 64 - 49}{80} = \frac{40}{80} = \frac{1}{2} \implies \angle B = 60^\circ$。</p>
+<p><strong>(2) 求面積與 $R$：</strong>面積 $= \frac{1}{2}(5)(8)\sin 60^\circ = 10\sqrt{3}$（或由海龍公式 $s=10 \implies \sqrt{10\cdot 5\cdot 3\cdot 2}=10\sqrt{3}$）；由 $2R = \frac{b}{\sin B} = \frac{7}{\frac{\sqrt{3}}{2}} \implies R = \frac{7\sqrt{3}}{3}$。</p>
+<p class="text-emerald-700 font-bold">答：(1) $60^\circ$；(2) 面積 $10\sqrt{3}$，外接圓半徑 $R = \frac{7\sqrt{3}}{3}$。</p>
+          </div>
+        </details>
+      </div>
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-bold">課綱核心範例 3</span>
+          <span class="text-xs text-slate-500">立體三角測量（仰角與方位角）</span>
+        </div>
+        <p class="font-bold text-slate-900">
+          3. 某人在塔的正南方 $A$ 點測得塔頂仰角為 $45^\circ$，接著向東走 $60$ 公尺到達 $B$ 點，測得塔頂仰角為 $30^\circ$。設地面為水平面，求此塔的高度 $h$。
+        </p>
+        <div class="bg-sky-50/80 border-sky-200 text-sky-950 border rounded-lg p-3 text-xs">
+          <strong>🧠 解題破題思路：</strong>設塔底為 $O$、塔頂為 $T$，高度為 $h$，則在直角 $\triangle TOA, \triangle TOB$ 中，$\overline{OA} = h\cot 45^\circ = h$，$\overline{OB} = \sqrt{3}h$，且地面上 $\angle OAB = 90^\circ$（正南與正東垂直）！
+        </div>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開完整逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：以塔高 $h$ 表示地面距離 $\overline{OA}, \overline{OB}$</strong></p>
+<p>• 在 $\triangle TOA$ 中，$\angle TAO = 45^\circ \implies \overline{OA} = h$。</p>
+<p>• 在 $\triangle TOB$ 中，$\angle TBO = 30^\circ \implies \overline{OB} = \frac{h}{\tan 30^\circ} = \sqrt{3}h$。</p>
+<p><strong>步驟 2：在水平面直角 $\triangle OAB$（$\angle OAB = 90^\circ$）用畢氏定理</strong></p>
+<p>$$\overline{OA}^2 + \overline{AB}^2 = \overline{OB}^2 \implies h^2 + 60^2 = (\sqrt{3}h)^2 = 3h^2$$</p>
+<p>$$2h^2 = 3600 \implies h^2 = 1800 \implies h = 30\sqrt{2}$$</p>
+<p class="text-emerald-700 font-bold">答：塔高為 $30\sqrt{2}$ 公尺。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    普通高級中學數學課程綱要互動教材 • 嚴格遵循 AGENTS.md 五大核心區塊與 Self-Correction Loop 規範建置
+  </footer>
+</body>
+</html>

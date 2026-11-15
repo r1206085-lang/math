@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>八年級下學期｜多項式的因式分解與十字交乘法 — 十二年國教國中數學互動教材</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- MathJax 3 Configuration & CDN -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+  <!-- 1. 頂部導覽區塊 (Top Navigation) -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600 text-sm font-medium transition">
+          <span>←</span> 返回課程首頁
+        </a>
+        <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-semibold">八年級下學期</span>
+        <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">代數 (A-8-4 ~ A-8-5)</span>
+      </div>
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#objectives" class="hover:text-indigo-600 px-2 py-1">🎯 學習目標</a>
+        <a href="#analogy" class="hover:text-indigo-600 px-2 py-1">💡 生活比喻</a>
+        <a href="#formulas" class="hover:text-indigo-600 px-2 py-1">📘 核心公式</a>
+        <a href="#exercises" class="hover:text-indigo-600 px-2 py-1">✍️ 經典題型</a>
+        <a href="grade8-01-pythagorean.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">← 上一單元</a>
+        <a href="grade9-01-similarity.html" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">九年級：相似形 →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+    <!-- 2. 標題與學習目標區塊 (Title & Learning Objectives) -->
+    <section id="objectives" class="bg-gradient-to-br from-purple-600 to-fuchsia-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+      <div class="flex flex-wrap items-center gap-2 text-purple-100 text-sm font-medium mb-2">
+        <span>單元 8-02</span>
+        <span>•</span>
+        <span>課綱學習表現：a-IV-5 認識多項式的因式分解意義，並熟練提公因式、乘法公式與十字交乘法</span>
+        <span>•</span>
+        <span>學習內容：A-8-4, A-8-5</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">多項式的因式分解與十字交乘法：代數拼圖的完美重組</h1>
+      <p class="text-purple-50 text-base sm:text-lg mb-6">
+        如果「展開多項式」是把長方形切成零碎的小拼圖，那麼「因式分解」就是把散落的拼圖重新拼回一個完整的大長方形，找出它的長與寬！這是解一元二次方程式最強大的核心武器。
+      </p>
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <h2 class="text-base font-bold text-white mb-3 flex items-center gap-2">
+          <span>🎯</span> 本單元核心學習目標
+        </h2>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm text-purple-50">
+          <li class="flex items-start gap-2">
+            <span class="text-amber-300 font-bold">✓</span>
+            <span>理解因式與倍式的關係，明白「因式分解」就是將加減和差形式化為<strong>多項式連乘積</strong>。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-300 font-bold">✓</span>
+            <span>熟練因式分解第一守則：「先提公因式（包含變號提公因式 $b - a = -(a - b)$）」。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-300 font-bold">✓</span>
+            <span>逆向運用三大乘法公式（平方差、和的平方、差的平方）快速分解二次多項式。</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-300 font-bold">✓</span>
+            <span>精通<strong>十字交乘法</strong>口訣：「拆兩頭、湊中間、橫著寫」，處理首項係數為 $1$ 或非 $1$ 的二次三項式。</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 💡 生活化比喻區塊 (Real-life Analogy) -->
+    <section id="analogy" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💡</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">生活化比喻：拼圖面積重組與十字交乘對角線湊數</h2>
+          <p class="text-sm text-slate-500">為什麼 $x^2 + 5x + 6$ 可以分解成 $(x+2)(x+3)$？用長方形拼圖一眼看穿！</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-purple-50/70 rounded-xl p-5 border border-purple-200">
+          <h3 class="font-bold text-purple-900 text-lg mb-2">🧩 比喻一：拼圖面積重組（找回長方形的長與寬）</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            想像手上有三種不同尺寸的紙卡拼圖：
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>$1$ 張大正方形</strong>：邊長為 $x$，面積為 $x^2$。</li>
+            <li><strong>$5$ 張長條形</strong>：長為 $x$、寬為 $1$，總面積為 $5x$。</li>
+            <li><strong>$6$ 張小正方形</strong>：邊長為 $1$，總面積為 $6$。</li>
+            <li>當我們把 $6$ 張小正方形排成「$2 \times 3$」的陣列，並將 $5$ 張長條拆成「$2x$ 與 $3x$」鑲嵌在旁邊，就能<strong>完美拼成一個長為 $(x+3)$、寬為 $(x+2)$ 的大長方形</strong>！</li>
+            <li>總面積不變：$$x^2 + 5x + 6 = (x + 2)(x + 3)$$</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-xl p-5 border border-amber-200">
+          <h3 class="font-bold text-amber-900 text-lg mb-2">⚔️ 比喻二：十字交乘法就像「配對相親湊中間項」</h3>
+          <p class="text-sm text-slate-700 mb-3">
+            每次都畫拼圖太慢了，「十字交乘法」就是把拼圖的<strong>左上、右下、右上、左下四格面積</strong>濃縮成一個十字架：
+          </p>
+          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li><strong>左列拆頭（二次項）</strong>：$x^2$ 拆成上 $x$、下 $x$。</li>
+            <li><strong>右列拆尾（常數項）</strong>：把常數項拆成兩個因數相乘（注意正負號！）。</li>
+            <li><strong>交叉相乘湊中間（一次項）</strong>：檢驗對角線相乘之和是否剛好等於中間的一次項。</li>
+            <li><strong>配對成功橫著寫</strong>：一旦湊出中間項，第一排括號乘第二排括號就是答案！</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 拼圖面積與十字交乘對照視覺化 -->
+      <div class="mt-6 bg-slate-900 text-white rounded-xl p-5 grid sm:grid-cols-2 gap-6 items-center">
+        <div>
+          <p class="text-xs text-slate-400 mb-2 font-mono uppercase tracking-wider">幾何面積拼圖模型：$x^2 + 5x + 6 = (x+2)(x+3)$</p>
+          <div class="grid grid-cols-5 gap-1.5 text-center font-mono text-xs max-w-xs mx-auto sm:mx-0">
+            <div class="col-span-3 bg-purple-600/80 border border-purple-400 rounded p-4 flex flex-col justify-center">
+              <span class="font-bold text-base">x²</span>
+              <span class="text-[10px] text-purple-200">(x × x)</span>
+            </div>
+            <div class="col-span-2 bg-indigo-600/80 border border-indigo-400 rounded p-4 flex flex-col justify-center">
+              <span class="font-bold text-base">3x</span>
+              <span class="text-[10px] text-indigo-200">(x × 3)</span>
+            </div>
+            <div class="col-span-3 bg-indigo-600/80 border border-indigo-400 rounded p-3 flex flex-col justify-center">
+              <span class="font-bold text-base">2x</span>
+              <span class="text-[10px] text-indigo-200">(2 × x)</span>
+            </div>
+            <div class="col-span-2 bg-amber-500/80 border border-amber-300 rounded p-3 flex flex-col justify-center text-slate-950">
+              <span class="font-bold text-base">+6</span>
+              <span class="text-[10px] font-semibold">(2 × 3)</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-slate-800 rounded-lg p-4 border border-slate-700 font-mono text-sm">
+          <p class="text-xs text-amber-300 mb-2">✨ 十字交乘標準直式寫法：</p>
+          <p class="text-slate-200">
+            $$\begin{array}{c c c}
+            x & \quad & +2 \\
+              & \times & \\
+            x & \quad & +3 \\
+            \hline
+            3x + 2x & = & +5x \text{（命中中間項！）}
+            \end{array}$$
+          </p>
+          <p class="text-emerald-400 text-xs mt-2 text-center font-sans font-bold">
+            👉 橫著寫出因式：$(x + 2)(x + 3)$
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 📘 核心公式表格與易錯提醒 (Core Formula Table & Common Pitfalls) -->
+    <section id="formulas" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📘</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">因式分解四大核心招式與正負號判定表</h2>
+          <p class="text-sm text-slate-500">按照「一提、二套、三十字、四分組」的順序思考，絕不卡關</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+              <th class="py-3.5 px-4 font-bold w-1/5">分解招式</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">標準代數公式</th>
+              <th class="py-3.5 px-4 font-bold w-2/5">破題技巧與範例</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">1. 提公因式法<br/><span class="text-xs text-indigo-600">（永遠第一步！）</span></td>
+              <td class="py-3.5 px-4">
+                $$AB + AC = A(B + C)$$
+                $$\text{變號技巧：}(b - a) = -(a - b)$$
+                $$\text{偶次方相等：}(b - a)^2 = (a - b)^2$$
+              </td>
+              <td class="py-3.5 px-4">
+                例：$3x(x-2) + 5(2-x)$<br/>
+                $= 3x(x-2) - 5(x-2) = (x-2)(3x-5)$
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">2. 平方差公式</td>
+              <td class="py-3.5 px-4">
+                $$a^2 - b^2 = (a + b)(a - b)$$
+              </td>
+              <td class="py-3.5 px-4">
+                特徵：只有兩項，且為「平方減平方」。<br/>
+                例：$9x^2 - 16 = (3x)^2 - 4^2 = (3x + 4)(3x - 4)$
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">3. 完全平方公式</td>
+              <td class="py-3.5 px-4">
+                $$a^2 + 2ab + b^2 = (a + b)^2$$
+                $$a^2 - 2ab + b^2 = (a - b)^2$$
+              </td>
+              <td class="py-3.5 px-4">
+                特徵：頭尾皆為完全平方數，且中間項為 $\pm 2 \times \text{頭} \times \text{尾}$。<br/>
+                例：$x^2 - 10x + 25 = (x - 5)^2$
+              </td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3.5 px-4 font-semibold text-slate-900">4. 十字交乘法<br/><span class="text-xs text-purple-600">（二次三項式通殺）</span></td>
+              <td class="py-3.5 px-4">
+                $$x^2 + (p+q)x + pq = (x + p)(x + q)$$
+                $$acx^2 + (ad+bc)x + bd = (ax + b)(cx + d)$$
+              </td>
+              <td class="py-3.5 px-4">
+                <strong>常數項正負號口訣</strong>：<br/>
+                • 常數項為 $+$：兩數<strong>同號</strong>（同正或同負，看中間項）<br/>
+                • 常數項為 $-$：兩數<strong>異號</strong>（一正一負，絕對值大者跟中間項同號）
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 易錯提醒區塊 -->
+      <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-xl p-5">
+        <h3 class="text-rose-900 font-bold text-base mb-3 flex items-center gap-2">
+          <span>⚠️</span> 常見易錯觀念提醒（段考扣分重災區）
+        </h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 1：「公因式直接約掉或提完公因式原項變 $0$」</p>
+            <p class="text-slate-600 mb-2">分解 $2x^2 + 6x + 2$ 時忘記先提 $2$，或分解 $ab + a$ 提出 $a$ 後誤寫成 $a(b)$（漏掉 $+1$）。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：因式分解不是解方程式，<strong>絕對不能把公因式直接除掉消失</strong>！且 $ab + a = a \cdot b + a \cdot 1 = a(b + 1)$。</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-rose-200">
+            <p class="font-bold text-rose-700 mb-1">❌ 錯誤迷思 2：「分解不徹底（括號內還能再分解）」</p>
+            <p class="text-slate-600 mb-2">例如將 $x^4 - 16$ 分解成 $(x^2 + 4)(x^2 - 4)$ 就停筆交卷了。</p>
+            <p class="font-semibold text-emerald-700">✅ 正確觀念：因式分解必須<strong>分解到不能再分解為止</strong>！$(x^2 - 4)$ 是平方差，必須繼續拆成 $(x^2 + 4)(x + 2)(x - 2)$。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ✍️ 帶有 HTML details 折疊詳解的經典題型 -->
+    <section id="exercises" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✍️</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">經典題型演練（點擊展開逐步詳解）</h2>
+          <p class="text-sm text-slate-500">從變號提公因式、首項係數非 1 的十字交乘，到幾何面積拼圖素養題</p>
+        </div>
+      </div>
+
+      <!-- 題目 1 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">基礎題</span>
+          <span class="text-xs text-slate-500">常數項為負的十字交乘法</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          1. 請利用十字交乘法，因式分解多項式：$$x^2 - 4x - 21$$
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：分析頭尾與正負號</strong></p>
+            <p>二次項 $x^2 = x \cdot x$；常數項為 $-21 < 0$，代表要拆成<strong>一正一負</strong>兩數，且因為中間項是 $-4x$（負的），所以<strong>絕對值較大的因數要配負號</strong>。</p>
+            <p><strong>步驟 2：十字交乘配對</strong></p>
+            <p>將 $-21$ 拆為 $(-7) \times (+3)$：</p>
+            <p>$$\begin{array}{c c c}
+            x & & -7 \\
+             & \times & \\
+            x & & +3 \\
+            \hline
+            +3x - 7x & = & -4x \text{（符合中間項！）}
+            \end{array}$$</p>
+            <p><strong>步驟 3：橫著寫出因式乘積</strong></p>
+            <p>$$x^2 - 4x - 21 = (x - 7)(x + 3)$$</p>
+            <p class="text-emerald-700 font-bold">答：$(x - 7)(x + 3)$</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 題目 2 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-bold">進階段考題</span>
+          <span class="text-xs text-slate-500">先提公因式再做十字交乘法</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          2. 因式分解下列多項式：$$6x^2 - 14x - 12$$
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：謹記鐵律「有公因式必先提公因式」！</strong></p>
+            <p>觀察係數 $6, -14, -12$ 都是偶數，先提出最大公因數 $2$：</p>
+            <p>$$6x^2 - 14x - 12 = 2(3x^2 - 7x - 6)$$</p>
+            <p><strong>步驟 2：對括號內的 $3x^2 - 7x - 6$ 進行十字交乘</strong></p>
+            <p>左邊 $3x^2$ 拆成 $3x$ 與 $x$；右邊 $-6$ 拆成 $+2$ 與 $-3$：</p>
+            <p>$$\begin{array}{c c c}
+            3x & & +2 \\
+             & \times & \\
+            x & & -3 \\
+            \hline
+            -9x + 2x & = & -7x \text{（完全命中！）}
+            \end{array}$$</p>
+            <p><strong>步驟 3：合併寫出完整答案（千萬別把最前面的 $2$ 弄丟了！）</strong></p>
+            <p>$$\text{原式} = 2(3x + 2)(x - 3)$$</p>
+            <p class="text-emerald-700 font-bold">答：$2(3x + 2)(x - 3)$</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 題目 3 -->
+      <div class="border border-slate-200 rounded-xl p-5 bg-slate-50/60">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded bg-purple-100 text-purple-800 text-xs font-bold">會考素養題</span>
+          <span class="text-xs text-slate-500">拼圖面積重組與周長計算</span>
+        </div>
+        <p class="font-medium text-slate-900 mb-4">
+          3. 小華手上有三種紙板：甲為邊長 $x$ 的正方形紙板（面積 $x^2$），乙為長 $x$、寬 $1$ 的長方形紙板（面積 $x$），丙為邊長 $1$ 的小正方形紙板（面積 $1$）。若小華拿了 $2$ 張甲紙板、$11$ 張乙紙板與 $12$ 張丙紙板，在不重疊且無空隙的情況下，緊密拼成一個大長方形，則此大長方形的「周長」以 $x$ 的多項式表示為何？
+        </p>
+        <details class="group bg-white rounded-lg border border-slate-200 p-4">
+          <summary class="cursor-pointer font-semibold text-indigo-600 flex items-center justify-between select-none">
+            <span>🔍 點擊展開逐步詳解</span>
+            <span class="text-xs text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-slate-100 text-sm space-y-2 text-slate-700">
+            <p><strong>步驟 1：利用「拼圖總面積 $=$ 大長方形面積（長 $\times$ 寬）」列式</strong></p>
+            <p>$$\text{總面積} = 2x^2 + 11x + 12$$</p>
+            <p><strong>步驟 2：使用十字交乘法分解面積多項式，找出長與寬</strong></p>
+            <p>$$\begin{array}{c c c}
+            2x & & +3 \\
+             & \times & \\
+            x & & +4 \\
+            \hline
+            8x + 3x & = & +11x
+            \end{array}$$</p>
+            <p>因此大長方形的面積可分解為 $(2x + 3)(x + 4)$，即兩鄰邊長分別為 $(2x + 3)$ 與 $(x + 4)$。</p>
+            <p><strong>步驟 3：計算大長方形的周長 $= 2 \times (\text{長} + \text{寬})$</strong></p>
+            <p>$$\text{周長} = 2 \times [(2x + 3) + (x + 4)] = 2 \times (3x + 7) = 6x + 14$$</p>
+            <p class="text-emerald-700 font-bold">答：大長方形的周長為 $6x + 14$。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400 border-t border-slate-200 mt-8">
+    十二年國教國中數學領域互動學習網 • 依據十二年國教課綱規範建置
+  </footer>
+</body>
+</html>
